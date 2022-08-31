@@ -18,3 +18,5 @@
 3. add server(tomcat 경로로 설정)
 4. 프로젝트의 build path library에서 lombok 설정
 5. 프로젝트의 build path library에서 server runtime 설정(add library)
+6. dbeaver 설정 (db 설정한 대로)
+7. file association에서 xml, sql 디폴트 설정
