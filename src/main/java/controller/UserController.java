@@ -13,12 +13,6 @@ import common.C;
 import service.Service;
 import service.user.LoginService;
 import service.user.RegisterService;
-import service.write.DeleteService;
-import service.write.DetailService;
-import service.write.ListService;
-import service.write.SelectService;
-import service.write.UpdateService;
-import service.write.WriteService;
 
 @WebServlet("/user/*")
 public class UserController extends HttpServlet {
