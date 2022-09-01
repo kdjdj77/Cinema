@@ -10,12 +10,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import service.Service;
-import service.write.DeleteService;
-import service.write.DetailService;
-import service.write.ListService;
-import service.write.SelectService;
-import service.write.UpdateService;
-import service.write.WriteService;
 
 @WebServlet("/home/*")
 public class HomeController extends HttpServlet {
