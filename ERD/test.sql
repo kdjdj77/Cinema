@@ -54,6 +54,12 @@ INSERT INTO ci_movies (title, genre, runtime, director, actor, synopsis) VALUES
 주운 자 VS 또 주운 자
 아슬아슬 선 넘는 지분 협상이 시작된다!')
 ;
+-- servlist 샘플데이터
+INSERT INTO ci_servlist (user_id, title, content) VALUES
+(1, '쌀려쭈쎼요', '쒸프트키까 안뗴쪄요 또와쭈쎼요'),
+(2, '버그 발생했습니다', '페이지가 동작을 안하네요'),
+(2, '문의글 작성 이렇게하는거 맞나요?', '한번 테스트해 봤습니다')
+;
 -- mcomment 샘플데이터
 INSERT INTO ci_mcomment (user_id, movie_id, content, star) VALUES
 (1, 1, '너무 재밌어요!', 8),
@@ -68,12 +74,6 @@ INSERT INTO ci_scomment (user_id, serv_id, content) VALUES
 (3, 1, '컴퓨터를 껐다 켜보세요'),
 (3, 2, '인터넷 연결을 한번 확인해보세요'),
 (3, 3, '테스트 댓글입니다')
-;
--- servlist 샘플데이터
-INSERT INTO ci_servlist (user_id, title, content) VALUES
-(1, '쌀려쭈쎼요', '쒸프트키까 안뗴쪄요 또와쭈쎼요'),
-(2, '버그 발생했습니다', '페이지가 동작을 안하네요'),
-(2, '문의글 작성 이렇게하는거 맞나요?', '한번 테스트해 봤습니다')
 ;
 -- file 샘플데이터
 
