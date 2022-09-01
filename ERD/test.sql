@@ -10,7 +10,8 @@ select * from ci_reserv;
 INSERT INTO ci_user (username, password, name, authorities) VALUES
 ('USER1', '1234', '회원1', 'ROLE_MEMBER'),
 ('USER2', '1234', '회원2', null),
-('ADMIN1', '1234', '관리자1', 'ROLE_MEMBER,ROLE_ADMIN')
+('ADMIN1', '1234', '관리자1', 'ROLE_MEMBER,ROLE_ADMIN'),
+('1234', '1234', '테스트1', 'ROLE_MEMBER')
 ;
 -- movies 샘플데이터
 INSERT INTO ci_movies (title, genre, runtime, director, actor, synopsis) VALUES
