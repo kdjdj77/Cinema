@@ -70,7 +70,7 @@ public class UserController extends HttpServlet {
 				break;
 			case "/user/login":
 				switch(method) {
-					case "GET": // 濡쒓렇�씤 �뤌
+					case "GET": 
 						C.retrieveRedirectAttribute(request);
 						viewPage = "/user/login.jsp";
 						break;

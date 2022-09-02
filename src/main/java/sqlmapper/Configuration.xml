@@ -18,8 +18,8 @@
       <transactionManager type="JDBC"/>
       <dataSource type="POOLED">
 		<property name="driver" value="com.mysql.cj.jdbc.Driver" />
-		<property name="url" value="jdbc:mysql://localhost:3306/mydb609" />
-		<property name="username" value="myuser609" />
+		<property name="url" value="jdbc:mysql://localhost:3306/cinema" />
+		<property name="username" value="korin" />
 		<property name="password" value="1234" />        
       </dataSource>
     </environment>
@@ -28,6 +28,9 @@
   <mappers>
     <!-- 설정할 Mapper 파일들  -->
     <mapper resource="domain/UserDAO.xml"/>
+    <mapper resource="domain/MovieDAO.xml"/>
+    <mapper resource="domain/MCommentDAO.xml"/>
+
   </mappers>
  
 </configuration>
