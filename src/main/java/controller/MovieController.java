@@ -54,7 +54,7 @@ public class MovieController extends HttpServlet {
 			case "/movie/home":
 				service = new ListService();
 				service.execute(request, response);
-				viewPage = "list.jsp";
+				viewPage = "home.jsp";
 				break;
 		}
 		//위에서 결정된 뷰 페이지(viewPage)로 forward 해줌
