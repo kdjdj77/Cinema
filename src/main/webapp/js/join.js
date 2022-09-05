@@ -131,7 +131,7 @@ name.addEventListener('keyup', nameFn);
 
 // 모든 조건이 충족되었는지 확인하는 함수
 function isAllCheck() {
-	console.log("validationstart");
+    console.log("validationstart");
     if (isMoreThan4Length(username.value) && isUserNameChar(username.value)) { // 아이디
         if ((isMoreThan10Length(password.value)) &&
             (isPasswordEng(password.value) + isPasswordNum(password.value) + isPasswordSpeci(password.value) >= 2) &&
@@ -143,7 +143,7 @@ function isAllCheck() {
             if (isMatch(password.value, re_password.value)) { // 비밀번호 확인
                 //console.log('true!!');
                 if (isNameChar(name.value)) {
-					console.log("validationend");
+                    console.log("validationend");
                     return true;
                 }
             }
@@ -163,10 +163,21 @@ function isSubmitButton() {
     }
 }
 
+document.getElementById("registerForm").onsubmit = function(){
+	if (isAllCheck()) {
+        // document.getElementById("registerForm").submit();
+        return true;
+
+    } else {
+        alert('모든 조건이 충족되어야합니다.');
+        return false;
+    }
+};
+
 // [회원가입 버튼] 클릭 이벤트 함수
-elSubmitButton.onclick = function () {
-    if (isAllCheck()) {
-		document.getElementById("registerForm").submit();
+/*elSubmitButton.onclick = function () {
+	if (isAllCheck()) {
+        // document.getElementById("registerForm").submit();
         username.value = '';
         password.value = '';
         re_password.value = '';
@@ -176,14 +187,14 @@ elSubmitButton.onclick = function () {
         elPWSuccessMessage.classList.add('hide');
         elReadableMessage.classList.add('hide');
         elSubmitButton.classList.remove('allCheck');
-        alert('회원가입이 완료되었습니다!');
-        
+        return true;
+
     } else {
         alert('모든 조건이 충족되어야합니다.');
         history.state;
     }
-};
-
+    
+};*/
 
 //-------- 유효성 검사에서 사용하는 함수다 ---------//
 

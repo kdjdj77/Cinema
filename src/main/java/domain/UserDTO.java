@@ -17,6 +17,7 @@ public class UserDTO {
     private String authorities;
     private LocalDateTime regDate;
 
+
     // String 으로 리턴하는 getter
     public String getRegDateTime() {
         if (this.regDate == null) return "";

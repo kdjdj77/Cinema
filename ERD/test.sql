@@ -89,4 +89,4 @@ INSERT INTO ci_reserv (user_id, movie_id, seat) VALUES
 (3, 2, 'B8')
 ;
 
-select *from ci_user;
+
