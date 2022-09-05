@@ -9,20 +9,20 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import service.Service;
-
-@WebServlet("/home/*")
-public class HomeController extends HttpServlet {
+@WebServlet("/map/*")
+public class MapController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-
-    public HomeController() {
+       
+    public MapController() {
         super();
     }
+
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/views/home.jsp");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/views/map.jsp");
 		dispatcher.forward(request, response);
 	}
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	}
+
 }

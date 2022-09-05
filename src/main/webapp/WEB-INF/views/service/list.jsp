@@ -24,20 +24,18 @@
         <table class="table table-hover">
             <thead class="table-success">
                 <tr>
-                    <th>#</th>
-                    <th>제목</th>
                     <th>작성자</th>
-                    <th>조회수</th>
+                    <th>제목</th>
+                    <th>답변개수</th>
                     <th>작성일</th>
                 </tr>
             </thead>
             <tbody>
             <c:forEach var="dto" items="${list }">
                 <tr>
-                    <td>${dto.id }</td>
-                    <td><a href="detail?id=${dto.id }">${dto.subject }</a></td>
-                    <td>${dto.user.username }</td>
-                    <td>${dto.viewCnt }</td>
+                    <td>${dto.user.name }</td>
+                    <td><a href="detail?id=${dto.id }">${dto.title }</a></td>
+                    <td>${dto.cmtCheck }개</td>
                     <td>${dto.regDateTime}</td>
                 </tr>            
             </c:forEach>           

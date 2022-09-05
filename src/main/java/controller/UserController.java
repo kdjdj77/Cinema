@@ -70,7 +70,7 @@ public class UserController extends HttpServlet {
 				break;
 			case "/user/login":
 				switch(method) {
-					case "GET": 
+					case "GET": // 濡쒓렇�씤 �뤌
 						C.retrieveRedirectAttribute(request);
 						viewPage = "/user/login.jsp";
 						break;
@@ -78,12 +78,12 @@ public class UserController extends HttpServlet {
 						service = new LoginService();
 						service.execute(request, response);
 						
-						
+						// Redirect媛� �씪�뼱�굹吏� �븡怨� 濡쒓렇�씤 �꽦怨듯뻽�떎硫�
 						if (!response.isCommitted()) {
-							
+							// 湲곕낯�쟻�쑝濡� home�쑝濡� redirect�븳�떎
 							String redirectUrl = request.getContextPath() + "/movie/home";
 							
-							
+							// �샊�떆 url prior媛� 議댁옱�뻽�떎硫� �빐�떦 url濡� redirect
 							String urlPrior = C.retrieveUrlPrior(request);
 							if (urlPrior != null) redirectUrl = urlPrior;
 							
@@ -95,7 +95,7 @@ public class UserController extends HttpServlet {
 			case "/user/logout":
 				if (method.equals("POST")) {
 					request.getSession().removeAttribute(C.PRINCIPAL);
-					response.sendRedirect(request.getContextPath() + "/movie/home");
+					response.sendRedirect(request.getContextPath() + "/home");
 				}
 				break;
 			case "/user/rejectAuth":
