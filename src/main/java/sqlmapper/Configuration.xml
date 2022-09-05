@@ -30,6 +30,9 @@
     <mapper resource="domain/UserDAO.xml"/>
     <mapper resource="domain/MovieDAO.xml"/>
     <mapper resource="domain/MCommentDAO.xml"/>
+    <mapper resource="domain/SCommentDAO.xml"/>
+    <mapper resource="domain/ServiceDAO.xml"/>
+    
 
   </mappers>
  
