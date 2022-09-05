@@ -11,7 +11,7 @@ public interface MovieDAO {
 	public abstract int[] selectStars(int id) throws SQLException;
 	
 	// id로 특정 영화(movie) SELECT <-- DTO
-	List<MovieDTO> selectById(MovieDTO dto) throws SQLException;
+	List<MovieDTO> selectById(int id) throws SQLException;
 	
 	// 영화(user) 등록 <-- DTO
 	int register(MovieDTO dto) throws SQLException;

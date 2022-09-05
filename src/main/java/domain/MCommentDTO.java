@@ -31,5 +31,5 @@ public class MCommentDTO {
 	@JsonSerialize(using = LocalDateTimeSerializer.class)
 	@JsonFormat(pattern="yyyy-MM-dd HH:mm:ss", timezone = "Asia/Seoul")
 	@JsonProperty("regdate")
-	private LocalDateTime regDate;
+	private LocalDateTime regdate;
 }

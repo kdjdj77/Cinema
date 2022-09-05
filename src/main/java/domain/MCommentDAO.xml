@@ -14,11 +14,11 @@
 	    <result column="c_id" property="id"/>
 	    <result column="c_content" property="content"/>
 	    <result column="c_star" property="star"/>
-	    <result column="c_regdate" property="regDate"/>
+	    <result column="c_regdate" property="regdate"/>
 	    <collection property="user" resultMap="mapUser"/>
 	</resultMap>
 	
-	<select id="selectByWrite" resultMap="mapComment">
+	<select id="selectByMovie" resultMap="mapComment">
 	    SELECT
 	        c.id "c_id",
 	        c.content "c_content",
@@ -40,7 +40,7 @@
 	<insert id="insert" flushCache="true" parameterType="domain.MCommentDTO"
 		keyProperty="id" useGeneratedKeys="true" keyColumn="id">
 		
-		INSERT INTO t4_comment(user_id, movie_id, content, star)
+		INSERT INTO ci_comment(user_id, movie_id, content, star)
     	VALUES(#{user.id}, #{movie.id}, #{content}, #{star})
 	</insert>
 	

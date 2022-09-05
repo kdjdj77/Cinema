@@ -23,7 +23,7 @@
 	        	<div class="row">
 			       	<c:forEach var="dto" items="${dtolist}">
 				       	<div class="row col-xs-3 col-lg-3 justify-content-center bgRed text-center">
-				        	<a href="detail?id=${dto.id}" class="text-decoration-none text-white" style="width:220px; height:300px; background-color:gray;">
+				        	<a href="detail?id=${dto.id}" class="text-decoration-none text-white rounded" style="width:220px; height:300px; background-color:gray;">
 
 					        		No Image
 

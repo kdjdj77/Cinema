@@ -2,23 +2,21 @@ package controller;
 
 import java.io.IOException;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import common.C;
-import service.Service;
-import service.movie.DetailService;
-import service.movie.ListService;
+import service.mcomment.CmtDeleteService;
+import service.mcomment.CmtListService;
+import service.mcomment.CmtWriteService;
 
-@WebServlet("/movie/*")
-public class MovieController extends HttpServlet {
+@WebServlet("/mcomment/*")
+public class MCommentController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-    public MovieController() {
+    public MCommentController() {
         super();
     }
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -44,31 +42,20 @@ public class MovieController extends HttpServlet {
 		System.out.println("conPath: " + conPath);  
 		System.out.println("command: " + command);
 		
-		
-		// 컨트롤러는 
-		// 1. 커맨드에 따라, 해당 Service 로직을 수행을 하고
-		// 2. 결과를 내보낼 view를 결정한다
-		Service service = null;	// 어떠한 Service 로직을 수행할지
-		String viewPage = null; // 어떠한 페이지(view)를 보여줄지
-		
 		switch(command) {
-			case "/movie/home":
-				service = new ListService();
-				service.execute(request, response);
-				viewPage = "home.jsp";
+			case "/mcomment/list":
+				new CmtListService().execute(request, response);
 				break;
-			case "/movie/detail": // 로그인한 사람만 접근 가능
-				service = new DetailService();
-				service.execute(request, response);
-				viewPage = "detail.jsp";
+			case "/mcomment/write":
+				if (method.equals("POST")) {
+					new CmtWriteService().execute(request, response);
+				}
 				break;
-			
-		}
-		//위에서 결정된 뷰 페이지(viewPage)로 forward 해줌
-		if (viewPage != null) {
-			RequestDispatcher dispatcher = 
-				request.getRequestDispatcher("/WEB-INF/views/movie/" + viewPage);
-			dispatcher.forward(request, response);
+			case "/mcomment/delete":
+				if (method.equals("POST")) {
+					new CmtDeleteService().execute(request, response);
+				}
+				break;
 		}
 	}
 }
