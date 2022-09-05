@@ -21,7 +21,7 @@
 		    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
 		    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 		 
-		    <title>수정 - ${dto.subject}</title>
+		    <title>수정 - ${dto.title}</title>
 		</head>
 		 
 		 
@@ -44,8 +44,8 @@
 		                <span class="form-control" readonly>${dto.user.username}(${dto.user.name})</span>
 		            </div>    
 		            <div class="mb-3 mt-3">
-		                <label for="subject">제목:</label>
-		                <input type="text" class="form-control" id="subject" placeholder="제목을 입력하세요" name="subject" value="${dto.subject}" required>
+		                <label for="title">제목:</label>
+		                <input type="text" class="form-control" id="title" placeholder="제목을 입력하세요" name="title" value="${dto.title}" required>
 		            </div>
 		            <div class="mb-3 mt-3">
 		                <label for="content">내용:</label>
