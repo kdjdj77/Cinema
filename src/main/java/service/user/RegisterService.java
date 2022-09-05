@@ -22,7 +22,7 @@ public class RegisterService implements Service {
         //입력한 값을 받아오기
         String username = request.getParameter("username");
         String password = request.getParameter("password");
-        String re_password = request.getParameter("re-password");
+        String re_password = request.getParameter("re_password");
         String name = request.getParameter("name");
         
 		username = username.trim();
