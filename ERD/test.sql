@@ -73,7 +73,11 @@ INSERT INTO ci_mcomment (user_id, movie_id, content, star) VALUES
 INSERT INTO ci_scomment (user_id, serv_id, content) VALUES
 (3, 1, '컴퓨터를 껐다 켜보세요'),
 (3, 2, '인터넷 연결을 한번 확인해보세요'),
-(3, 3, '테스트 댓글입니다')
+(3, 3, '테스트 댓글입니다'),
+(3, 1, '테스트 댓글입니다2'),
+(3, 1, '테스트 댓글입니다3'),
+(3, 2, '테스트 댓글입니다4'),
+(3, 3, '테스트 댓글입니다5')
 ;
 -- file 샘플데이터
 
@@ -95,3 +99,4 @@ INSERT INTO ci_reserv (user_id, movie_id, seat) VALUES
 (3, 2, 'B7'),
 (3, 2, 'B8')
 ;
+

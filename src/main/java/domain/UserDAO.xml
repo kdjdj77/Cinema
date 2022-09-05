@@ -7,7 +7,7 @@
 		resultType="domain.UserDTO"
 	>
 	    SELECT id, username, password, name, regdate, authorities
-    	FROM t4_user
+    	FROM ci_user
     	WHERE username = #{username}
 	</select>
 	
@@ -17,7 +17,7 @@
 		resultType="domain.UserDTO"
 	>
 		SELECT id, username, password, name, regdate, authorities
-    	FROM t4_user
+    	FROM ci_user
     	WHERE id = #{id}
 	</select>
 	
@@ -27,7 +27,7 @@
 		keyProperty="id" keyColumn="id"
 		useGeneratedKeys="true"
 	>
-		INSERT INTO t4_user(username, password, name)
+		INSERT INTO ci_user(username, password, name)
     	VALUES(#{username}, #{password}, #{name})
 	</insert>
 </mapper>

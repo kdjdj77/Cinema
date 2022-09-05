@@ -14,7 +14,7 @@
 
     <div class="container mt-3">
         <h1>Home</h1>
-        <a class="btn btn-primary" href="${pageContext.request.contextPath }/service/list">목록보기</a>
+        <a class="btn btn-primary" href="${pageContext.request.contextPath }/board/list">목록보기</a>
     </div>
 </body>
 </html>
