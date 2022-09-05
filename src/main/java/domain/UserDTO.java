@@ -10,6 +10,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
@@ -24,15 +25,16 @@ public class UserDTO {
     private String authorities;
     @JsonIgnore
     private LocalDateTime regDate;
+
     @JsonIgnore
     private int viewcnt;
    
     @JsonIgnore
     // String 으로 리턴하는 getter
     public String getRegDateTime() {
-        if(this.regDate == null) return "";
-        return this.regDate.format(DateTimeFormatter.ofPattern("yyyy-MM-dd hh:mm:ss"));    
-    }  
+        if (this.regDate == null) return "";
+        return this.regDate.format(DateTimeFormatter.ofPattern("yyyy-MM-dd hh:mm:ss"));
+    }
 
 } // end DTO
 
