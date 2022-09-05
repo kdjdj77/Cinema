@@ -8,6 +8,7 @@
 .dbeaver-data-sources*.xml
 
 ### Eclipse ###
+.classpath
 .metadata
 bin/
 tmp/
