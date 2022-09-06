@@ -36,4 +36,13 @@
         	id = #{id}
 	</select>
 	
+	<select id="selectByIdForSeat" resultType="domain.MovieDTO">
+        SELECT
+	        id, title, genre, runtime, director, actor, synopsis
+        FROM 
+        	ci_movies
+        WHERE 
+        	id = #{id}
+	</select>
+	
 </mapper>

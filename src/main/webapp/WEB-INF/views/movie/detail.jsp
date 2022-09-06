@@ -100,6 +100,9 @@
 		            	&nbsp;&nbsp;
 		                평점 : ★${dto.star}
 		            </div>  
+		            <c:if test="${fn:contains(PRINCIPAL.authorities, 'ROLE_MEMBER')}">
+		            	<a class="btn btn-outline-dark mx-3 float-start" href="reserv?id=${dto.id }">예매하기</a>
+		            </c:if>
 		        </section>
 		        <section style="margin-top:100px;">
 		        	시놉시스

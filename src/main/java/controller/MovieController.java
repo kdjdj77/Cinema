@@ -13,6 +13,8 @@ import common.C;
 import service.Service;
 import service.movie.DetailService;
 import service.movie.ListService;
+import service.movie.ReservOKService;
+import service.movie.ReservService;
 
 @WebServlet("/movie/*")
 public class MovieController extends HttpServlet {
@@ -62,6 +64,21 @@ public class MovieController extends HttpServlet {
 				service.execute(request, response);
 				viewPage = "detail.jsp";
 				break;
+			case "/movie/reserv":
+				if(C.securityCheck(request, response, new String[] {"ROLE_MEMBER"})) {
+					service = new ReservService();
+					service.execute(request, response);
+					viewPage = "reserv.jsp";
+				}
+				break;
+			case "/movie/reservOK":
+				if(C.securityCheck(request, response, new String[] {"ROLE_MEMBER"})) {
+					service = new ReservOKService();
+					service.execute(request, response);
+					viewPage = "reservOK.jsp";
+				}
+				break;
+				
 			
 		}
 		//위에서 결정된 뷰 페이지(viewPage)로 forward 해줌

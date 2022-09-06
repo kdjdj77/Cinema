@@ -13,7 +13,10 @@ public interface MovieDAO {
 	// id로 특정 영화(movie) SELECT <-- DTO
 	List<MovieDTO> selectById(int id) throws SQLException;
 	
+	// id로 특정 영화(movie) SELECT <-- DTO
+	MovieDTO selectByIdForSeat(int id) throws SQLException;
+	
 	// 영화(user) 등록 <-- DTO
 	int register(MovieDTO dto) throws SQLException;
-
+	
 }
