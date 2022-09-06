@@ -1,10 +1,3 @@
-//-------- HTML 요소 셀렉팅 ---------//
-
-const username = document.querySelector('#username');
-
-const elFailureMessage = document.querySelector('.failure-message');
-const elSuccessMessage = document.querySelector('.success-message');
-
 const password = document.querySelector('#password');
 const re_password = document.querySelector('#re_password');
 
@@ -17,30 +10,7 @@ const elPWFailureContn = document.querySelector('.password-failure-contn');
 const elPWFailureUpper = document.querySelector('.password-failure-upper');
 const elPWSuccessMessage = document.querySelector('.password-success-message');
 
-const name = document.querySelector('#name');
-
-const elIllegibleMessage = document.querySelector('.illegible-message');
-const elReadableMessage = document.querySelector('.readable-message');
-
 const elSubmitButton = document.querySelector('#subit-button');
-
-//-------- 유효성 검사 ---------//
-
-// { 아이디 } input 유효성 검사
-function usernameFn() {
-    if (isMoreThan4Length(username.value) && isUserNameChar(username.value)) {
-        elSuccessMessage.classList.remove('hide');
-        elFailureMessage.classList.add('hide')
-    } else {
-        elFailureMessage.classList.remove('hide');
-        elSuccessMessage.classList.add('hide');
-    }
-
-    isSubmitButton();
-}
-
-username.addEventListener('click', usernameFn);
-username.addEventListener('keyup', usernameFn);
 
 // { 비밀번호 } input 유효성 검사
 function passwordFn() {
@@ -110,46 +80,24 @@ function re_passwordFn() {
 re_password.onclick = re_passwordFn;
 re_password.onkeyup = re_passwordFn;
 
-
-// 이름 유효성 검사
-function nameFn() {
-    if (isNameChar(name.value)) {
-        elIllegibleMessage.classList.add('hide');
-        elReadableMessage.classList.remove('hide');
-    } else {
-        elIllegibleMessage.classList.remove('hide');
-        elReadableMessage.classList.add('hide');
-    }
-
-    isSubmitButton();
-}
-
-name.addEventListener('click', nameFn);
-name.addEventListener('keyup', nameFn);
-
 //-------- 최종 유효성 검사에서 사용하는 함수 ---------//
 
 // 모든 조건이 충족되었는지 확인하는 함수
 function isAllCheck() {
     console.log("validationstart");
-    if (isMoreThan4Length(username.value) && isUserNameChar(username.value)) { // 아이디
-        if ((isMoreThan10Length(password.value)) &&
-            (isPasswordEng(password.value) + isPasswordNum(password.value) + isPasswordSpeci(password.value) >= 2) &&
-            (isPasswordChar(password.value)) &&
-            (isPasswordBlank(password.value)) &&
-            (!isPasswordRepeat(password.value)) &&
-            ((isPasswordUpper(password.value)))
-        ) { // 비밀번호
-            if (isMatch(password.value, re_password.value)) { // 비밀번호 확인
-                //console.log('true!!');
-                if (isNameChar(name.value)) {
-                    console.log("validationend");
-                    return true;
-                }
-            }
+    if ((isMoreThan10Length(password.value)) &&
+        (isPasswordEng(password.value) + isPasswordNum(password.value) + isPasswordSpeci(password.value) >= 2) &&
+        (isPasswordChar(password.value)) &&
+        (isPasswordBlank(password.value)) &&
+        (!isPasswordRepeat(password.value)) &&
+        ((isPasswordUpper(password.value)))
+    ) { // 비밀번호
+        if (isMatch(password.value, re_password.value)) { // 비밀번호 확인
+            console.log("validationend");
+            return true;
         }
     } else {
-        console.log('false!!');
+        console.log('false');
         return false;
     }
 }
@@ -163,59 +111,14 @@ function isSubmitButton() {
     }
 }
 
-document.getElementById("registerForm").onsubmit = function () {
+document.getElementById("updateForm").onsubmit = function(){
     if (isAllCheck()) {
-        // document.getElementById("registerForm").submit();
         return true;
-
     } else {
         alert('모든 조건이 충족되어야합니다.');
         return false;
     }
 };
-
-// [회원가입 버튼] 클릭 이벤트 함수
-/*elSubmitButton.onclick = function () {
-	if (isAllCheck()) {
-        // document.getElementById("registerForm").submit();
-        username.value = '';
-        password.value = '';
-        re_password.value = '';
-        name.value = '';
-        elSuccessMessage.classList.add('hide');
-        elRe_PWSuccessMsg.classList.add('hide');
-        elPWSuccessMessage.classList.add('hide');
-        elReadableMessage.classList.add('hide');
-        elSubmitButton.classList.remove('allCheck');
-        return true;
-
-    } else {
-        alert('모든 조건이 충족되어야합니다.');
-        history.state;
-    }
-    
-};*/
-
-//-------- 유효성 검사에서 사용하는 함수다 ---------//
-
-// [아이디] 길이가 4자 이상이면 true를 리턴하는 함수
-function isMoreThan4Length(value) {
-    // 아이디 입력창에 사용자가 입력을 할 때
-    // 글자 수가 4개이상인지 판단한다.
-    // 글자가 4개 이상이면 success메세지가 보여야 한다.
-    return value.length >= 4;
-}
-
-// [아이디] '영문, 숫자'만 있으면 true를 리턴하는 함수
-function isUserNameChar(username) {
-    var letters = /^[A-Za-z0-9]+$/;
-
-    if (username.match(letters)) {
-        return true;
-    } else {
-        return false;
-    }
-}
 
 // [비밀번호] 길이가 10자 이상이면 true를 리턴하는 함수
 function isMoreThan10Length(password) {
@@ -309,17 +212,6 @@ function isMatch(password1, password2) {
         if (password1 === password2) {
             return true;
         }
-    } else {
-        return false;
-    }
-}
-
-// 이름이 null과 숫자가 들어가지 않은경우
-function isNameChar(name) {
-    var letters = /[ㄱ-ㅎ|ㅏ-ㅣ|가-힣]/;
-
-    if (name.match(letters)) {
-        return true;
     } else {
         return false;
     }

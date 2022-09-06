@@ -178,7 +178,7 @@
                                 <a type="text" id="name">${sessionScope.PRINCIPAL.name}</a>
                             </div>
                         </div>
-                        <a href="${pageContext.request.contextPath}/userinfo/modi" class="button">회원정보 수정하기</a>
+                        <a href="modi?id=${sessionScope.PRINCIPAL.id}" class="button">회원정보 수정하기</a>
                     </form>
                 </div>
             </section>
