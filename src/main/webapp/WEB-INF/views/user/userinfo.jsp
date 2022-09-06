@@ -167,7 +167,7 @@
                         <div class="subheading mb-3">
                             <div>
                                 <label for="username">ID</label>
-                                <a type="text" id="username">${sessionScope.PRINCIPAL.username }</a>
+                                <a type="text" id="username">${sessionScope.PRINCIPAL.username}</a>
                             </div>
                             <div class="field half">
                                 <label for="password">Password</label>
@@ -177,8 +177,8 @@
                                 <label for="name">Name</label>
                                 <a type="text" id="name">${sessionScope.PRINCIPAL.name}</a>
                             </div>
+                            <a href="modify?id=${sessionScope.PRINCIPAL.id}" class="button">회원정보 수정하기</a>
                         </div>
-                        <a href="modi?id=${sessionScope.PRINCIPAL.id}" class="button">회원정보 수정하기</a>
                     </form>
                 </div>
             </section>
