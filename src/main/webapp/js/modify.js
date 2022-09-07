@@ -10,11 +10,6 @@ const elPWFailureContn = document.querySelector('.password-failure-contn');
 const elPWFailureUpper = document.querySelector('.password-failure-upper');
 const elPWSuccessMessage = document.querySelector('.password-success-message');
 
-const name = document.querySelector('#name');
-
-const elIllegibleMessage = document.querySelector('.illegible-message');
-const elReadableMessage = document.querySelector('.readable-message');
-
 const elSubmitButton = document.querySelector('#subit-button');
 
 // { 비밀번호 } input 유효성 검사
@@ -85,23 +80,6 @@ function re_passwordFn() {
 re_password.onclick = re_passwordFn;
 re_password.onkeyup = re_passwordFn;
 
-// 이름 유효성 검사
-function nameFn() {
-    if (isNameChar(name.value)) {
-        elIllegibleMessage.classList.add('hide');
-        elReadableMessage.classList.remove('hide');
-    } else {
-        elIllegibleMessage.classList.remove('hide');
-        elReadableMessage.classList.add('hide');
-    }
-
-    isSubmitButton();
-}
-
-name.addEventListener('click', nameFn);
-name.addEventListener('keyup', nameFn);
-
-
 //-------- 최종 유효성 검사에서 사용하는 함수 ---------//
 
 // 모든 조건이 충족되었는지 확인하는 함수
@@ -115,10 +93,8 @@ function isAllCheck() {
         ((isPasswordUpper(password.value)))
     ) { // 비밀번호
         if (isMatch(password.value, re_password.value)) { // 비밀번호 확인
-            if (isNameChar(name.value)) {
-                console.log("validationend");
-                return true;
-            }
+            console.log("validationend");
+            return true;
         }
     } else {
         console.log('false');
@@ -135,8 +111,7 @@ function isSubmitButton() {
     }
 }
 
-
-document.getElementById("updateForm").onsubmit = function (){
+document.getElementById("updateForm").onsubmit = function(){
     if (isAllCheck()) {
         return true;
     } else {
@@ -237,17 +212,6 @@ function isMatch(password1, password2) {
         if (password1 === password2) {
             return true;
         }
-    } else {
-        return false;
-    }
-}
-
-// 이름이 null과 숫자가 들어가지 않은경우
-function isNameChar(name) {
-    var letters = /[ㄱ-ㅎ|ㅏ-ㅣ|가-힣]/;
-
-    if (name.match(letters)) {
-        return true;
     } else {
         return false;
     }

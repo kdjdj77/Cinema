@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import common.C;
 import service.Service;
 import service.user.UserDetailService;
-import service.user.ModifyService;
+import service.user.UpdateService;
 
 
 @WebServlet("/userinfo/*")
@@ -29,7 +29,6 @@ public class UserinfoController extends HttpServlet {
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setCharacterEncoding("UTF-8");
-        action(request, response);
     }
 
     protected void action(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -60,7 +59,7 @@ public class UserinfoController extends HttpServlet {
                 viewPage = "userinfo.jsp";
                 break;
 
-            case "/userinfo/modify":
+            case "/userinfo/modi":
                 if (C.securityCheck(request, response, new String[]{"ROLE_MEMBER"})) {
                     switch (method) {
                         case "GET":
@@ -72,9 +71,10 @@ public class UserinfoController extends HttpServlet {
                             }
                             break;
                         case "POST":
-                            service = new ModifyService();
+                            service = new UpdateService();
                             service.execute(request, response);
-                            viewPage = "modifyOk.jsp";
+                            if(!response.isCommitted())
+                                viewPage = "modifyOK.jsp";
                             break;
                     }
                 }

@@ -26,7 +26,6 @@ public class UserDetailService implements Service {
 
 		
 		List<UserDTO> list = null;
-
 		try {
 			sqlSession = SqlSessionManager.getInstance().openSession();
 			dao = sqlSession.getMapper(UserDAO.class);
@@ -39,7 +38,7 @@ public class UserDetailService implements Service {
 			if(loggedUser.getId() != realUser.getId()) {
 				response.sendRedirect(request.getContextPath() + "/user/rejectAuth");
 				return;
-			}
+			}	
 			
 			request.setAttribute("list", list);
 

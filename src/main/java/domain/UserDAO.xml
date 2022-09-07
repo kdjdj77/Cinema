@@ -32,10 +32,10 @@
     </insert>
 
     <!-- 회원수정 -->
-    <update id="modify" flushCache="true"
+    <update id="update" flushCache="true"
             parameterType="domain.UserDTO">
         UPDATE ci_user
-        SET username = #{username}, name = #{name}, password = #{password}
+        SET password = #{password}
         WHERE id = #{id}
     </update>
 </mapper>

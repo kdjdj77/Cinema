@@ -2,7 +2,6 @@ package service.user;
 
 import java.io.IOException;
 import java.sql.SQLException;
-import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -15,7 +14,7 @@ import domain.UserDTO;
 import service.Service;
 import sqlmapper.SqlSessionManager;
 
-public class ModifyService implements Service {
+public class UpdateService implements Service {
 
     @Override
     public void execute(HttpServletRequest request, HttpServletResponse response) throws IOException {
@@ -23,12 +22,7 @@ public class ModifyService implements Service {
         // 입력한 값 (parameter) 받아오기
         String password = request.getParameter("password");
         String re_password = request.getParameter("re_password");
-        String username = request.getParameter("username");
-        String name = request.getParameter("name");
 
-
-        username = username.trim();
-        name = name.trim();
         password = password.trim();
         re_password = re_password.trim();
 
@@ -50,8 +44,6 @@ public class ModifyService implements Service {
         int cnt = 0;
         UserDTO dto = UserDTO.builder()
                 .id(id)
-                .username(username)
-                .name(name)
                 .password(password)
                 .build();
 
@@ -60,7 +52,7 @@ public class ModifyService implements Service {
             dao = sqlSession.getMapper(UserDAO.class);
 
             // update
-            cnt = dao.modify(dto);
+            cnt = dao.update(dto);
 
             sqlSession.commit();
         } catch (SQLException e) {
