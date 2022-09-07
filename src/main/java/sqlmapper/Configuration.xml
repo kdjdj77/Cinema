@@ -33,6 +33,7 @@
     <mapper resource="domain/SCommentDAO.xml"/>
     <mapper resource="domain/ServiceDAO.xml"/>
     <mapper resource="domain/ReservDAO.xml"/>
+    <mapper resource="domain/FileDAO.xml"/>
     
 
   </mappers>

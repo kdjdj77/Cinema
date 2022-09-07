@@ -35,7 +35,6 @@ public class ReservService implements Service {
 			dao = sqlSession.getMapper(ReservDAO.class);
 			mdao = sqlSession.getMapper(MovieDAO.class);
 			
-			// 글 읽기
 			list = dao.seatCheck(id);
 			mov = mdao.selectById(id);
 			len = list.size();

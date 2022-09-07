@@ -23,6 +23,7 @@ public class MovieDTO {
     private LocalDateTime regDate;
     
     private float star;
+    private String fileName;
    
     // String 으로 리턴하는 getter
     public String getRegDateTime() {

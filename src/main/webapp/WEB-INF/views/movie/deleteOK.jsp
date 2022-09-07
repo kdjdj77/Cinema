@@ -5,14 +5,14 @@
 <c:choose>
 	<c:when test="${result == 0}">
 		<script>
-			alert("예매 실패");
+			alert("삭제 실패");
 			history.back();
 		</script>
 	</c:when>
 	<c:otherwise>
 		<script>
-			alert("예매 성공");
-			location.href = "detail?id=${dto.id}";
+			alert("삭제 성공");
+			location.href = "home";
 		</script>
 	</c:otherwise>
 </c:choose>

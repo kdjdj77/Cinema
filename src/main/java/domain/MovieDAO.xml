@@ -24,7 +24,10 @@
 		useGeneratedKeys="true"
 	>
 		INSERT INTO ci_movies(title, genre, runtime, director, actor, synopsis)
-    	VALUES(#{title}, #{genre}, #{runtime}, #{director}, #{actor}, #{synopsis})
+    	VALUES(
+    		#{title}, #{genre}, #{runtime}, 
+    		#{director}, #{actor}, #{synopsis}
+    	)
 	</insert>
 	
 	<select id="selectById" resultType="domain.MovieDTO">
@@ -44,5 +47,20 @@
         WHERE 
         	id = #{id}
 	</select>
+	
+	<!-- 글삭제 -->
+	<delete id="deleteById" flushCache="true">
+		DELETE FROM ci_movies WHERE id = #{id}
+	</delete>
+	
+	<!-- 글수정 -->
+	<update id="update" flushCache="true"
+		parameterType="domain.MovieDTO">
+		UPDATE ci_movies
+		SET 
+			title = #{title}, genre = #{genre}, runtime = #{runtime},
+			director = #{director}, actor = #{actor}, synopsis = #{synopsis}
+		WHERE id = #{id}
+	</update>
 	
 </mapper>
