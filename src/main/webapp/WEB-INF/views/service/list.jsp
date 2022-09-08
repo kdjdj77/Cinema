@@ -36,7 +36,7 @@
                     <td>${dto.user.name }</td>
                     <td><a href="detail?id=${dto.id }">${dto.title }</a></td>
                     <td>${dto.cmtCheck }개</td>
-                    <td>${dto.regDateTime}</td>
+                    <td>${dto.regDate}</td>
                 </tr>            
             </c:forEach>           
             </tbody>

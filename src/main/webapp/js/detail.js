@@ -1,3 +1,30 @@
+let pageNum = 1;
+let pageSize = 50;
+
+document.addEventListener("DOMContentLoaded", function(event){
+	DataFunc.getPagingData(1);
+});
+
+const DataFunc = {
+    getPagingData: function(pageNum){
+        let params = {
+            "startOffset": pagingUtil.getStartOffset(pageNum, pageSize)
+            , "endOffset": pageSize
+        }
+        
+        // https://zero-gravity.tistory.com/331 참고.
+        apiFetchPost("/test/getPagingList", params, function(resData) {
+            console.log("페이징 데이터-");
+            PrintFunc.printPagingData(resData);     
+        });
+    },
+    pagingPagingData: function(pNum){
+        pageNum = pNum;
+        DataFunc.getPagingData(pageNum);
+    }
+}
+
+
 $(function(){
 	// 현재 글의 id 값
 	const id = $("input[name='id']").val().trim();
@@ -78,7 +105,7 @@ function loadComment(serv_id){
 
 function buildComment(result){
 	$("#cmt_cnt").text(result.count);   // 댓글 총 개수
-	
+		
 	const out = [];
 	
 	result.data.forEach(comment => {

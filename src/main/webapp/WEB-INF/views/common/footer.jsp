@@ -8,7 +8,7 @@
 <html>
 
 <head>
-	<title>NavBar</title>
+	<title>footer</title>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -16,80 +16,103 @@
 </head>
 
 <body>
-	<nav class="navbar navbar-expand-sm navbar-dark bg-dark">
-	  	<div class="container-fluid">
-	    	<a class="navbar-brand" href="javascript:void(0)">Security</a>
-	    	<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mynavbar">
-	      		<span class="navbar-toggler-icon"></span>
-	    	</button>
-		    <div class="collapse navbar-collapse" id="mynavbar">
-		      	<ul class="navbar-nav me-auto">
-			        <!-- 누구에게나 보이는 메뉴 -->
-			        <li class="nav-item" TODO="">
-			        	<a class="nav-link" href="javascript:void(0)">Anonymous</a>
-			        </li>
-			       
-			        <!-- 로그인한 사람에게만 보이는 메뉴 -->
-			        <c:if test="${not empty sessionScope.PRINCIPAL}">
-						<li class="nav-item" TODO="">
-							<a class="nav-link" href="javascript:void(0)">Authenticated</a>
-						</li>
-			        </c:if>
-			       
-			        <!-- 로그인한 사람중 ROLE_MEMBER 권한 있는 사람에게만 보이는 메뉴 -->
-			        <c:if test="${fn:contains(sessionScope.PRINCIPAL.authorities, 'ROLE_MEMBER')}">
-						<li class="nav-item" TODO="">
-							<a class="nav-link" href="javascript:void(0)">Member</a>
-						</li>
-			        </c:if>
-			       
-			        <!-- 로그인한 사람중 ROLE_ADMIN 권한 있는 사람에게만 보이는 메뉴 -->
-			        <c:if test="${fn:contains(sessionScope.PRINCIPAL.authorities, 'ROLE_ADMIN')}">
-			        	<li class="nav-item" TODO="">
-			          		<a class="nav-link" href="javascript:void(0)">Admin</a>
-			        	</li>
-			        </c:if>
-		      	</ul>
-		      
-				<c:choose>
-					<c:when test="${empty sessionScope.PRINCIPAL }">       		
-		            	<!-- 로그인 안했을때는 로그인 form 보여주기 -->
-		            	<a class="btn btn-primary" type="submit" href="${pageContext.request.contextPath}/user/login">Login</a>       		
-	       			</c:when>
-		       		<c:otherwise>
-			            <!-- 로그인 했을때는 username 과 로그아웃 form 보여주기 -->
-			            <form action="${pageContext.request.contextPath}/user/logout" method="POST" TODO="">
-			              	<!--TODO : 로그아웃후 다시 돌아오기 -->
-			              	<span class="d-flex">
-			                <span class="text-light p-2"><span TODO="">${sessionScope.PRINCIPAL.username }(${sessionScope.PRINCIPAL.name })</span> 님 환영합니다</span>
-			                <span><button class="btn btn-danger" type="submit">Logout</button></span>
-			            	</span>
-			            </form>       		
-		       		</c:otherwise>
-	       		</c:choose>
-		   	</div>
-		</div>
-	</nav>
-	
-	<div class="container-fluid mt-3">
-		<c:choose>
-			<c:when test="${empty sessionScope.PRINCIPAL}">
-				<!-- 로그인 하지 않았을때 보여주는 화면 -->
-				<div TODO="" class="alert alert-warning alert-dismissible">
-              		<button type="button" class="btn-close" data-bs-dismiss="alert"></button>
-              		로그인하지 않은 상태입니다 <br>
-          		</div> 
-			</c:when>
-			<c:otherwise>
-				<!-- 로그인 했을때 보여주는 화면 -->            
-				<div TODO="" class="alert alert-info alert-dismissible">
-				    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
-				    <c:out value="${sessionScope.PRINCIPAL}"/><br>              
-				    로그인 하셨습니다 <br>
-				</div>
-			</c:otherwise>
-		</c:choose>
-	</div>
+	<!-- Footer -->
+<footer class="text-center text-lg-start bg-light text-muted">
+  <!-- Section: Social media -->
+  <section class="d-flex justify-content-center justify-content-lg-between p-4 border-bottom">
+    <!-- Left -->
+    <div class="me-5 d-none d-lg-block">
+      <span>새로운 영화소식을 소셜미디어와 함께!:</span>
+    </div>
+    <!-- Left -->
+
+    <!-- Right -->
+    <div>
+      <a href="https://ko-kr.facebook.com/" class="me-4 text-reset">
+        <i class="fab fa-facebook-f"></i>
+      </a>
+      <a href="https://twitter.com/home" class="me-4 text-reset">
+        <i class="fab fa-twitter"></i>
+      </a>
+      <a href="https://www.google.com/" class="me-4 text-reset">
+        <i class="fab fa-google"></i>
+      </a>
+      <a href="https://www.instagram.com/" class="me-4 text-reset">
+        <i class="fab fa-instagram"></i>
+      </a>
+      <a href="https://github.com/" class="me-4 text-reset">
+        <i class="fab fa-github"></i>
+      </a>
+    </div>
+    <!-- Right -->
+  </section>
+  <!-- Section: Social media -->
+
+  <!-- Section: Links  -->
+  <section class="">
+    <div class="container text-center text-md-start mt-5">
+      <!-- Grid row -->
+      <div class="row mt-3">
+        <!-- Grid column -->
+        <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
+          <!-- Content -->
+          <h6 class="text-uppercase fw-bold mb-4">
+            <i class="fas fa-gem me-3"></i>Korin
+          </h6>
+          <p>
+            image
+          </p>
+        </div>
+        <!-- Grid column -->
+
+
+        <!-- Grid column -->
+        <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
+          <!-- Links -->
+          <h6 class="text-uppercase fw-bold mb-4">
+            about
+          </h6>
+          <p>
+            <a href="#!" class="text-reset">이용약관*링크notyet</a>
+          </p>
+          <p>
+            <a href="#!" class="text-reset">개인정보처리방침</a>
+          </p>
+          <p>
+            <a href="#!" class="text-reset">응애!</a>
+          </p>
+          <p>
+            <a href="#!" class="text-reset">(뭐 넣을까요)</a>
+          </p>
+        </div>
+        <!-- Grid column -->
+
+        <!-- Grid column -->
+        <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
+          <!-- Links -->
+          <h6 class="text-uppercase fw-bold mb-4">Contact</h6>
+          <p><i class="fas fa-home me-3"></i> 강남 코리아IT아카데미</p>
+          <p>
+            <i class="fas fa-envelope me-3"></i>
+            Korin@koreaisacademy.com
+          </p>
+          <p><i class="fas fa-phone me-3"></i> 010 1111 1111</p>
+        </div>
+        <!-- Grid column -->
+      </div>
+      <!-- Grid row -->
+    </div>
+  </section>
+  <!-- Section: Links  -->
+
+  <!-- Copyright -->
+  <div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.05);">
+    © 2022 Copyright:
+    <a class="text-reset fw-bold" href="https://mdbootstrap.com/">코리니(이용약관추가예정)</a>
+  </div>
+  <!-- Copyright -->
+</footer>
+<!-- Footer -->
 </body>
 
 </html>

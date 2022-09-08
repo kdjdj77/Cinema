@@ -1,25 +1,60 @@
-window.addEventListener('DOMContentLoaded', event => {
+$(function (){
+    const id = $("input[name='id']").val().trim();
+    loadMyService(id);
+	
+})
 
-    // Activate Bootstrap scrollspy on the main nav element
-    const sideNav = document.body.querySelector('#sideNav');
-    if (sideNav) {
-        new bootstrap.ScrollSpy(document.body, {
-            target: '#sideNav',
-            offset: 74,
-        });
-    };
-
-    // Collapse responsive navbar when toggler is visible
-    const navbarToggler = document.body.querySelector('.navbar-toggler');
-    const responsiveNavItems = [].slice.call(
-        document.querySelectorAll('#navbarResponsive .nav-link')
-    );
-    responsiveNavItems.map(function (responsiveNavItem) {
-        responsiveNavItem.addEventListener('click', () => {
-            if (window.getComputedStyle(navbarToggler).display !== 'none') {
-                navbarToggler.click();
+function loadMyService(user_id) {
+    $.ajax({
+        url: conPath + "/myservice/list?id=" + user_id,
+        type: "GET",
+        cache: false,
+        success: function(data, status) {
+            if (status == "success") {
+                // 서버측 에러 메시지 있는 경우
+                if (data.status != "OK") {
+                    alert(data.status);
+                    return;
+                }
+                buildMyService(data); // 댓글 목록 렌더링
             }
-        });
+        },
     });
+}
 
-});
+function answer(){
+    $.ajax({
+        url: "ServiceDAO.xml",
+        dataType: "xml",
+        su
+    })
+}
+function buildMyService(result) {
+
+    const out = [];
+
+    result.data.forEach(myService => {
+        let id = myService.id;
+        let title = myService.title.trim();
+        let content = myService.content.trim();
+        let regdate = myService.regdate;
+		let answer = myService.answer;
+
+        let user_id = parseInt(myService.user.id);
+        let username = myService.user.username;
+        let name = myService.user.name;
+
+        const row = `
+	        <tr>
+	        <td>${name}</td>
+	        <td>
+	            <a href=../service/detail?id=${id}>${title}</a>            
+	        </td>
+	        <td>${answer}</td>	/* 답변완료기능 xml 에서 */
+	        <td>${regdate}</td>
+	        <tr>
+	        `;
+        out.push(row);
+    });
+    $("#myService_list").html(out.join("\n"));
+}

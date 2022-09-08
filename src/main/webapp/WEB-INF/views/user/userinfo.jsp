@@ -11,6 +11,9 @@
     <meta name="description" content=""/>
     <meta name="author" content=""/>
     <title>userinfo</title>
+    <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+            rel="stylesheet">
     <link rel="icon" type="image/x-icon" href="assets/img/favicon.ico"/>
     <!-- Font Awesome icons (free version)-->
     <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
@@ -20,6 +23,9 @@
     <link href="https://fonts.googleapis.com/css?family=Muli:400,400i,800,800i" rel="stylesheet" type="text/css"/>
     <!-- Core theme CSS (includes Bootstrap)-->
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/styles.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
 
 </head>
 
@@ -29,6 +35,13 @@
         <a type="submit" href="${pageContext.request.contextPath}/user/login">Login</a>
     </c:when>
     <c:otherwise>
+        <jsp:include page="/WEB-INF/views/common/header.jsp"/>
+        <script>
+            const conPath = "${pageContext.request.contextPath}";
+        </script>
+        <form name="frmDelete" action="delete" method="POST">
+            <input type="hidden" name="id" value="${sessionScope.PRINCIPAL.id}">
+        </form>
         <!-- Navigation-->
         <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top" id="sideNav">
             <a class="navbar-brand js-scroll-trigger" href="#page-top">
@@ -144,17 +157,11 @@
             <hr class="m-0"/>
 
             <!-- Q&A -->
+            
             <section class="resume-section" id="education">
                 <div class="resume-section-content">
                     <h2 class="mb-5">My Q&A</h2>
-                    <div class="d-flex flex-column flex-md-row justify-content-between mb-5">
-                        <div class="flex-grow-1">
-                            <h3 class="mb-0">title</h3>
-                            <div class="subheading mb-3">답변완료 여부</div>
-                            <div>내용</div>
-                        </div>
-                        <div class="flex-shrink-0"><span class="text-primary">질문날짜</span></div>
-                    </div>
+                    <jsp:include page="myService.jsp"/>
                 </div>
             </section>
             <hr class="m-0"/>
@@ -193,6 +200,8 @@
             </section>
             <hr class="m-0"/>
         </div>
+        
+        <jsp:include page="/WEB-INF/views/common/footer.jsp"/>
     </c:otherwise>
 </c:choose>
 
