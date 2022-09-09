@@ -28,6 +28,8 @@ public class ServiceDTO {
 	/* private LocalDateTime regDate; */
 	
 	private int cmtCheck;
+	
+	private int reply;
 
 
 	/*

@@ -120,6 +120,8 @@
 			AND sl.user_id = #{param1}
         ORDER BY sl.id DESC
     </select>
+    
+
 </mapper>
 	
 

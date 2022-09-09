@@ -116,7 +116,7 @@ function buildComment(result){
         let user_id = parseInt(comment.user.id);
         let username = comment.user.username;
         let name = comment.user.name;
-        
+
         // 삭제버튼 여부 : 작성자 본인의 댓글인 경우에만 보이기
         const delBtn = (logged_id !== user_id) ? '' : `
                 <i class="btn fa-solid fa-delete-left text-danger" data-bs-toggle="tooltip"
@@ -130,7 +130,7 @@ function buildComment(result){
 	        <td><span><small class="text-secondary">${regdate}</small></span></td>
 	        </tr>      
 	        `;
-		out.push(row);		
+		out.push(row);
 	});
 	
 	$("#cmt_list").html(out.join("\n"));

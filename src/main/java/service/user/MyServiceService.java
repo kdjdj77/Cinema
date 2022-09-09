@@ -41,6 +41,10 @@ public class MyServiceService implements Service {
 			obj.setCount(mslist.size());
 			obj.setStatus("OK");
 
+			for (ServiceDTO s : mslist){
+				s.setCmtCheck(sdao.checkCmt(s.getId()).length);
+			}
+
 
 			sqlSession.commit();
 		}catch (SQLException e) {

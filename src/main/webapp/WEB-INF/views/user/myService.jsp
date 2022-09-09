@@ -20,8 +20,9 @@
             <tbody id="myService_list" >
             
             </tbody>
-
+			
         </table>
+        <ul id="pagination"></ul>
     </div>
 </div>
 

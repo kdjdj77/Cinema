@@ -1,7 +1,7 @@
 $(function (){
     const id = $("input[name='id']").val().trim();
     loadMyService(id);
-	
+   
 })
 
 function loadMyService(user_id) {
@@ -22,13 +22,7 @@ function loadMyService(user_id) {
     });
 }
 
-function answer(){
-    $.ajax({
-        url: "ServiceDAO.xml",
-        dataType: "xml",
-        su
-    })
-}
+
 function buildMyService(result) {
 
     const out = [];
@@ -38,11 +32,20 @@ function buildMyService(result) {
         let title = myService.title.trim();
         let content = myService.content.trim();
         let regdate = myService.regdate;
-		let answer = myService.answer;
 
         let user_id = parseInt(myService.user.id);
         let username = myService.user.username;
         let name = myService.user.name;
+        
+        let answerCnt = parseInt(myService.cmtCheck);
+        
+        if(answerCnt >=1){
+			var answer = "답변완료";
+			} else {
+				var answer = "미완료";
+		}
+		
+
 
         const row = `
 	        <tr>
