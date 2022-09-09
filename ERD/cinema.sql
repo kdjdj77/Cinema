@@ -11,7 +11,6 @@ DROP TABLE IF EXISTS ci_user;
 
 
 
-
 /* Create Tables */
 
 CREATE TABLE ci_file
@@ -78,7 +77,7 @@ CREATE TABLE ci_servlist
 	title varchar(50) NOT NULL,
 	content text NOT NULL,
 	viewcnt int DEFAULT 0 CHECK(viewcnt >= 0),
-	regdate datetime DEFAULT now(),
+	regdate datetime DEFAULT now(), 
 	PRIMARY KEY (id)
 );
 

@@ -3,6 +3,13 @@ package domain;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateTimeDeserializer;
+import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateTimeSerializer;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -18,14 +25,21 @@ public class ServiceDTO {
 	private String title;
 	private String content;
 	private int viewCnt;
-	private LocalDateTime regDate;
+	/* private LocalDateTime regDate; */
 	
 	private int cmtCheck;
 	
-	public String getRegDateTime() {
-		if(this.regDate == null) return "";		
-		return this.regDate.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
-	}
-	
+	private int reply;
+
+
+	/*
+	 * public String getRegDateTime() { if(this.regDate == null) return ""; return
+	 * this.regDate.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")); }
+	 */
+	@JsonDeserialize(using = LocalDateTimeDeserializer.class)
+	@JsonSerialize(using = LocalDateTimeSerializer.class)
+	@JsonFormat(pattern="yyyy-MM-dd HH:mm:ss", timezone = "Asia/Seoul")
+	@JsonProperty("regdate")
+	private LocalDateTime regDate;
 	
 }

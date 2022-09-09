@@ -47,10 +47,10 @@ public class RegisterService implements Service {
 		
 		int cnt = 0;
 		UserDTO dto = UserDTO.builder()
-			.name(name)
-			.username(username.toUpperCase()) //대문자로 저장
-			.password(password)
-			.build();
+				.name(name)
+				.username(username.toUpperCase()) //대문자로 저장
+				.password(password)
+				.build();
 		
 		try {
 			sqlSession = SqlSessionManager.getInstance().openSession();
