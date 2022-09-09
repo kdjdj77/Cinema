@@ -1,3 +1,30 @@
+let pageNum = 1;
+let pageSize = 50;
+
+document.addEventListener("DOMContentLoaded", function(event){
+	DataFunc.getPagingData(1);
+});
+
+const DataFunc = {
+    getPagingData: function(pageNum){
+        let params = {
+            "startOffset": pagingUtil.getStartOffset(pageNum, pageSize)
+            , "endOffset": pageSize
+        }
+        
+        // https://zero-gravity.tistory.com/331 참고.
+        apiFetchPost("/test/getPagingList", params, function(resData) {
+            console.log("페이징 데이터-");
+            PrintFunc.printPagingData(resData);     
+        });
+    },
+    pagingPagingData: function(pNum){
+        pageNum = pNum;
+        DataFunc.getPagingData(pageNum);
+    }
+}
+
+
 $(function(){
 	// 현재 글의 id 값
 	const id = $("input[name='id']").val().trim();
@@ -78,7 +105,7 @@ function loadComment(serv_id){
 
 function buildComment(result){
 	$("#cmt_cnt").text(result.count);   // 댓글 총 개수
-	
+		
 	const out = [];
 	
 	result.data.forEach(comment => {
@@ -89,7 +116,7 @@ function buildComment(result){
         let user_id = parseInt(comment.user.id);
         let username = comment.user.username;
         let name = comment.user.name;
-        
+
         // 삭제버튼 여부 : 작성자 본인의 댓글인 경우에만 보이기
         const delBtn = (logged_id !== user_id) ? '' : `
                 <i class="btn fa-solid fa-delete-left text-danger" data-bs-toggle="tooltip"
@@ -103,7 +130,7 @@ function buildComment(result){
 	        <td><span><small class="text-secondary">${regdate}</small></span></td>
 	        </tr>      
 	        `;
-		out.push(row);		
+		out.push(row);
 	});
 	
 	$("#cmt_list").html(out.join("\n"));

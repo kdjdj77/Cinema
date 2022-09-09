@@ -100,3 +100,14 @@ INSERT INTO ci_reserv (user_id, movie_id, seat) VALUES
 (3, 2, 'B8')
 ;
 
+select * from ci_user;
+select *from ci_servlist;
+select *from ci_scomment;
+
+SELECT count()
+        FROM ci_servlist;
+
+
+
+
+
