@@ -25,4 +25,5 @@ public interface MovieDAO {
 	//특정 id글 수정 (제목, 내용)
 	public abstract int update(MovieDTO dto) throws SQLException;
 	
+	
 }

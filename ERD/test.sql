@@ -104,6 +104,14 @@ select * from ci_servlist;
 select * from ci_file;
 select * from ci_reserv;
 
-SELECT count()
-        FROM ci_servlist;
 
+
+      
+      select m.title "m_title", avg(mc.star) "avg_star" 
+      from ci_mcomment mc,
+      ci_movies m 
+      where m.id  = mc.movie_id
+     and m.id = 2;
+      SELECT id, content 
+        FROM ci_scomment
+        WHERE serv_id = 1;

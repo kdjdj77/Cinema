@@ -10,4 +10,15 @@ public interface ReservDAO {
 	// 예매하기
 	public abstract int insert(ReservDTO dto) throws SQLException;
 
+	// 예매 취소소
+	public abstract int delete(int id) throws SQLException;
+
+	// 최근 5개
+	List<ReservDTO> recentMyReserve(int user_id) throws SQLException;
+	
+	// 전체
+	List<ReservDTO> myReserve(int user_id) throws SQLException;
+	
+	// 특정 예매 확인
+	List<ReservDTO> selectById(int id) throws SQLException;
 }

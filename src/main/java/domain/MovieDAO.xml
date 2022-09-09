@@ -62,5 +62,6 @@
 			director = #{director}, actor = #{actor}, synopsis = #{synopsis}
 		WHERE id = #{id}
 	</update>
+
 	
 </mapper>

@@ -9,48 +9,39 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.apache.ibatis.session.SqlSession;
 
-import common.C;
-import domain.UserDAO;
-import domain.UserDTO;
+import domain.ReservDAO;
+import domain.ReservDTO;
 import service.Service;
 import sqlmapper.SqlSessionManager;
 
-public class UserDetailService implements Service {
+public class ReserveDetailService implements Service {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		int id = Integer.parseInt(request.getParameter("id"));
-
-		SqlSession sqlSession = null;
-		UserDAO dao = null;
-
 		
-		List<UserDTO> list = null;
-
+		SqlSession sqlSession = null;
+		ReservDAO dao = null;		
+		
+		List<ReservDTO> list = null;
+		
+		
 		try {
 			sqlSession = SqlSessionManager.getInstance().openSession();
-			dao = sqlSession.getMapper(UserDAO.class);
-
-			// 읽기
+			dao = sqlSession.getMapper(ReservDAO.class);
+			
 			list = dao.selectById(id);
-
-			UserDTO loggedUser = (UserDTO)request.getSession().getAttribute(C.PRINCIPAL);
-			UserDTO realUser = list.get(0);
-			if(loggedUser.getId() != realUser.getId()) {
-				response.sendRedirect(request.getContextPath() + "/user/rejectAuth");
-				return;
-			}
 			
-			
-
 			sqlSession.commit();
-		} catch (SQLException e) {
+		}catch (SQLException e) {  
 			e.printStackTrace();
 		} finally {
 			if(sqlSession!= null) sqlSession.close();
-		}
+		}		
+
 		request.setAttribute("list", list);
 	}
 
 
-}
+	}
+

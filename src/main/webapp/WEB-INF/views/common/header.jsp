@@ -26,7 +26,7 @@
             <ul class="navbar-nav me-auto">
                 <!-- 누구에게나 보이는 메뉴 -->
                 <li class="nav-item" TODO="">
-                    <a class="nav-link" href="javascript:void(0)">Anonymous</a>
+                    <a class="nav-link" href="userinfo/main?id=${sessionScope.PRINCIPAL.id}">Anonymous</a>
                 </li>
 
                 <!-- 로그인한 사람에게만 보이는 메뉴 -->
@@ -39,7 +39,7 @@
                 <!-- 로그인한 사람중 ROLE_MEMBER 권한 있는 사람에게만 보이는 메뉴 -->
                 <c:if test="${fn:contains(sessionScope.PRINCIPAL.authorities, 'ROLE_MEMBER')}">
                     <li class="nav-item" TODO="">
-                        <a class="nav-link" href="javascript:void(0)">Member</a>
+                        <a class="nav-link" href="">Member</a>
                     </li>
                 </c:if>
 
