@@ -120,7 +120,11 @@
 			AND sl.user_id = #{param1}
         ORDER BY sl.id DESC
     </select>
-    
+    <select id="countMine" resultType="int">
+    	SELECT id, title, user_id, count(id)
+		FROM ci_servlist
+		where sl.user_id = #{param1};
+    </select>
 
 </mapper>
 	
