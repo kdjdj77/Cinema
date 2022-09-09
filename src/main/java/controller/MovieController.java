@@ -11,8 +11,14 @@ import javax.servlet.http.HttpServletResponse;
 
 import common.C;
 import service.Service;
+import service.movie.DeleteService;
 import service.movie.DetailService;
 import service.movie.ListService;
+import service.movie.ReservOKService;
+import service.movie.ReservService;
+import service.movie.SelectService;
+import service.movie.UpdateService;
+import service.movie.WriteService;
 
 @WebServlet("/movie/*")
 public class MovieController extends HttpServlet {
@@ -62,7 +68,66 @@ public class MovieController extends HttpServlet {
 				service.execute(request, response);
 				viewPage = "detail.jsp";
 				break;
-			
+			case "/movie/reserv":
+				if(C.securityCheck(request, response, new String[] {"ROLE_MEMBER"})) {
+					service = new ReservService();
+					service.execute(request, response);
+					viewPage = "reserv.jsp";
+				}
+				break;
+			case "/movie/reservOK":
+				if(C.securityCheck(request, response, new String[] {"ROLE_MEMBER"})) {
+					service = new ReservOKService();
+					service.execute(request, response);
+					viewPage = "reservOK.jsp";
+				}
+				break;
+			case "/movie/write":
+				if(C.securityCheck(request, response, new String[] {"ROLE_ADMIN"})) {
+					switch(method) {
+						case "GET":
+							viewPage = "write.jsp";
+							break;
+						case "POST":
+							service = new WriteService();
+							service.execute(request, response);
+							viewPage = "writeOK.jsp";
+							break;
+					}
+				}
+				break;
+			case "/movie/delete":
+				if (C.securityCheck(request, response, new String[] {"ROLE_ADMIN"})) {
+					switch(method) {
+					case "POST":
+						service = new DeleteService(); //작성자가 아닌 경우 Service 안에서 redirect 실행
+						service.execute(request, response);
+						if(!response.isCommitted()) {
+							viewPage = "deleteOK.jsp";
+						}
+						break;
+					}
+				}
+				break;	
+			case "/movie/update": //작성자만 접근가능
+				if (C.securityCheck(request, response, new String[] {"ROLE_ADMIN"})) {
+					switch(method) {
+						case "GET":
+							service = new SelectService(); //Service 안에서 작성자 여부 판단
+							service.execute(request, response);
+							
+							if(!response.isCommitted()) { //위에서 redirect되면 실행 안함
+								viewPage = "update.jsp";
+							}
+							break;
+						case "POST":
+							service = new UpdateService();
+							service.execute(request, response);
+							viewPage = "updateOK.jsp";
+							break;
+					}
+				}
+				break;
 		}
 		//위에서 결정된 뷰 페이지(viewPage)로 forward 해줌
 		if (viewPage != null) {

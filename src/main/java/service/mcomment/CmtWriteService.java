@@ -23,19 +23,21 @@ public class CmtWriteService implements Service {
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws IOException {
 	    // parameter 받아오기
-	    int writeId = Integer.parseInt(request.getParameter("movie_id"));  // 어느글에 대한 댓글인지
+	    int movieId = Integer.parseInt(request.getParameter("movie_id"));  // 어느글에 대한 댓글인지
 	    int userId = Integer.parseInt(request.getParameter("user_id"));  // 누가 작성한 댓글인지
 	    String content = request.getParameter("content");  // 댓글 내용
-	
-	    MovieDTO write = new MovieDTO();
-	    write.setId(writeId);
+	    int star = Integer.parseInt(request.getParameter("star")); // 평점
+	    
+	    MovieDTO movie = new MovieDTO();
+	    movie.setId(movieId);
 	    UserDTO user = new UserDTO();
 	    user.setId(userId);
 	    
 	    MCommentDTO dto = MCommentDTO.builder()
-	    	.movie(write)
+	    	.movie(movie)
 	    	.user(user)
 	    	.content(content)
+	    	.star(star)
 	    	.build();
 	    
 	    QryMResult obj = new QryMResult();// response 할 Java 객체
@@ -49,6 +51,7 @@ public class CmtWriteService implements Service {
 	        sqlSession = SqlSessionManager.getInstance().openSession();
 	        dao = sqlSession.getMapper(MCommentDAO.class);          
 	       
+	        System.out.println("나나나나나나나나나나나나나나");
 	        cnt = dao.insert(dto);
 	        obj.setCount(cnt);
 	        obj.setStatus("OK");

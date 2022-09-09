@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="domain.ReservDAO">
+	<select id="seatCheck" parameterType="int" resultType="string">
+		SELECT seat
+		FROM ci_reserv
+		WHERE movie_id = #{id}
+	</select>
+	
+	<insert id="insert" flushCache="true"
+		parameterType="domain.ReservDTO"
+		keyProperty="id" useGeneratedKeys="true" keyColumn="id">
+		INSERT INTO ci_reserv
+			(user_id, movie_id, seat)
+		VALUES
+			(#{user.id}, #{movie.id}, #{seat})
+	</insert>
+</mapper>

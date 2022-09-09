@@ -1,14 +1,18 @@
 package common;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
+import java.util.List;
 
+import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.mysql.cj.protocol.a.authentication.CachingSha2PasswordPlugin.AuthStage;
 
+import domain.FileDTO;
 import domain.UserDTO;
 
 public class C {
@@ -119,6 +123,32 @@ public class C {
     	String urlPrior = (String)session.getAttribute(URL_PRIOR); // 꺼내기
     	session.removeAttribute(URL_PRIOR); // 꺼냈으면 세션에서 제거
     	return urlPrior;
+    }
+    
+ // 물리적으로 저장된 첨부파일 삭제하기
+    public static int deleteFiles(List<FileDTO> list, HttpServletRequest request) {
+    	int cnt = 0; // 삭제 성공한 파일 개수
+    	if (list == null || list.size() == 0 || request == null) return cnt;
+		// 물리적인 경로
+		ServletContext context = request.getServletContext();
+		String saveDirectory = context.getRealPath("upload");
+		
+		for (FileDTO dto : list) {
+			File f = new File(saveDirectory, dto.getFile());
+			System.out.println("삭제시도 --> " + f.getAbsolutePath());
+			if (f.exists()) {
+				if (f.delete()) {
+					System.out.println("삭제 성공");
+					cnt++;
+				} else {
+					System.out.println("삭제 실패");
+				}
+			} else {
+				System.out.println("파일이 존재하지 않습니다");
+			}
+		}
+
+		return cnt;
     }
     
 }
