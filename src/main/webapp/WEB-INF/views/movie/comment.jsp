@@ -14,11 +14,20 @@
 		<%--  ROLE_MEMBER 가진 사용자만 댓글 작성 가능 --%>
   		<c:if test="${fn:contains(sessionScope.PRINCIPAL.authorities, 'ROLE_MEMBER')}">                    
 
-	        <div class="input-group my-2">
+	        <div class="input-group my-2" style="height:100px;">
 	            <input type="text" class="form-control" id="input_comment">
+	            <div class="border align-items-center row" style="height:100%; width:120px; margin:auto;">
+	            	<div class="vertical-center-row">
+	            	평점 : 
+	            	<select name="star" id="selectStar">
+	            		<c:forEach var="i" begin="0" end="10" step="1" varStatus="x">
+ 							<option value='${i}'>${i}</option>
+						</c:forEach>
+	            	</select>
+	            	</div>
+	            </div>
 	            <button type="button" class="btn btn-outline-primary" id="btn_comment">작성</button>
 	        </div>
-	        
 		</c:if>
         <table class="table table-hover mt-3" id="cmt_table">
             <thead>

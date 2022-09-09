@@ -1,11 +1,3 @@
-select * from ci_user;
-select * from ci_movies;
-select * from ci_mcomment;
-select * from ci_scomment;
-select * from ci_servlist;
-select * from ci_file;
-select * from ci_reserv;
-
 -- user 샘플데이터
 INSERT INTO ci_user (username, password, name, authorities) VALUES
 ('USER1', '1234', '회원1', 'ROLE_MEMBER'),
@@ -81,7 +73,10 @@ INSERT INTO ci_scomment (user_id, serv_id, content) VALUES
 (3, 3, '테스트 댓글입니다5')
 ;
 -- file 샘플데이터
-
+insert into ci_file (movie_id, file) values
+(1, 'img0.jpg'),
+(2, 'img1.jpg')
+;
 -- reserv 샘플데이터
 INSERT INTO ci_reserv (user_id, movie_id, seat) VALUES
 (1, 1, 'A1'),
@@ -102,6 +97,13 @@ INSERT INTO ci_reserv (user_id, movie_id, seat) VALUES
 ;
 
 select * from ci_user;
-select *from ci_servlist;
-select *from ci_scomment;
+select * from ci_movies;
+select * from ci_mcomment;
+select * from ci_scomment;
+select * from ci_servlist;
+select * from ci_file;
+select * from ci_reserv;
+
+SELECT count()
+        FROM ci_servlist;
 

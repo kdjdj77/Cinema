@@ -10,7 +10,8 @@ $(function() {
     // 3. 댓글 내용은 무엇인지?  --> 아래 content
     $("#btn_comment").click(function(){
 		// 입력한 값
-        const content = $("#input_comment").val().trim();
+        const content = $("#input_comment").val();
+        const star = $("#selectStar").val();
 
         // 검증
         if(!content){
@@ -23,6 +24,7 @@ $(function() {
 			"movie_id":id,
 			"user_id":logged_id,
 			"content":content,
+			"star":star,
 		};
 		$.ajax({
 			url:conPath + "/mcomment/write",

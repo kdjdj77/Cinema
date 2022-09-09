@@ -12,18 +12,12 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class MovieDTO {
+public class ReservDTO {
     private int id;
-    private String title;
-    private String genre;
-    private int runtime;
-    private String director;
-    private String actor;
-    private String synopsis;
+    private UserDTO user;
+	private MovieDTO movie;
+    private String seat;
     private LocalDateTime regDate;
-    
-    private float star;
-    private String fileName;
    
     // String 으로 리턴하는 getter
     public String getRegDateTime() {
