@@ -16,44 +16,45 @@
 </head>
  
 <body>
-	<jsp:include page="/WEB-INF/views/common/header.jsp"/>
-    <div class="container mt-3">
-    	<section>
-	        <h2 class="float-start">예매한 영화</h2>
-        </section>
-        <div class=" row row-offcanvas row-offcanvas-right" style="width:100%;">
-	        <div class="col-xs-12 col-sm-12">
-	        	<div class="row">
-	        		<hr>
-			       	<c:forEach var="reservlist" items="${reservelist}">
-			       	
-				       	<div class="row col-xs-3 col-lg-3 mb-5 justify-content-center bgRed text-center">
-				        	<c:set var="dto" value="${movielist }">
-				        	<a href="resdetail?id=${reservelist.id}" class="text-decoration-none rounded text-black" style="width:220px; height:300px; background-color:rgba(0,0,0,0);">
-								
-								<c:choose>
-					        	<%-- 이미지 보여주기 --%>
-					            <c:when test="${dto.fileName != null}">
-									<img src="${pageContext.request.contextPath}/upload/${dto.fileName}" style="width:220px; height:300px;" class="rounded">
-					            </c:when>
-					            <c:otherwise>
-					            	<div style="background-color:gray; width:220px; height:300px; text-align:center">
-					            		NO IMAGE
-					            	</div>
-					            </c:otherwise>
-								</c:choose>
-								
-				        	</a>
-				        	<div><a href="resdetail?id=${reservelist.id}" class="text-decoration-none text-black">
-				        		&nbsp;&nbsp;&nbsp;${reservelist.title}
-				        	</a></div>
-				        	<div>&nbsp;&nbsp;★${dto.star}</div>
-				        	</c:set>
-				        </div>
-			       	</c:forEach>
-		       	</div>
-	       	</div>
-       	</div>
-    </div>
+<div class="content ticket-menu content-active">
+					<div class="content-list-text">예매 목록</div>
+					<c:choose>
+					<c:when test="${fn:length(list) == 0}">
+						<div class="content-no-item-text">예매목록이 없습니다.</div>
+					</c:when>
+					<c:otherwise>
+						<c:forEach items="${list}" var="list">
+							<div class="ticket-item-group">
+								<div class="ticket-item-header">
+									<%-- <div class="ticket-date">${list.regdate}</div> --%>
+								</div>
+								<div class="line"></div>
+								<div class="ticket-item">
+								<table>
+									<thead>
+									 	<tr>
+											<th>작성자</th>
+                    						<th>제목</th>
+                    						<th>답변개수</th>
+                    						<th>작성일</th>
+										</tr>
+									</thead>
+									
+									<tbody>
+                						<tr>
+                    						<td>${list.movie.title }</td>
+                    						<td><a href="resdetail?id=${list.id}">${list.seat }</a></td>
+                    						<td>개</td>
+                    						<td></td>
+                						</tr>                       
+            						</tbody>
+								</table>
+								</div>
+							</div>
+						</c:forEach>
+					</c:otherwise>
+					</c:choose>
+				</div>
+    <h1>응!</h1>
 </body>
 </html>

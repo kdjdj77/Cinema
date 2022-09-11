@@ -23,6 +23,7 @@ public class ReservDTO {
     private UserDTO user;
 	private MovieDTO movie;
     private String seat;
+    
 	/*
 	 * private LocalDateTime regDate;
 	 * 
@@ -36,6 +37,8 @@ public class ReservDTO {
 	@JsonFormat(pattern="yyyy-MM-dd HH:mm:ss", timezone = "Asia/Seoul")
 	@JsonProperty("regdate")
 	private LocalDateTime regDate;
+
+
 
 } // end DTO
 

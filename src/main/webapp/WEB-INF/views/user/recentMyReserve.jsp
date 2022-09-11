@@ -11,6 +11,7 @@
 
     </div>
     <div class="flex-shrink-0"><span class="text-primary">평점</span></div>
+    <a href="${pageContext.request.contextPath}/userinfo/reserve?id=${dto.id}">응애</a>
 </div>
 
 

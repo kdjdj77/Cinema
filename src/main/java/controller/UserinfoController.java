@@ -86,7 +86,7 @@ public class UserinfoController extends HttpServlet {
                 }
                 break;
                 
-            case "userinfo/reserve":
+            case "/userinfo/reserve":
             	service = new MyReserveService();
             	service.execute(request, response);
             	viewPage = "myReserveList.jsp";
@@ -100,7 +100,7 @@ public class UserinfoController extends HttpServlet {
     			}
     			break;
     			
-            case "/userinfo/resdelete":
+            case "/userinfo/delete":
             	if (C.securityCheck(request, response, new String[] { "ROLE_MEMBER" })) { // 권한 체크
     				switch (method) {
     				case "POST":

@@ -1,6 +1,7 @@
 SET SESSION FOREIGN_KEY_CHECKS=0;
 
 /* Drop Tables */
+
 DROP TABLE IF EXISTS ci_file;
 DROP TABLE IF EXISTS ci_mcomment;
 DROP TABLE IF EXISTS ci_reserv;
@@ -8,6 +9,7 @@ DROP TABLE IF EXISTS ci_movies;
 DROP TABLE IF EXISTS ci_scomment;
 DROP TABLE IF EXISTS ci_servlist;
 DROP TABLE IF EXISTS ci_user;
+
 
 
 
@@ -77,7 +79,7 @@ CREATE TABLE ci_servlist
 	title varchar(50) NOT NULL,
 	content text NOT NULL,
 	viewcnt int DEFAULT 0 CHECK(viewcnt >= 0),
-	regdate datetime DEFAULT now(), 
+	regdate datetime DEFAULT now(),
 	PRIMARY KEY (id)
 );
 

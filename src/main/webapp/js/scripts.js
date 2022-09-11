@@ -27,19 +27,20 @@ function buildMyReserve(result1) {
     const out = [];
 
     result1.data.forEach(myReserve => {
-        let id = myReserve.id;
-        let seat = myReserve.seat;
-        let regdate = myReserve.regdate;
+        var id = myReserve.id;
+        var seat = myReserve.seat;
+        var regdate = myReserve.regdate;
+
+        var title = myReserve.movie.title;
+        var runtime = myReserve.movie.runtime;
+        var synopsis = myReserve.movie.synopsis;
+        var director = myReserve.movie.director;
+
+        var user_id = parseInt(myReserve.user.id);
+        var username = myReserve.user.username;
         
-        let title = myReserve.movie.title;
-        let runtime = myReserve.movie.runtime;
-        let synopsis = myReserve.movie.synopsis;
-        let director = myReserve.movie.director;
 
-        let user_id = parseInt(myReserve.user.id);
-        let username = myReserve.user.username;
-
-        const row = `
+        const row = ` 
             <div class="d-flex flex-column flex-md-row justify-content-between mb-5">
                 <div class="flex-grow-1">
                     <h3 class="mb-0">${title}</h3>
@@ -47,9 +48,8 @@ function buildMyReserve(result1) {
                             <p>좌석: ${seat}</p>
                         </div>
                 <div class="flex-shrink-0"><span class="text-primary">${runtime}분</span></div>
-            </div>
-	        `
-	        ;
+            </div>`
+        ;
         out.push(row);
     });
     $("#myReserve_list").html(out.join("\n"));
@@ -113,4 +113,17 @@ function buildMyService(result) {
     $("#myService_list").html(out.join("\n"));
 }
 
+window.onload = function () {
+    function onClick() {
+        document.querySelector('.modal_wrap').style.display = 'block';
+        document.querySelector('.black_bg').style.display = 'block';
+    }
 
+    function offClick() {
+        document.querySelector('.modal_wrap').style.display = 'none';
+        document.querySelector('.black_bg').style.display = 'none';
+    }
+
+    document.getElementById('modal_btn').addEventListener('click', onClick);
+    document.querySelector('.modal_close').addEventListener('click', offClick);
+};

@@ -12,6 +12,7 @@ import org.apache.ibatis.session.SqlSession;
 import common.C;
 import domain.ReservDAO;
 import domain.ReservDTO;
+import domain.UserDAO;
 import domain.UserDTO;
 import service.Service;
 import sqlmapper.SqlSessionManager;
@@ -24,23 +25,29 @@ public class ReserveDeleteService implements Service {
 		
 		SqlSession sqlSession = null;
 		ReservDAO dao = null;
+		UserDAO udao = null;
 		
 		int cnt = 0;
 		
 		try {
 			sqlSession = SqlSessionManager.getInstance().openSession();
 			dao = sqlSession.getMapper(ReservDAO.class);
+			udao = sqlSession.getMapper(UserDAO.class);
+			
+			int uid = dao.selectByUserId(id);
+			
 			
 			UserDTO loggedUser = (UserDTO)request.getSession().getAttribute(C.PRINCIPAL); // 현재로그인한 사용자 정보가 담겨있따
-			List<ReservDTO> list = dao.selectById(id);
-			UserDTO writeUser = list.get(0).getUser();		// 읽어온 글의 작성자
-			if(loggedUser.getId() != writeUser.getId()) {
+			int reservedUser = uid;		// 읽어온 글의 작성자
+			if(loggedUser.getId() != reservedUser) {
 				response.sendRedirect(request.getContextPath() + "/user/rejectAuth");
 				return;
 			}
 			
 			cnt = dao.delete(id);
 			
+			dao.decViewCnt(uid);
+
 			sqlSession.commit();
 		} catch (SQLException e) {  
 			e.printStackTrace();

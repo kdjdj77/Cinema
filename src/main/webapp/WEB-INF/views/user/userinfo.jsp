@@ -5,41 +5,43 @@
 
 <c:choose>
     <c:when test="${empty list || fn:length(list) == 0}">
-    	<script>
-    		alert("로그인 후에 이용해주세요!");
-    		history.back();
-    	</script>
+        <script>
+            alert("로그인 후에 이용해주세요!");
+            history.back();
+        </script>
     </c:when>
     <c:otherwise>
-    <c:set var="dto" value="${list[0]}"/>
-    
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
-    <meta name="description" content=""/>
-    <meta name="author" content=""/>
-    <title>userinfo</title>
-    <link
-            href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
-            rel="stylesheet">
-    <link rel="icon" type="image/x-icon" href="assets/img/favicon.ico"/>
-    <!-- Font Awesome icons (free version)-->
-    <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
-    <!-- Google fonts-->
-    <link href="https://fonts.googleapis.com/css?family=Saira+Extra+Condensed:500,700" rel="stylesheet"
-          type="text/css"/>
-    <link href="https://fonts.googleapis.com/css?family=Muli:400,400i,800,800i" rel="stylesheet" type="text/css"/>
-    <!-- Core theme CSS (includes Bootstrap)-->
-    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/styles.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+        <c:set var="dto" value="${list[0]}"/>
+
+        <!DOCTYPE html>
+        <html>
+        <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+            <meta name="description" content=""/>
+            <meta name="author" content=""/>
+            <title>userinfo</title>
+            <link
+                    href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+                    rel="stylesheet">
+            <link rel="icon" type="image/x-icon" href="assets/img/favicon.ico"/>
+            <!-- Font Awesome icons (free version)-->
+            <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
+            <!-- Google fonts-->
+            <link href="https://fonts.googleapis.com/css?family=Saira+Extra+Condensed:500,700" rel="stylesheet"
+                  type="text/css"/>
+            <link href="https://fonts.googleapis.com/css?family=Muli:400,400i,800,800i" rel="stylesheet"
+                  type="text/css"/>
+            <!-- Core theme CSS (includes Bootstrap)-->
+            <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/styles.css">
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+            <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
 
 
-</head>
 
-<body id="page-top">
+        </head>
+
+        <body id="page-top">
 
         <jsp:include page="/WEB-INF/views/common/header.jsp"/>
         <script>
@@ -79,73 +81,136 @@
                         님 안녕하세요!
 
                     </div>
-                    <p class="lead mb-5">고객님의 등급은 ? 입니다. <a href="" TODO>등급산정 기준</a></p>
-                </div>
-            </section>
-            <hr class="m-0"/>
-            <!-- 예매목록 -->
-            <section class="resume-section" id="experience">
-                <div class="resume-section-content">
-                <a href="reserve?id=${dto.id}">웅야</a>
-                    <h2 class="mb-5">예매목록</h2>
-                    
-                    <jsp:include page="recentMyReserve.jsp"/>
-                </div>
-            </section>
-            <hr class="m-0"/>
+                    <p class="lead mb-5">고객님의 등급은
+                        <c:if test="${dto.viewcnt eq 0}">
+                            <a class="bronze">응애</a>
+                        </c:if>
+                        <c:if test="${dto.viewcnt gt 0 && dto.viewcnt lt 5}">
+                            <a class="silver">실버</a>
+                        </c:if>
+                        <c:if test="${dto.viewcnt ge 5 && dto.viewcnt lt 25}">
+                            <a class="gold">골드</a>
+                        </c:if>
+                        <c:if test="${dto.viewcnt ge 25 && dto.viewwcnt lt 40}">
+                            <a class="platinum">플래티넘</a>
+                        </c:if>
+                        <c:if test="${dto.viewcnt ge 40}">
+                            <a class="diamond">다이아몬드</a>
+                        </c:if>
+                        (${dto.viewcnt })입니다.
 
-            <!-- Q&A -->
-            
-            <section class="resume-section" id="education">
-                <div class="resume-section-content">
-                    <h2 class="mb-5">My Q&A</h2>
-                    <jsp:include page="myService.jsp"/>
+                    </p>
+                    <button type='button' id="modal_btn">모달창아 나와랏
+                    </button>
                 </div>
             </section>
-            <hr class="m-0"/>
-
-            <!-- 회원정보 -->
-            <section class="resume-section" id="skills">
-                <div class="resume-section-content">
-                    <h2 class="mb-5">회원정보</h2>
-                    <form>
-                        <div class="subheading mb-3">
-                            <div>
-                                <label for="username">ID</label>
-                                <a type="text" id="username">${dto.username}</a>
-                            </div>
-                            <div class="field half">
-                                <label for="password">Password</label>
-                                <a type="text" id="password">${dto.password}</a>
-                            </div>
-                            <div class="field">
-                                <label for="name">Name</label>
-                                <a type="text" id="name">${dto.name}</a>
-                            </div>
-                            <a href="modify?id=${dto.id}" class="button">회원정보 수정하기</a>
-                        </div>
-                    </form>
-                </div>
-            </section>
-            <hr class="m-0"/>
-
-            <!-- 영화예매하러가기 -->
-            <section class="resume-section" id="interests">
-                <div class="resume-section-content">
-                    <h2 class="mb-5">예매하러가기</h2>
-                    <a href="${pageContext.request.contextPath}/movie/home" class="button">예매하러가기</a>
-                </div>
-            </section>
-            <hr class="m-0"/>
         </div>
-        
+        <hr class="m-0"/>
+
+        <!-- 예매목록 -->
+        <section class="resume-section" id="experience">
+            <div class="resume-section-content">
+                <a href="reserve?id=${dto.id}">웅야</a>
+                <h2 class="mb-5">예매목록</h2>
+
+                <jsp:include page="recentMyReserve.jsp"/>
+            </div>
+        </section>
+        <hr class="m-0"/>
+
+        <!-- Q&A -->
+
+        <section class="resume-section" id="education">
+            <div class="resume-section-content">
+                <h2 class="mb-5">My Q&A</h2>
+                <jsp:include page="myService.jsp"/>
+            </div>
+        </section>
+        <hr class="m-0"/>
+
+        <!-- 회원정보 -->
+        <section class="resume-section" id="skills">
+            <div class="resume-section-content">
+                <h2 class="mb-5">회원정보</h2>
+                <form>
+                    <div class="subheading mb-3">
+                        <div>
+                            <label for="username">ID</label>
+                            <a type="text" id="username">${dto.username}</a>
+                        </div>
+                        <div class="field half">
+                            <label for="password">Password</label>
+                            <a type="text" id="password">${dto.password}</a>
+                        </div>
+                        <div class="field">
+                            <label for="name">Name</label>
+                            <a type="text" id="name">${dto.name}</a>
+                        </div>
+                        <a href="modify?id=${dto.id}" class="button">회원정보 수정하기</a>
+                    </div>
+                </form>
+            </div>
+        </section>
+        <hr class="m-0"/>
+
+        <!-- 영화예매하러가기 -->
+        <section class="resume-section" id="interests">
+            <div class="resume-section-content">
+                <h2 class="mb-5">예매하러가기</h2>
+                <a href="${pageContext.request.contextPath}/movie/home" class="button">예매하러가기</a>
+            </div>
+        </section>
+        <hr class="m-0"/>
+
         <jsp:include page="/WEB-INF/views/common/footer.jsp"/>
 
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
-<script type="text/javascript" src="${pageContext.request.contextPath}/js/scripts.js"></script>
-</body>
-</html>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+        <script type="text/javascript" src="${pageContext.request.contextPath}/js/scripts.js"></script>
+
+        </body>
+        <div>
+            <div class="black_bg"></div>
+            <div class="modal_wrap">
+                <div class="modal_close">
+                    <a href="#">close</a>
+                </div>
+                <div>
+                	<table>
+	<thead>
+		<tr>
+			<th>시청횟수</th>
+			<th>등급</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>0</td>
+			<td>응애</td>
+		</tr>
+		<tr>
+			<td>1 ~ 4</td>
+			<td>실버</td>
+		</tr>
+		<tr>
+			<td>5 ~ 24</td>
+			<td>골드</td>
+		</tr>
+		<tr>
+			<td>25 ~ 39</td>
+			<td>플래티넘</td>
+		</tr>
+		<tr>
+			<td>40 ~ </td>
+			<td>호ㄱ... 다이아몬드~</td>
+		</tr>
+	</tbody>
+	
+</table>
+                </div>
+            </div>
+        </div>
+        </html>
 
     </c:otherwise>
 </c:choose>

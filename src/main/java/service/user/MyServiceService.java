@@ -39,9 +39,7 @@ public class MyServiceService implements Service {
 			sqlSession = SqlSessionManager.getInstance().openSession();
 			sdao = sqlSession.getMapper(ServiceDAO.class);
 			
-		
-	
-	        
+			
 			mslist = sdao.myService(id);
 			obj.setList(mslist);
 			obj.setCount(mslist.size());

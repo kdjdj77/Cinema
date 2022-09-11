@@ -1,9 +1,9 @@
 -- user 샘플데이터
-INSERT INTO ci_user (username, password, name, authorities) VALUES
-('USER1', '1234', '회원1', 'ROLE_MEMBER'),
-('USER2', '1234', '회원2', null),
-('ADMIN1', '1234', '관리자1', 'ROLE_MEMBER,ROLE_ADMIN'),
-('1234', '1234', '테스트1', 'ROLE_MEMBER')
+INSERT INTO ci_user (username, password, name, authorities, viewcnt) VALUES
+('USER1', '1234', '회원1', 'ROLE_MEMBER', 5),
+('USER2', '1234', '회원2', null, 4),
+('ADMIN1', '1234', '관리자1', 'ROLE_MEMBER,ROLE_ADMIN', 6),
+('1234', '1234', '테스트1', 'ROLE_MEMBER', 0)
 ;
 -- movies 샘플데이터
 INSERT INTO ci_movies (title, genre, runtime, director, actor, synopsis) VALUES
@@ -104,14 +104,27 @@ select * from ci_servlist;
 select * from ci_file;
 select * from ci_reserv;
 
-
+    	select m.title "m_title", AVG(mc.star) "avg_star" 
+      	from ci_mcomment mc, ci_movies m 
+	    where m.id  = mc.movie_id
+    	and m.id = 1;
 
       
-      select m.title "m_title", avg(mc.star) "avg_star" 
-      from ci_mcomment mc,
-      ci_movies m 
-      where m.id  = mc.movie_id
-     and m.id = 2;
-      SELECT id, content 
-        FROM ci_scomment
-        WHERE serv_id = 1;
+SELECT re.id         "re_id",
+               re.seat       "re_seat",
+               re.regdate    "re_regdate",
+               m.id          "m_id",
+               m.title       "m_title",
+               m.genre       "m_genre",
+               m.runtime     "m_runtime",
+               m.director    "m_director",
+               m.synopsis    "m_synopsis",
+               m.regdate     "m_regdate"
+        FROM ci_reserv re inner join 
+             ci_movies m on re.movie_id = m.id
+        WHERE re.user_id = 1
+        ORDER BY re .id desc;
+        
+       SELECT movie_id
+        FROM ci_reserv
+        WHERE id = 3;

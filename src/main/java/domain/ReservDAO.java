@@ -17,8 +17,17 @@ public interface ReservDAO {
 	List<ReservDTO> recentMyReserve(int user_id) throws SQLException;
 	
 	// 전체
-	List<ReservDTO> myReserve(int user_id) throws SQLException;
+	public abstract List<ReservDTO> mypageTicketList(int user_id) throws SQLException;
 	
 	// 특정 예매 확인
 	List<ReservDTO> selectById(int id) throws SQLException;
+	
+	public abstract int selectByMovieId(int movie_id) throws SQLException;
+	
+	// 조회 증/감
+	public abstract int incViewCnt(int user_id) throws SQLException;
+	public abstract int decViewCnt(int user_id) throws SQLException;
+	
+	public abstract int selectByUserId(int user_id) throws SQLException;
+
 }
