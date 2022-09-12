@@ -34,7 +34,7 @@ for (let i = 0; i < 7; i++) {
 	            //중복방지 함수
 	            selectedSeats = selectedSeats.filter((element, index) => selectedSeats.indexOf(element) != index);
 				
-	            //click class가 존재할때(제거해주는 toggle)
+	            //click class가 존재할때 제거
 	            if (input.classList.contains("clicked")) {
 	                input.classList.remove("clicked");
 	                clicked = document.querySelectorAll(".clicked");
@@ -42,7 +42,7 @@ for (let i = 0; i < 7; i++) {
 	                clicked.forEach((data) => {
 	                    selectedSeats.push(data.value);
 	                });
-	            //click class가 존재하지 않을때 (추가해주는 toggle)
+	            //click class가 존재하지 않을때 추가
 	            } else {
 	                input.classList.add("clicked");
 	                clicked = document.querySelectorAll(".clicked");
@@ -56,7 +56,7 @@ for (let i = 0; i < 7; i++) {
     }
 }
 function returnSeat(i, j) {
-	if (i === 0)return "A" + j;
+	if 		(i === 0)return "A" + j;
 	else if (i === 1)return "B" + j;
 	else if (i === 2)return "C" + j;
 	else if (i === 3)return "D" + j;
@@ -84,28 +84,23 @@ function mapping(input, i, j) {
 }
 function frmSubmit() {
 	let newForm = document.createElement('form');
-	// set attribute (form) 
 	newForm.name = 'newForm';
 	newForm.method = 'post';
 	newForm.action = 'reservOK?id=' + movie_id;
 
 	for (let i = 0; i < selectedSeats.length; i++) {
-		// create element (input)
 		let input = document.createElement('input');
 
-		// set attribute (input)
 		input.setAttribute("type", "hidden");
 		input.setAttribute("name", "seats");
 		input.setAttribute("value", selectedSeats[i]);
 
-		// append input (to form)
 		newForm.appendChild(input);
 	}
 
-	// append form (to body)
 	document.body.appendChild(newForm);
 	
-	// submit form
 	if (selectedSeats.length == 0) alert("좌석을 선택해주세요");
-	else newForm.submit();
+	else if (confirm("예매하시겠습니까?")) newForm.submit();
+	else return;
 }

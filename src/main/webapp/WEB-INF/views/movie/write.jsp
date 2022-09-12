@@ -10,7 +10,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
-	<title>작성</title>
+	<title>영화 추가</title>
 	<style>input[type="number"]::-webkit-outer-spin-button,input[type="number"]::-webkit-inner-spin-button {-webkit-appearance: none;margin: 0;}</style>
 </head>
  
@@ -18,7 +18,7 @@
 	<%-- 인증 헤더 --%>
     <jsp:include page="/WEB-INF/views/common/header.jsp"/>
     <div class="container mt-3">
-        <h2>작성</h2>
+        <h2>영화 추가</h2>
         <hr>
         <form name="frm" action="write" method="post"
         	enctype="Multipart/form-data">
@@ -51,7 +51,7 @@
 			<%-- 상단에 jQuery 추가하기--%>
 			<div class="container mt-3 mb-3 border rounded">
 			    <div class="mb-3 mt-3">
-			        <label>첨부파일:</label>
+			        <label>영화 포스터</label>
 			        <div id="files">
 			       		<div class="input-group mb-2">
 		                	<input class="form-control col-xs-3" type="file" name="upfile"/>
@@ -63,7 +63,7 @@
 			
             <button type="submit" class="btn btn-outline-dark">작성완료</button>
             <a class="btn btn-outline-dark" href="home">취소</a>
-        </form>
+        </form><br><br><br>
     </div>
 </body>
  

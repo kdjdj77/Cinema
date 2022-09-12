@@ -34,10 +34,10 @@
 								<c:choose>
 					        	<%-- 이미지 보여주기 --%>
 					            <c:when test="${dto.fileName != null}">
-									<img src="${pageContext.request.contextPath}/upload/${dto.fileName}" style="width:220px; height:300px;" class="rounded">
+									<img src="${pageContext.request.contextPath}/upload/${dto.fileName}" style="width:220px; height:300px;" class="rounded border border-white">
 					            </c:when>
 					            <c:otherwise>
-					            	<div style="background-color:gray; width:220px; height:300px; text-align:center">
+					            	<div style="background-color:gray; width:220px; height:300px; text-align:center" class="rounded">
 					            		NO IMAGE
 					            	</div>
 					            </c:otherwise>

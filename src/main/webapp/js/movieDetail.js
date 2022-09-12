@@ -1,3 +1,6 @@
+let st = 0;
+let out = [];
+
 $(function() {
 	// 현재 글의 id값
 	const id = $("input[name='id']").val().trim();
@@ -38,7 +41,7 @@ $(function() {
                         alert(data.status) ;
                         return;
                     }
-                    
+                    st = 0;
                     loadComment(id); // 댓글 목록 다시 업데이트
                     $("#input_comment").val('');
                 }
@@ -48,11 +51,16 @@ $(function() {
 	});
 })
 
-// 특정 글(write_id)의 댓글 목록 읽어오기
+// 특정 영화(movie_id)의 댓글 목록 읽어오기
 function loadComment(movie_id) {
+	if (st == 0) out = [];
+	const data = {
+		"start": st,
+	};
 	$.ajax({
 		url: conPath + "/mcomment/list?id=" + movie_id,
-		type: "GET",
+		type: "POST",
+		data: data,
 		cache: false,
 		success: function(data, status) {
 			if (status == "success") {
@@ -62,17 +70,14 @@ function loadComment(movie_id) {
 					return;
 				}
 				buildComment(data); // 댓글 목록 렌더링
+				st += 1;
 				addDelete(); //댓글 목록 불러온 뒤 삭제에 대한 이벤트리스너 등록
 			}
 		},
 	});	
 }
 
-function buildComment(result) {
-	$("#cmt_cnt").text(result.count);
-	
-	const out = [];
-	
+function buildComment(result) {	
 	result.data.forEach(comment => {
 		let id = comment.id;
         let content = comment.content.trim();
@@ -83,18 +88,28 @@ function buildComment(result) {
         let username = comment.user.username;
         let name = comment.user.name;
         
+        if (name == myName) name += ' <small class="text-secondary">(내 댓글)</small>';
+        
+        String.prototype.replaceAt = function(index, replacement) {
+		    if (index >= this.length) return this.valueOf();
+		    return this.substring(0, index) + replacement + this.substring(index + 1);
+		}
+        name = name.replaceAt(1, "*");
+        
+        
         // 삭제버튼 여부 : 작성자 본인의 댓글인 경우에만 보이기
         const delBtn = (logged_id !== user_id) ? '' : `
-        	<i class="btn fa-solid fa-delete-left text-danger" data-bs-toggle="tooltip"
+        	<i class="btn fa fa-remove text-danger" data-bs-toggle="tooltip"
             data-cmtdel-id="${id}" title="삭제"></i>`;
 		const row = `
 	        <tr>
-	        <td><span><strong>${username}</strong><br><small class="text-secondary">(${name})</small></span></td>
+	        <td><span><strong>${name}</strong></span></td>
 	        <td>
-	            <span>${content}</span>${delBtn}            
+	            <span><pre style="font-family:sans-serif; word-wrap: break-word;white-space: pre-wrap;white-space: -moz-pre-wrap;white-space: -pre-wrap;white-space: -o-pre-wrap;word-break:break-all;">${content}</pre></span>            
 	        </td>
-	        <td><span><small class="text-secondary">★${star}</small></span></td>
+	        <td class="p-3"><span><small class="text-secondary">★${star}</small></span></td>
 	        <td><span><small class="text-secondary">${regdate}</small></span></td>
+	        <td><span><small class="text-secondary">${delBtn}</small></span></td>
 	        </tr>`;
 		out.push(row);
 	});
@@ -124,6 +139,7 @@ function addDelete() {
 					}
 					
 					// 삭제후에는 다시 목록 불러오기
+					st = 0;
 					loadComment(id);
 				}
 			},

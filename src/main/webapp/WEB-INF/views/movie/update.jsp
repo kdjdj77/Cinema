@@ -91,7 +91,7 @@
 			            <button type="submit" class="btn btn-outline-dark">수정완료</button>
 			            <!-- 하단 링크 -->
 			
-			        </form>
+			        </form><br><br><br>
 			    </div>
 			</body>
 			

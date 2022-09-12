@@ -9,20 +9,19 @@
 <!-- 댓글 -->
 <div class="container my-3 border rounded">
     <div class="mb-3 mt-3">
-        <label>댓글: <span id="cmt_cnt"></span> 개</label>
-        
 		<%--  ROLE_MEMBER 가진 사용자만 댓글 작성 가능 --%>
   		<c:if test="${fn:contains(sessionScope.PRINCIPAL.authorities, 'ROLE_MEMBER')}">                    
 
 	        <div class="input-group my-2" style="height:100px;">
-	            <input type="text" class="form-control" id="input_comment">
+	            <textarea class="form-control" id="input_comment" style="resize: none;"></textarea>
 	            <div class="border align-items-center row" style="height:100%; width:120px; margin:auto;">
 	            	<div class="vertical-center-row">
 	            	평점 : 
 	            	<select name="star" id="selectStar">
-	            		<c:forEach var="i" begin="0" end="10" step="1" varStatus="x">
+	            		<c:forEach var="i" begin="0" end="9" step="1" varStatus="x">
  							<option value='${i}'>${i}</option>
 						</c:forEach>
+						<option value='10' selected>10</option>
 	            	</select>
 	            	</div>
 	            </div>
@@ -32,10 +31,11 @@
         <table class="table table-hover mt-3" id="cmt_table">
             <thead>
               <tr>
-                <th style="width: 16.66%">작성자</th>
-                <th>내용</th>
-                <th style="width: 16.66%">평점</th>
-                <th style="width: 16.66%">작성일</th>
+                <th style="width: 16.5%">작성자</th>
+                <th style="width: 56%">내용</th>
+                <th style="width: 10%">평점</th>
+                <th style="width: 16.5%">작성일</th>
+                <th style="width: 1%"></th>
               </tr>
             </thead>
             <tbody id="cmt_list">

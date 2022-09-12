@@ -28,12 +28,14 @@
 <body>
     <%-- 인증 헤더 --%>
     <jsp:include page="/WEB-INF/views/common/header.jsp"/>
-
-    <div class="container mt-3">
+    <div class="container"><h3>좌석예매 - ${mov.title}</h3></div>
+    <div class="container mt-3"style="display:flex; justify-content:center;">
         <div class="seat-wrapper">
-			<h3>좌석예매 - ${mov.title}</h3>
+			<div style="width:800px; height:50px; text-align:center; background-color:dimgray" class="mb-5 btn btn-outline-dark">
+				<span style="color:white;">SCREEN</span>
+			</div>
         </div>
-       	<button class="btn btn-outline-dark float-end" onClick="frmSubmit()">예매</button>
+        <p><button style="height:50px; width:70px;" class="btn btn-outline-dark mx-3" onClick="frmSubmit()">예매</button></p>
     </div>
 </body>
 <script>

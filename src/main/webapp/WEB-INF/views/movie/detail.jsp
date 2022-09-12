@@ -3,6 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
+<c:set var="n" value="${PRINCIPAL.name}"/>
 <c:choose>
 	<c:when test="${empty list || fn:length(list) == 0}">
 		<script>
@@ -73,41 +74,43 @@
 		        	</form>
 		        	<br>
 		            <div class="mb-3">
-		            	&nbsp;&nbsp;
+		            	&nbsp;&nbsp;&nbsp;&nbsp;
 		                제목 : ${dto.title}
 		            </div>    
 		            <div class="mb-3 mt-3">
-		            	&nbsp;&nbsp;
+		            	&nbsp;&nbsp;&nbsp;&nbsp;
 		                장르 : ${dto.genre}
 		            </div>    
 		            <div class="mb-3 mt-3">
-		           		&nbsp;&nbsp;
+		           		&nbsp;&nbsp;&nbsp;&nbsp;
 		                상영시간 : ${dto.runtime}분
 		            </div>   
 		            <div class="mb-3 mt-3">
-		            	&nbsp;&nbsp;
+		            	&nbsp;&nbsp;&nbsp;&nbsp;
 		                감독 : ${dto.director}
 		            </div>  
 		            <div class="mb-3 mt-3">
-		            	&nbsp;&nbsp;
+		            	&nbsp;&nbsp;&nbsp;&nbsp;
 		                출연 : ${dto.actor}
 		            </div>  
 		            <div class="mb-3 mt-3">
-		            	&nbsp;&nbsp;
+		            	&nbsp;&nbsp;&nbsp;&nbsp;
 		                평점 : ★${dto.star}
 		            </div>  
 		            <c:if test="${fn:contains(PRINCIPAL.authorities, 'ROLE_MEMBER')}">
-		            	<a class="btn btn-outline-dark mx-3 float-start" href="reserv?id=${dto.id }">예매하기</a>
+		            	<a class="btn btn-outline-dark mx-4 float-start mybtn" href="reserv?id=${dto.id }">예매하기</a>
 		            </c:if>
 		        </section>
 		        <section style="margin-top:100px;">
 		        	시놉시스
 		        	<hr>
 		        	${dto.synopsis}
-		        	
-		        	<!-- 댓글 -->
+		        	<br><br><br>
 					<jsp:include page="comment.jsp"/>
-					<!-- 댓글 -->
+					<button onClick="loadComment(${dto.id})" class="mt-0 btn btn-outline-dark w-100">
+						더보기
+					</button>
+					<br><br><br>
 		        </section>
 		    </div>
 		</body>
@@ -121,6 +124,7 @@
 		</c:choose>
 		<script>
 	    	const conPath = "${pageContext.request.contextPath}";
+	    	const myName = "${n}";
 	    </script>
 	    <script src="${pageContext.request.contextPath}/js/movieDetail.js"></script>
 		</html>

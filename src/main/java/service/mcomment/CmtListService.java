@@ -24,6 +24,7 @@ public class CmtListService implements Service {
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		
 		int id = Integer.parseInt(request.getParameter("id")); // 글의 id
+		int start = Integer.parseInt(request.getParameter("start")); // 글의 id
 		
 		QryMCommentList obj = new QryMCommentList();// response할 Java 객체
 		ObjectMapper mapper = new ObjectMapper(); // Json으로 매핑할 Mapper 객체
@@ -35,7 +36,7 @@ public class CmtListService implements Service {
 			sqlSession = SqlSessionManager.getInstance().openSession();
 			dao = sqlSession.getMapper(MCommentDAO.class);
 			
-			List<MCommentDTO> list = dao.selectByMovie(id);
+			List<MCommentDTO> list = dao.selectByMovie(id, start * 5);
 			obj.setList(list);
 			obj.setCount(list.size());
 			obj.setStatus("OK");
