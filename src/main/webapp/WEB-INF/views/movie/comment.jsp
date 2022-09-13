@@ -7,7 +7,7 @@
 <script src="https://kit.fontawesome.com/51772bd9bd.js" crossorigin="anonymous"></script>
 
 <!-- 댓글 -->
-<div class="container my-3 border rounded">
+<div class="container my-3">
     <div class="mb-3 mt-3">
 		<%--  ROLE_MEMBER 가진 사용자만 댓글 작성 가능 --%>
   		<c:if test="${fn:contains(sessionScope.PRINCIPAL.authorities, 'ROLE_MEMBER')}">                    

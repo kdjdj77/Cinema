@@ -85,7 +85,6 @@ function buildComment(result) {
         let regdate = comment.regdate;
 
         let user_id = parseInt(comment.user.id);
-        let username = comment.user.username;
         let name = comment.user.name;
         
         if (name == myName) name += ' <small class="text-secondary">(내 댓글)</small>';
@@ -98,7 +97,7 @@ function buildComment(result) {
         
         
         // 삭제버튼 여부 : 작성자 본인의 댓글인 경우에만 보이기
-        const delBtn = (logged_id !== user_id) ? '' : `
+        const delBtn = (logged_id !== user_id && role !== 'ROLE_ADMIN') ? '' : `
         	<i class="btn fa fa-remove text-danger" data-bs-toggle="tooltip"
             data-cmtdel-id="${id}" title="삭제"></i>`;
 		const row = `

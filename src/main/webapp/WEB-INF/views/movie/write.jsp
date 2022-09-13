@@ -18,6 +18,7 @@
 	<%-- 인증 헤더 --%>
     <jsp:include page="/WEB-INF/views/common/header.jsp"/>
     <div class="container mt-3">
+    	<br><br><br>
         <h2>영화 추가</h2>
         <hr>
         <form name="frm" action="write" method="post"

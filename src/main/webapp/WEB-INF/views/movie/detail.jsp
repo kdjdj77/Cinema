@@ -40,9 +40,8 @@
 		<body>
 		    <%-- 인증 헤더 --%>
 		    <jsp:include page="/WEB-INF/views/common/header.jsp"/>
-		
-			
 		    <div class="container mt-3">
+		    	<br><br><br>
 		        <h2>${dto.title}
 		        	<!-- 상단 버튼 -->
 		            <c:if test="${fn:contains(PRINCIPAL.authorities, 'ROLE_ADMIN')}">
@@ -106,6 +105,8 @@
 		        	<hr>
 		        	${dto.synopsis}
 		        	<br><br><br>
+		        	댓글
+		        	<hr>
 					<jsp:include page="comment.jsp"/>
 					<button onClick="loadComment(${dto.id})" class="mt-0 btn btn-outline-dark w-100">
 						더보기
@@ -125,6 +126,7 @@
 		<script>
 	    	const conPath = "${pageContext.request.contextPath}";
 	    	const myName = "${n}";
+	    	const role = "${PRINCIPAL.authorities}";
 	    </script>
 	    <script src="${pageContext.request.contextPath}/js/movieDetail.js"></script>
 		</html>

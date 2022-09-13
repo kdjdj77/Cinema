@@ -32,6 +32,7 @@
 			    <jsp:include page="/WEB-INF/views/common/header.jsp"/>
 			
 			    <div class="container mt-3">
+			    	<br><br><br>
 			        <h2>수정</h2>
 			        <button type="button" class="btn btn-outline-dark float-end" onclick="history.back()">취소</button>
 			        <hr>

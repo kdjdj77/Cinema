@@ -28,6 +28,7 @@
 <body>
     <%-- 인증 헤더 --%>
     <jsp:include page="/WEB-INF/views/common/header.jsp"/>
+    <br><br><br>
     <div class="container"><h3>좌석예매 - ${mov.title}</h3></div>
     <div class="container mt-3"style="display:flex; justify-content:center;">
         <div class="seat-wrapper">

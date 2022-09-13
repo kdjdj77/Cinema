@@ -19,6 +19,7 @@
 	<jsp:include page="/WEB-INF/views/common/header.jsp"/>
     <div class="container mt-3">
     	<section>
+    		<br><br><br>
 	        <h2 class="float-start">영화</h2>
 	        <c:if test="${fn:contains(PRINCIPAL.authorities, 'ROLE_ADMIN')}">
 	        	<a class="btn btn-outline-dark mx-3 float-end mb-3" href="write">영화추가</a>
