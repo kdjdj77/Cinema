@@ -6,6 +6,7 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.apache.ibatis.session.SqlSession;
 
@@ -21,6 +22,14 @@ public class SelecetService implements Service {
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		int id = Integer.parseInt(request.getParameter("id"));
+		
+		// 페이징 관련
+	    HttpSession session = request.getSession();
+	    Integer page = (Integer)session.getAttribute("page");
+	    if(page == null) page = 1;
+	    request.setAttribute("page", page);
+		
+		
 		
 		SqlSession sqlSession = null;
 		ServiceDAO dao = null;	

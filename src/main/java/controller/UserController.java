@@ -95,7 +95,7 @@ public class UserController extends HttpServlet {
 			case "/user/logout":
 				if (method.equals("POST")) {
 					request.getSession().removeAttribute(C.PRINCIPAL);
-					response.sendRedirect(request.getContextPath() + "/home");
+					response.sendRedirect(request.getContextPath() + "/movie/home");
 				}
 				break;
 			case "/user/rejectAuth":
