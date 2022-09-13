@@ -38,6 +38,7 @@
         </div>
         <p><button style="height:50px; width:70px;" class="btn btn-outline-dark mx-3" onClick="frmSubmit()">예매</button></p>
     </div>
+    <jsp:include page="/WEB-INF/views/common/footer.jsp"/>
 </body>
 <script>
 	let reserved = [];

@@ -35,12 +35,11 @@ public class ReservService implements Service {
 			dao = sqlSession.getMapper(ReservDAO.class);
 			mdao = sqlSession.getMapper(MovieDAO.class);
 			int uid = dao.selectByUserId(id);
-			
+			dao.incViewCnt(uid);
 			
 			list = dao.seatCheck(id);
 			mov = mdao.selectById(id);
 			len = list.size();
-			dao.incViewCnt(uid);
 			
 			request.setAttribute("mov", mov);
 			request.setAttribute("list", list);

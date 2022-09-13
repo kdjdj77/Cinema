@@ -15,7 +15,6 @@
 	<script src="https://kit.fontawesome.com/51772bd9bd.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="${pageContext.request.contextPath }/js/list.js"></script>
-	
     <title>목록</title>
 
 </head>
@@ -26,9 +25,7 @@
  
     
     <div class="container mt-3">
-    	<br>
-    	<br>
-    	<br>
+    	<br><br><br>
         <h2>문의 목록</h2>
         
          <div class="mb-3 mt-3 clearfix">
@@ -59,8 +56,7 @@
             <tbody>
             <c:forEach var="dto" items="${list }">
                 <tr>
-                    
-                    <td>${dto.user.name }</td>
+                    <td>${dto.user.name}</td>
                     <td><a href="detail?id=${dto.id }">${dto.title }</a></td>
                     <td>${dto.cmtCheck }개</td>
                     <td>${dto.regDate}</td>
@@ -111,6 +107,7 @@
         
         
     </div>
+    <jsp:include page="/WEB-INF/views/common/footer.jsp"/>
 </body>
 </html>
 
