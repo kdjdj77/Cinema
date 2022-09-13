@@ -32,6 +32,7 @@
 			    <jsp:include page="/WEB-INF/views/common/header.jsp"/>
 			
 			    <div class="container mt-3">
+			    	<br><br><br>
 			        <h2>수정</h2>
 			        <button type="button" class="btn btn-outline-dark float-end" onclick="history.back()">취소</button>
 			        <hr>
@@ -91,8 +92,9 @@
 			            <button type="submit" class="btn btn-outline-dark">수정완료</button>
 			            <!-- 하단 링크 -->
 			
-			        </form>
+			        </form><br><br><br>
 			    </div>
+			    <jsp:include page="/WEB-INF/views/common/footer.jsp"/>
 			</body>
 			
 			</html>

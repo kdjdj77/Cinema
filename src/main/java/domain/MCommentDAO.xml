@@ -35,6 +35,7 @@
 	        c.user_id = u.id
 	        AND c.movie_id = #{param1}
 	    ORDER BY c.id DESC
+	    LIMIT #{param2}, 5
 	</select>
 
 	<insert id="insert" flushCache="true" parameterType="domain.MCommentDTO"

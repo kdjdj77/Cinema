@@ -18,7 +18,7 @@
 </head>
 
 <body>
-<nav class="navbar navbar-expand-sm navbar-dark bg-dark" style="position: fixed; top:0; width:100%">
+<nav class="navbar navbar-expand-sm navbar-dark bg-dark" style="position: fixed; top:0; width:100%; z-index:999;">
     <div class="container-fluid">
         <a class="navbar-brand" href="${pageContext.request.contextPath}/movie/home">LogO(test)</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mynavbar">
@@ -54,8 +54,8 @@
                         <!--TODO : 로그아웃후 다시 돌아오기 -->
                         <span class="d-flex">
 			                <span class="text-light p-2"><span
-                                    TODO="">${sessionScope.PRINCIPAL.username }(${sessionScope.PRINCIPAL.name })</span>
-                                     님 환영합니다&nbsp;<a href="${pageContext.request.contextPath}/userinfo" style="color:white"><i class="fa-solid fa-gears"></i></a></span>
+                                    TODO="">${sessionScope.PRINCIPAL.name }</span>
+                                     님 환영합니다&nbsp;<a href="${pageContext.request.contextPath}/userinfo/main?id=${PRINCIPAL.id}" style="color:white"><i class="fa-solid fa-gears"></i></a></span>
 			                <span><button style="background-color: #D3D3D3" type="submit">Logout</button></span>
 			            </span>
                     </form>
