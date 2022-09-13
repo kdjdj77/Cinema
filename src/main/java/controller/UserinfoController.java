@@ -1,6 +1,7 @@
 package controller;
 
 import java.io.IOException;
+import java.net.URI;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -113,8 +114,16 @@ public class UserinfoController extends HttpServlet {
     				}
     			}
     			break;
+    			
+			/*
+			 * // 페이징 // pageRows 변경시 동작 case "/userinfo/pageRows": int page =
+			 * Integer.parseInt(request.getParameter("page")); Integer pageRows = 10;
+			 * request.getSession().setAttribute("pageRows", pageRows);
+			 * response.sendRedirect(request.getContextPath() + "/list?page=" + page);
+			 * break;
+			 */
+    		} // end switch
 
-        }
         // 위에서 결정된 뷰로 forward 함
         if (viewPage != null) {
             RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/views/user/" + viewPage);

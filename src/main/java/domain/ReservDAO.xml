@@ -143,7 +143,7 @@
                  inner join
              ci_movies m on re.movie_id = m.id
         WHERE re.user_id = #{pram1}
-        ORDER BY m.regdate DESC
+        ORDER BY re.id DESC
     </select>
     
     <update id="incViewCnt" flushCache="true">
@@ -157,4 +157,42 @@
     	SET u.viewcnt = u.viewcnt - 1
     	WHERE u.id = #{param1}
     </update>
+    
+    <!-- 내 예약 페이징용 -->
+    <select id="selectFromRow" resultMap="mapReserve">
+		SELECT re.id         "re_id",
+               re.seat       "re_seat",
+               re.regdate    "re_regdate",
+               u.id          "u_id",
+               u.username    "u_username",
+               u.password    "u_password",
+               u.name        "u_name",
+               u.authorities "u_authorities",
+               u.regdate     "u_regdate",
+               m.id          "m_id",
+               m.title       "m_title",
+               m.genre       "m_genre",
+               m.runtime     "m_runtime",
+               m.director    "m_director",
+               m.synopsis    "m_synopsis",
+               m.regdate     "m_regdate"
+		FROM ci_reserv re,
+             ci_user u,
+             ci_movies m
+        WHERE re.user_id = u.id
+          AND re.movie_id = m.id
+          AND re.user_id = #{param1}
+		ORDER BY re.id DESC
+		LIMIT #{param2}, #{param3}
+	</select>
+	
+	<select id="countAll" resultType="int">
+		SELECT count(*)
+		FROM ci_reserv re,
+             ci_user u,
+             ci_movies m
+        WHERE re.user_id = u.id
+          AND re.movie_id = m.id
+          AND re.user_id = #{param1} 
+	</select>
 </mapper>
