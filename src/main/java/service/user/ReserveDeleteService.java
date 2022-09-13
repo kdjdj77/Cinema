@@ -1,4 +1,4 @@
-package service.srv;
+package service.user;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -6,61 +6,61 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import org.apache.ibatis.session.SqlSession;
 
 import common.C;
-import domain.ServiceDAO;
-import domain.ServiceDTO;
+import domain.ReservDAO;
+import domain.ReservDTO;
+import domain.UserDAO;
 import domain.UserDTO;
 import service.Service;
 import sqlmapper.SqlSessionManager;
 
-public class SelecetService implements Service {
+public class ReserveDeleteService implements Service {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		int id = Integer.parseInt(request.getParameter("id"));
 		
-		// 페이징 관련
-	    HttpSession session = request.getSession();
-	    Integer page = (Integer)session.getAttribute("page");
-	    if(page == null) page = 1;
-	    request.setAttribute("page", page);
-		
-		
-		
 		SqlSession sqlSession = null;
-		ServiceDAO dao = null;	
+		ReservDAO dao = null;
+		UserDAO udao = null;
 		
-		List<ServiceDTO> list = null;
+		int cnt = 0;
 		
 		try {
 			sqlSession = SqlSessionManager.getInstance().openSession();
-			dao = sqlSession.getMapper(ServiceDAO.class);
+			dao = sqlSession.getMapper(ReservDAO.class);
+			udao = sqlSession.getMapper(UserDAO.class);
 			
-			// 읽기 only
-			list = dao.selectById(id);
+			int uid = dao.selectByUserId(id);
 			
-			// 로그인한 사용자가 아니면 여기서 redirect 해야 한다
-			UserDTO loggedUser = (UserDTO)request.getSession().getAttribute(C.PRINCIPAL);
-			UserDTO writeUser = list.get(0).getUser();
-			if(loggedUser.getId() != writeUser.getId()) {
+			
+			UserDTO loggedUser = (UserDTO)request.getSession().getAttribute(C.PRINCIPAL); // 현재로그인한 사용자 정보가 담겨있따
+			int reservedUser = uid;		// 읽어온 글의 작성자
+			if(loggedUser.getId() != reservedUser) {
 				response.sendRedirect(request.getContextPath() + "/user/rejectAuth");
 				return;
-			}			
+			}
 			
-			request.setAttribute("list", list);
+			cnt = dao.delete(id);
 			
+			dao.decViewCnt(uid);
+
 			sqlSession.commit();
 		} catch (SQLException e) {  
 			e.printStackTrace();
 		} finally {
 			if(sqlSession!= null) sqlSession.close();
-		}	
+		}
+ 
+		request.setAttribute("result", cnt);
 
-		
+
 	}
 
-}
+
+
+	}
+

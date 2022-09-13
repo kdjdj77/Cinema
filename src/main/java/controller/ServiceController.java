@@ -119,6 +119,14 @@ public class ServiceController extends HttpServlet {
 				}
 			}
 			break;
+			
+		case "/service/pageRows":
+			int page = Integer.parseInt(request.getParameter("page"));
+		    Integer pageRows = Integer.parseInt(request.getParameter("pageRows"));
+		    request.getSession().setAttribute("pageRows", pageRows);
+			response.sendRedirect(request.getContextPath() + "/service/list?page=" + page);
+			break;
+			
 		}
 
 		// 위에서 결정된 뷰로 forward 함

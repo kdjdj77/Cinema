@@ -16,7 +16,7 @@
             parameterType="domain.UserDTO"
             resultType="domain.UserDTO"
     >
-        SELECT id, username, password, name, regdate, authorities
+        SELECT id, username, password, name, regdate, authorities, viewcnt
         FROM ci_user
         WHERE id = #{id}
     </select>

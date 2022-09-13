@@ -9,13 +9,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import service.user.RecentMyReserveService;
-import service.user.MyServiceService;
 
-@WebServlet("/myservice/*")
-public class MyServiceController extends HttpServlet {
+@WebServlet("/myreserve/*")
+public class MyReserveController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-    public MyServiceController() {
+    public MyReserveController() {
         super();
     }
 
@@ -44,9 +43,9 @@ public class MyServiceController extends HttpServlet {
 		System.out.println("conPath: " + conPath);
 		System.out.println("command: " + command);
 		
-		switch(command) {
-		case "/myservice/list":
-			new MyServiceService().execute(request, response);
+		switch(command) {			
+		case "/myreserve/list":
+			new RecentMyReserveService().execute(request, response);
 			break;
 		}
 	}

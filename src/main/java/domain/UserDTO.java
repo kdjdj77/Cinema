@@ -26,7 +26,6 @@ public class UserDTO {
     @JsonIgnore
     private LocalDateTime regDate;
 
-    @JsonIgnore
     private int viewcnt;
    
     @JsonIgnore

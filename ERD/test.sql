@@ -1,4 +1,5 @@
 -- user 샘플데이터
+
 INSERT INTO ci_user (username, password, name, authorities) VALUES
 ('USER1', '1234', '홍길동', 'ROLE_MEMBER'),
 ('USER2', '1234', '강백호', 'ROLE_MEMBER'),
@@ -199,7 +200,6 @@ INSERT INTO ci_reserv (user_id, movie_id, seat) VALUES
 (4, 4, 'A1'),(4, 4, 'A2'),(4, 4, 'A3'),(4, 4, 'A4'),(4, 4, 'A5'),
 (1, 5, 'E4'),(1, 5, 'E5'),(1, 5, 'E6'),(1, 5, 'E7'),(1, 5, 'E8')
 ;
-
 select * from ci_user;
 select * from ci_movies;
 select * from ci_mcomment;
@@ -207,4 +207,3 @@ select * from ci_scomment;
 select * from ci_servlist;
 select * from ci_file;
 select * from ci_reserv;
-

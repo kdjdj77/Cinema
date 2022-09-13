@@ -41,7 +41,7 @@ public class UserDetailService implements Service {
 				return;
 			}
 			
-			request.setAttribute("list", list);
+			
 
 			sqlSession.commit();
 		} catch (SQLException e) {
@@ -49,6 +49,7 @@ public class UserDetailService implements Service {
 		} finally {
 			if(sqlSession!= null) sqlSession.close();
 		}
+		request.setAttribute("list", list);
 	}
 
 

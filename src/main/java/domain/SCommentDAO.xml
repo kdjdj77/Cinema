@@ -45,6 +45,8 @@
 	<delete id="deleteById" flushCache="true">
 		DELETE FROM ci_scomment WHERE id = #{id}
 	</delete>
+	
+	
 
 
 </mapper>
