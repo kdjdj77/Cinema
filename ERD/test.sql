@@ -1,16 +1,16 @@
 -- user 샘플데이터
 
-INSERT INTO ci_user (username, password, name, authorities) VALUES
-('USER1', '1234', '홍길동', 'ROLE_MEMBER'),
-('USER2', '1234', '강백호', 'ROLE_MEMBER'),
-('USER3', '1234', '서태웅', 'ROLE_MEMBER'),
-('USER4', '1234', '채치수', 'ROLE_MEMBER'),
-('USER5', '1234', '송태섭', 'ROLE_MEMBER'),
-('USER6', '1234', '정대만', 'ROLE_MEMBER'),
-('USER7', '1234', '권준호', 'ROLE_MEMBER'),
-('ADMIN1', '1234', '김대진', 'ROLE_ADMIN'),
-('ADMIN2', '1234', '정의형', 'ROLE_ADMIN'),
-('ADMIN3', '1234', '김종훈', 'ROLE_ADMIN')
+INSERT INTO ci_user (username, password, name, authorities, viewcnt) VALUES
+('USER1', '1234', '홍길동', 'ROLE_MEMBER', 17),
+('USER2', '1234', '강백호', 'ROLE_MEMBER', 2),
+('USER3', '1234', '서태웅', 'ROLE_MEMBER', 1),
+('USER4', '1234', '채치수', 'ROLE_MEMBER', 6),
+('USER5', '1234', '송태섭', 'ROLE_MEMBER', 1),
+('USER6', '1234', '정대만', 'ROLE_MEMBER', 1),
+('USER7', '1234', '권준호', 'ROLE_MEMBER', 1),
+('ADMIN1', '1234', '김대진', 'ROLE_ADMIN', 0),
+('ADMIN2', '1234', '정의형', 'ROLE_ADMIN', 0),
+('ADMIN3', '1234', '김종훈', 'ROLE_ADMIN', 0)
 ;
 -- movies 샘플데이터
 INSERT INTO ci_movies (title, genre, runtime, director, actor, synopsis) VALUES

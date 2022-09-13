@@ -66,6 +66,7 @@
             <a class="btn btn-outline-dark" href="home">취소</a>
         </form><br><br><br>
     </div>
+    <jsp:include page="/WEB-INF/views/common/footer.jsp"/>
 </body>
  
 </html>

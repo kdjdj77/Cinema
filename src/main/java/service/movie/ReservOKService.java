@@ -49,7 +49,6 @@ public class ReservOKService implements Service {
 				dto.setSeat(i);
 				cnt = dao.insert(dto);
 			}
-			
 			sqlSession.commit();
 		} catch (SQLException e) {  
 			e.printStackTrace();

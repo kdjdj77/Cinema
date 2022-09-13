@@ -104,5 +104,6 @@
 					</c:choose>
 				</div>
     <h1>응!</h1>
+    <jsp:include page="/WEB-INF/views/common/footer.jsp"/>
 </body>
 </html>

@@ -115,6 +115,7 @@
 					<!-- 댓글 -->
 		        </section>
 		    </div>
+		    <jsp:include page="/WEB-INF/views/common/footer.jsp"/>
 		</body>
 		<c:if
 				test="${fn:contains(PRINCIPAL.authorities, 'ROLE_MEMBER' ) && (PRINCIPAL.id == userDto.id)}">

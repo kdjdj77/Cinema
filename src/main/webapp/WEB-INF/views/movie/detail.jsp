@@ -114,6 +114,7 @@
 					<br><br><br>
 		        </section>
 		    </div>
+		    <jsp:include page="/WEB-INF/views/common/footer.jsp"/>
 		</body>
 		<c:choose>
 		    <c:when test="${empty sessionScope.PRINCIPAL}">
