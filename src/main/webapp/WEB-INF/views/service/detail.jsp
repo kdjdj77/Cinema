@@ -52,12 +52,15 @@
 	<jsp:include page="/WEB-INF/views/common/header.jsp" />
 
 	<div class="container mt-3">
-		<h2>조회 - ${dto.title }</h2>
+		<br>
+		<br>
+		<br>
+		<h2>상세 - ${dto.title }</h2>
 		<hr>
 		<div class="mb-3 mt-3 clearfix">
-			<span class="float-start me-2">id: ${dto.id}</span> <span
-				class="float-end ms-4">작성일: ${dto.regDate }</span> <span
-				class="float-end">조회수: ${dto.viewCnt }</span>
+			<span class="float-start me-2">id: ${dto.id}</span> 
+			<span class="float-end ms-4">작성일: ${dto.regDate }</span>
+			<span class="float-end">조회수: ${dto.viewCnt }</span>
 		</div>
 
 		<section>
@@ -76,12 +79,13 @@
 			</div>
 
 			<!-- 하단 링크 -->
+			<div align="right">
 			<c:if
 				test="${fn:contains(PRINCIPAL.authorities, 'ROLE_MEMBER' ) && (PRINCIPAL.id == dto.user.id)}">
 				<a class="btn btn-outline-dark" href="update?id=${dto.id }">수정</a>
 			</c:if>
 
-			<a class="btn btn-outline-dark" href="list">목록</a>
+			<a class="btn btn-outline-dark" href="list?page=${page != null ? page : '' }">목록</a>
 
 			<c:if
 				test="${fn:contains(PRINCIPAL.authorities, 'ROLE_MEMBER' ) && (PRINCIPAL.id == dto.user.id)}">
@@ -93,7 +97,7 @@
 				<a class="btn btn-outline-dark" href="write">작성</a>
 			</c:if>
 			<!-- 하단 링크 -->
-
+			</div>
 
 			<!-- 댓글 -->
 			<jsp:include page="comment.jsp" />
@@ -101,6 +105,7 @@
 
 		</section>
 	</div>
+	<jsp:include page="/WEB-INF/views/common/footer.jsp"/>
 </body>
 
 </html>

@@ -29,7 +29,10 @@
 			<%-- 인증 헤더 --%>
     		<jsp:include page="/WEB-INF/views/common/header.jsp"/>
 		    <div class="container mt-3">
-		        <h2>수정</h2>
+		    <br>
+		    <br>
+		    <br>
+		        <h2>문의 수정</h2>
 		        <hr>
 		        <div class="mb-3 mt-3 clearfix">
 		            <span class="float-start me-2">id: ${dto.id}</span>
@@ -53,13 +56,16 @@
 		            </div>
 		 
 		            <!-- 하단 링크 -->
+		            <div align="right">
 		            <button type="submit" class="btn btn-outline-dark">수정완료</button>
 		            <button type="button" class="btn btn-outline-dark" onclick="history.back()">이전으로</button>
-		            <a class="btn btn-outline-dark" href="list">목록</a>
+		            <a class="btn btn-outline-dark" href="list?page=${page != null ? page : '' }">목록</a>
+		            </div>
 		            <!-- 하단 링크 -->
-		 
+		 	
 		        </form>
 		    </div>
+		    <jsp:include page="/WEB-INF/views/common/footer.jsp"/>
 		</body>
 		 
 		</html>
