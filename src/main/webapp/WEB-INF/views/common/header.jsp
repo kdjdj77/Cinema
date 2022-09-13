@@ -40,7 +40,6 @@
                 <li class="nav-item" TODO="">
                     <a class="nav-link" href="${pageContext.request.contextPath}/map">오시는길</a>
                 </li>
-                
             </ul>
 
             <c:choose>

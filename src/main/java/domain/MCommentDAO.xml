@@ -40,7 +40,7 @@
 	<insert id="insert" flushCache="true" parameterType="domain.MCommentDTO"
 		keyProperty="id" useGeneratedKeys="true" keyColumn="id">
 		
-		INSERT INTO ci_comment(user_id, movie_id, content, star)
+		INSERT INTO ci_mcomment(user_id, movie_id, content, star)
     	VALUES(#{user.id}, #{movie.id}, #{content}, #{star})
 	</insert>
 	

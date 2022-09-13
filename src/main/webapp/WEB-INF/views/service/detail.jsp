@@ -30,7 +30,7 @@
 <script>
 		    	const conPath = "${pageContext.request.contextPath}";
 		    	const logged_id = ${PRINCIPAL.id};	// 현재 로그인사람의 정보
-		    </script>
+</script>
 <script src="${pageContext.request.contextPath }/js/detail.js"></script>
 <!-- detail.js로 끌고간다 -->
 
@@ -59,7 +59,7 @@
 		<hr>
 		<div class="mb-3 mt-3 clearfix">
 			<span class="float-start me-2">id: ${dto.id}</span> <span
-				class="float-end ms-4">작성일: ${dto.regDateTime }</span> <span
+				class="float-end ms-4">작성일: ${dto.regDate }</span> <span
 				class="float-end">조회수: ${dto.viewCnt }</span>
 		</div>
 

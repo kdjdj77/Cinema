@@ -108,7 +108,7 @@ function re_passwordFn() {
 }
 
 re_password.onclick = re_passwordFn;
-re_password.onkeyup = re_passwordFn();
+re_password.onkeyup = re_passwordFn;
 
 
 // 이름 유효성 검사
@@ -163,8 +163,8 @@ function isSubmitButton() {
     }
 }
 
-document.getElementById("registerForm").onsubmit = function(){
-	if (isAllCheck()) {
+document.getElementById("registerForm").onsubmit = function () {
+    if (isAllCheck()) {
         // document.getElementById("registerForm").submit();
         return true;
 

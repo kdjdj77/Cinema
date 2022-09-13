@@ -1,17 +1,9 @@
-select * from ci_user;
-select * from ci_movies;
-select * from ci_mcomment;
-select * from ci_scomment;
-select * from ci_servlist;
-select * from ci_file;
-select * from ci_reserv;
-
 -- user 샘플데이터
-INSERT INTO ci_user (username, password, name, authorities) VALUES
-('USER1', '1234', '회원1', 'ROLE_MEMBER'),
-('USER2', '1234', '회원2', null),
-('ADMIN1', '1234', '관리자1', 'ROLE_MEMBER,ROLE_ADMIN'),
-('1234', '1234', '테스트1', 'ROLE_MEMBER')
+INSERT INTO ci_user (username, password, name, authorities, viewcnt) VALUES
+('USER1', '1234', '회원1', 'ROLE_MEMBER', 5),
+('USER2', '1234', '회원2', null, 4),
+('ADMIN1', '1234', '관리자1', 'ROLE_MEMBER,ROLE_ADMIN', 6),
+('1234', '1234', '테스트1', 'ROLE_MEMBER', 0)
 ;
 -- movies 샘플데이터
 INSERT INTO ci_movies (title, genre, runtime, director, actor, synopsis) VALUES
@@ -58,7 +50,8 @@ INSERT INTO ci_movies (title, genre, runtime, director, actor, synopsis) VALUES
 INSERT INTO ci_servlist (user_id, title, content) VALUES
 (1, '쌀려쭈쎼요', '쒸프트키까 안뗴쪄요 또와쭈쎼요'),
 (2, '버그 발생했습니다', '페이지가 동작을 안하네요'),
-(2, '문의글 작성 이렇게하는거 맞나요?', '한번 테스트해 봤습니다')
+(2, '문의글 작성 이렇게하는거 맞나요?', '한번 테스트해 봤습니다'),
+(2, '진짜테스트', '테스트임돠')
 ;
 -- mcomment 샘플데이터
 INSERT INTO ci_mcomment (user_id, movie_id, content, star) VALUES
@@ -80,7 +73,10 @@ INSERT INTO ci_scomment (user_id, serv_id, content) VALUES
 (3, 3, '테스트 댓글입니다5')
 ;
 -- file 샘플데이터
-
+insert into ci_file (movie_id, file) values
+(1, 'img0.jpg'),
+(2, 'img1.jpg')
+;
 -- reserv 샘플데이터
 INSERT INTO ci_reserv (user_id, movie_id, seat) VALUES
 (1, 1, 'A1'),
@@ -99,3 +95,10 @@ INSERT INTO ci_reserv (user_id, movie_id, seat) VALUES
 (3, 2, 'B7'),
 (3, 2, 'B8')
 ;
+select * from ci_user;
+select * from ci_movies;
+select * from ci_mcomment;
+select * from ci_scomment;
+select * from ci_servlist;
+select * from ci_file;
+select * from ci_reserv;

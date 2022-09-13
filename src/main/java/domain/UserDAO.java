@@ -9,12 +9,12 @@ public interface UserDAO {
 	List<UserDTO> selectByUsername(UserDTO dto) throws SQLException;
 	
 	// id로 특정 회원(user) SELECT <-- DTO
-	List<UserDTO> selectById(UserDTO dto) throws SQLException;
+	public abstract List<UserDTO> selectById(int id) throws SQLException;
 	
 	// 회원(user) 등록 <-- DTO
 	int register(UserDTO dto) throws SQLException;
 	
-	
+	int modify(UserDTO dto) throws SQLException;
 
 
 }

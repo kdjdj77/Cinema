@@ -1,6 +1,7 @@
 SET SESSION FOREIGN_KEY_CHECKS=0;
 
 /* Drop Tables */
+
 DROP TABLE IF EXISTS ci_file;
 DROP TABLE IF EXISTS ci_mcomment;
 DROP TABLE IF EXISTS ci_reserv;
