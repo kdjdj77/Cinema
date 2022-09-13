@@ -1,6 +1,7 @@
 package controller;
 
 import java.io.IOException;
+import java.net.URI;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -12,7 +13,11 @@ import javax.servlet.http.HttpServletResponse;
 import common.C;
 import service.Service;
 import service.user.UserDetailService;
+import service.user.UserInfoService;
+import service.user.ReserveDetailService;
 import service.user.ModifyService;
+import service.user.MyReserveService;
+import service.user.ReserveDeleteService;
 
 
 @WebServlet("/userinfo/*")
@@ -57,7 +62,9 @@ public class UserinfoController extends HttpServlet {
 
         switch (command) {
             case "/userinfo/main":
-                viewPage = "userinfo.jsp";
+            	service = new UserInfoService();
+            	service.execute(request, response);
+            	viewPage = "userinfo.jsp";
                 break;
 
             case "/userinfo/modify":
@@ -79,9 +86,44 @@ public class UserinfoController extends HttpServlet {
                     }
                 }
                 break;
+                
+            case "/userinfo/reserve":
+            	service = new MyReserveService();
+            	service.execute(request, response);
+            	viewPage = "myReserveList.jsp";
+            	break;
+            	
+            case "/userinfo/resdetail":
+    			if (C.securityCheck(request, response, null)) {
+    				service = new ReserveDetailService();
+    				service.execute(request, response);
+    				viewPage = "myReserveDetail.jsp";
+    			}
+    			break;
+    			
+            case "/userinfo/delete":
+            	if (C.securityCheck(request, response, new String[] { "ROLE_MEMBER" })) { // 권한 체크
+    				switch (method) {
+    				case "POST":
+    					service = new ReserveDeleteService(); // 작성자가 아닌 경우 Service 안에서 redirect 발생
+    					service.execute(request, response);
+    					if (!response.isCommitted()) {
+    						viewPage = "reserveDeleteOK.jsp";
+    					}
+    					break;
+    				}
+    			}
+    			break;
+    			
+			/*
+			 * // 페이징 // pageRows 변경시 동작 case "/userinfo/pageRows": int page =
+			 * Integer.parseInt(request.getParameter("page")); Integer pageRows = 10;
+			 * request.getSession().setAttribute("pageRows", pageRows);
+			 * response.sendRedirect(request.getContextPath() + "/list?page=" + page);
+			 * break;
+			 */
+    		} // end switch
 
-
-        }
         // 위에서 결정된 뷰로 forward 함
         if (viewPage != null) {
             RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/views/user/" + viewPage);

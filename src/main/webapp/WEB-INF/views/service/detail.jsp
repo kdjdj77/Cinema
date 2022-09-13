@@ -30,7 +30,7 @@
 <script>
 		    	const conPath = "${pageContext.request.contextPath}";
 		    	const logged_id = ${PRINCIPAL.id};	// 현재 로그인사람의 정보
-		    </script>
+</script>
 <script src="${pageContext.request.contextPath }/js/detail.js"></script>
 <!-- detail.js로 끌고간다 -->
 

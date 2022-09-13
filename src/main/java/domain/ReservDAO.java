@@ -10,4 +10,30 @@ public interface ReservDAO {
 	// 예매하기
 	public abstract int insert(ReservDTO dto) throws SQLException;
 
+	// 예매 취소소
+	public abstract int delete(int id) throws SQLException;
+
+	// 최근 5개
+	List<ReservDTO> recentMyReserve(int user_id) throws SQLException;
+	
+	// 전체
+	public abstract List<ReservDTO> mypageTicketList(int user_id) throws SQLException;
+	
+	// 특정 예매 확인
+	List<ReservDTO> selectById(int id) throws SQLException;
+	
+	public abstract int selectByMovieId(int movie_id) throws SQLException;
+	
+	// 조회 증/감
+	public abstract int incViewCnt(int user_id) throws SQLException;
+	public abstract int decViewCnt(int user_id) throws SQLException;
+	
+	public abstract int selectByUserId(int user_id) throws SQLException;
+	
+	/*
+	 * // 페이징 // 몇번째(from) 부터 몇개(rows) 를 SELECT public List<ReservDTO>
+	 * selectFromRow(int user_id ,int from, int rows) throws SQLException;
+	 * 
+	 * // 전체 글의 개수 public int countAll(int user_id) throws SQLException;
+	 */
 }
