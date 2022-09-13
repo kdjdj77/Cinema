@@ -5,6 +5,7 @@ $(function(){
 		
 		let frm = $("[name='frmPageRows']");
 		frm.attr("method", "POST");
+		frm.attr("action", "pageRows");  // /service/pageRows
 		frm.submit();
 	});
 });

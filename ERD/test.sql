@@ -95,7 +95,6 @@ INSERT INTO ci_reserv (user_id, movie_id, seat) VALUES
 (3, 2, 'B7'),
 (3, 2, 'B8')
 ;
-
 select * from ci_user;
 select * from ci_movies;
 select * from ci_mcomment;
@@ -103,53 +102,3 @@ select * from ci_scomment;
 select * from ci_servlist;
 select * from ci_file;
 select * from ci_reserv;
-
-    	select m.title "m_title", AVG(mc.star) "avg_star" 
-      	from ci_mcomment mc, ci_movies m 
-	    where m.id  = mc.movie_id
-    	and m.id = 1;
-
-      
-SELECT re.id         "re_id",
-               re.seat       "re_seat",
-               re.regdate    "re_regdate",
-               m.id          "m_id",
-               m.title       "m_title",
-               m.genre       "m_genre",
-               m.runtime     "m_runtime",
-               m.director    "m_director",
-               m.synopsis    "m_synopsis",
-               m.regdate     "m_regdate"
-        FROM ci_reserv re inner join 
-             ci_movies m on re.movie_id = m.id
-        WHERE re.user_id = 1
-        ORDER BY re .id desc;
-        
-       SELECT movie_id
-        FROM ci_reserv
-        WHERE id = 3;
-        
-       SELECT re.id         "re_id",
-               re.seat       "re_seat",
-               re.regdate    "re_regdate",
-               u.id          "u_id",
-               u.username    "u_username",
-               u.password    "u_password",
-               u.name        "u_name",
-               u.authorities "u_authorities",
-               u.regdate     "u_regdate",
-               m.id          "m_id",
-               m.title       "m_title",
-               m.genre       "m_genre",
-               m.runtime     "m_runtime",
-               m.director    "m_director",
-               m.synopsis    "m_synopsis",
-               m.regdate     "m_regdate"
-		FROM ci_reserv re,
-             ci_user u,
-             ci_movies m
-        WHERE re.user_id = u.id
-          AND re.movie_id = m.id
-          AND re.user_id = 1
-		ORDER BY re.id DESC
-		LIMIT 1, 5;
