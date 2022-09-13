@@ -19,6 +19,7 @@
 	<jsp:include page="/WEB-INF/views/common/header.jsp"/>
     <div class="container mt-3">
     	<section>
+    		<br><br><br>
 	        <h2 class="float-start">영화</h2>
 	        <c:if test="${fn:contains(PRINCIPAL.authorities, 'ROLE_ADMIN')}">
 	        	<a class="btn btn-outline-dark mx-3 float-end mb-3" href="write">영화추가</a>
@@ -34,10 +35,10 @@
 								<c:choose>
 					        	<%-- 이미지 보여주기 --%>
 					            <c:when test="${dto.fileName != null}">
-									<img src="${pageContext.request.contextPath}/upload/${dto.fileName}" style="width:220px; height:300px;" class="rounded">
+									<img src="${pageContext.request.contextPath}/upload/${dto.fileName}" style="width:220px; height:300px;" class="rounded border border-white">
 					            </c:when>
 					            <c:otherwise>
-					            	<div style="background-color:gray; width:220px; height:300px; text-align:center">
+					            	<div style="background-color:gray; width:220px; height:300px; text-align:center" class="rounded">
 					            		NO IMAGE
 					            	</div>
 					            </c:otherwise>

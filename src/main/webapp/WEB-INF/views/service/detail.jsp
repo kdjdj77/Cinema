@@ -58,9 +58,9 @@
 		<h2>상세 - ${dto.title }</h2>
 		<hr>
 		<div class="mb-3 mt-3 clearfix">
-			<span class="float-start me-2">id: ${dto.id}</span> <span
-				class="float-end ms-4">작성일: ${dto.regDate }</span> <span
-				class="float-end">조회수: ${dto.viewCnt }</span>
+			<span class="float-start me-2">id: ${dto.id}</span> 
+			<span class="float-end ms-4">작성일: ${dto.regDate }</span>
+			<span class="float-end">조회수: ${dto.viewCnt }</span>
 		</div>
 
 		<section>
