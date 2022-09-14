@@ -15,6 +15,8 @@ public interface UserDAO {
 	int register(UserDTO dto) throws SQLException;
 	
 	int modify(UserDTO dto) throws SQLException;
+	
+	public abstract int myViewcnt(int id) throws SQLException;
 
 
 }

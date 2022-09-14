@@ -62,18 +62,19 @@ public class UserinfoController extends HttpServlet {
 
         switch (command) {
             case "/userinfo/main":
+            	
             	service = new UserInfoService();
             	service.execute(request, response);
             	viewPage = "userinfo.jsp";
                 break;
 
+
             case "/userinfo/modify":
-                if (C.securityCheck(request, response, new String[]{"ROLE_MEMBER"})) {
+            	if (C.securityCheck(request, response, new String[]{"ROLE_MEMBER"})) {
                     switch (method) {
                         case "GET":
                             service = new UserDetailService();
                             service.execute(request, response);
-
                             if (!response.isCommitted()) {
                                 viewPage = "modify.jsp";
                             }

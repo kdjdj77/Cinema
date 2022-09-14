@@ -92,7 +92,6 @@ CREATE TABLE ci_user
 	name varchar(80) NOT NULL,
 	authorities varchar(200) DEFAULT 'ROLE_MEMBER',
 	regdate datetime DEFAULT now(),
-	viewcnt int DEFAULT 0,
 	PRIMARY KEY (id),
 	UNIQUE (username)
 );

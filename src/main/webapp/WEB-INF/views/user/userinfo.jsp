@@ -4,14 +4,15 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
 <c:choose>
-    <c:when test="${empty list || fn:length(list) == 0}">
+    <c:when test="${empty sessionScope.PRINCIPAL}">
         <script>
             alert("로그인 후에 이용해주세요!");
             history.back();
         </script>
     </c:when>
     <c:otherwise>
-        <c:set var="dto" value="${list[0]}"/>
+        <%-- <%-- <c:set var="dto" value="${list[0]}"/> --%> --%>
+
 
         <!DOCTYPE html>
         <html>
@@ -33,10 +34,8 @@
             <link href="https://fonts.googleapis.com/css?family=Muli:400,400i,800,800i" rel="stylesheet"
                   type="text/css"/>
             <!-- Core theme CSS (includes Bootstrap)-->
-            <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/styles.css">
-            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+            <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/styles.css">            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
             <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
-
 
 
         </head>
@@ -51,9 +50,10 @@
             <input type="hidden" name="id" value="${sessionScope.PRINCIPAL.id}">
         </form>
         <!-- Navigation-->
-        <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top" id="sideNav">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-primary padding-top:70px;" id="sideNav">
+        
             <a class="navbar-brand js-scroll-trigger" href="#page-top">
-                <span class="d-block d-lg-none">${dto.username }(${dto.name })</span>
+                <span class="d-block d-lg-none">${ sessionScope.PRINCIPAL.username  }(${ sessionScope.PRINCIPAL.name  })</span>
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive"
                     aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span
@@ -74,30 +74,31 @@
             <section class="resume-section" id="about">
                 <div class="resume-section-content">
                     <h1 class="mb-0">
-                            ${dto.username }
-                        <span class="text-primary">(${dto.name })</span>
+                            ${sessionScope.PRINCIPAL.username }
+                        <span class="text-primary">(${sessionScope.PRINCIPAL.name })</span>
                     </h1>
                     <div class="subheading mb-5">
                         님 안녕하세요!
 
                     </div>
+                    <c:set var="dto" value="${list}"/>
                     <p class="lead mb-5">고객님의 등급은
-                        <c:if test="${dto.viewcnt eq 0}">
+                        <c:if test="${dto.viewCnt eq 0}">
                             <a class="bronze">응애</a>
                         </c:if>
-                        <c:if test="${dto.viewcnt gt 0 && dto.viewcnt lt 5}">
+                        <c:if test="${dto.viewCnt gt 0 && dto.viewCnt lt 5}">
                             <a class="silver">실버</a>
                         </c:if>
-                        <c:if test="${dto.viewcnt ge 5 && dto.viewcnt lt 25}">
+                        <c:if test="${dto.viewCnt ge 5 && dto.viewCnt lt 25}">
                             <a class="gold">골드</a>
                         </c:if>
-                        <c:if test="${dto.viewcnt ge 25 && dto.viewwcnt lt 40}">
+                        <c:if test="${dto.viewCnt ge 25 && dto.viewCnt lt 40}">
                             <a class="platinum">플래티넘</a>
                         </c:if>
-                        <c:if test="${dto.viewcnt ge 40}">
+                        <c:if test="${dto.viewCnt ge 40}">
                             <a class="diamond">다이아몬드</a>
                         </c:if>
-                        (${dto.viewcnt })입니다.
+                        (${dto.viewCnt })입니다.
 
                     </p>
                     <button type='button' id="modal_btn">모달창아 나와랏
@@ -110,7 +111,7 @@
         <!-- 예매목록 -->
         <section class="resume-section" id="experience">
             <div class="resume-section-content">
-                <a href="reserve?id=${dto.id}">웅야</a>
+                <a href="reserve?id=${sessionScope.PRINCIPAL.id}">웅야</a>
                 <h2 class="mb-5">예매목록</h2>
 
                 <jsp:include page="recentMyReserve.jsp"/>
@@ -136,15 +137,15 @@
                     <div class="subheading mb-3">
                         <div>
                             <label for="username">ID</label>
-                            <a type="text" id="username">${dto.username}</a>
+                            <a type="text" id="username">${sessionScope.PRINCIPAL.username}</a>
                         </div>
                         <div class="field half">
                             <label for="password">Password</label>
-                            <a type="text" id="password">${dto.password}</a>
+                            <a type="text" id="password">${sessionScope.PRINCIPAL.password}</a>
                         </div>
                         <div class="field">
                             <label for="name">Name</label>
-                            <a type="text" id="name">${dto.name}</a>
+                            <a type="text" id="name">${sessionScope.PRINCIPAL.name}</a>
                         </div>
                         <a href="modify?id=${dto.id}" class="button">회원정보 수정하기</a>
                     </div>
@@ -176,37 +177,37 @@
                     <a href="#">close</a>
                 </div>
                 <div>
-                	<table>
-	<thead>
-		<tr>
-			<th>시청횟수</th>
-			<th>등급</th>
-		</tr>
-	</thead>
-	<tbody>
-		<tr>
-			<td>0</td>
-			<td>응애</td>
-		</tr>
-		<tr>
-			<td>1 ~ 4</td>
-			<td>실버</td>
-		</tr>
-		<tr>
-			<td>5 ~ 24</td>
-			<td>골드</td>
-		</tr>
-		<tr>
-			<td>25 ~ 39</td>
-			<td>플래티넘</td>
-		</tr>
-		<tr>
-			<td>40 ~ </td>
-			<td>호ㄱ... 다이아몬드~</td>
-		</tr>
-	</tbody>
-	
-</table>
+                    <table class="table table-dark table-striped">
+                        <thead>
+                        <tr>
+                            <th>시청횟수</th>
+                            <th>등급</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                        	<td>응애</td>
+                            <td>0</td>
+                        </tr>
+                        <tr>
+                            <td>실버</td>
+                            <td>1 ~ 4</td>
+                        </tr>
+                        <tr>
+                        	<td>골드</td>
+                            <td>5 ~ 24</td>
+                        </tr>
+                        <tr>
+                        	<td>플래티넘</td>
+                            <td>25 ~ 39</td>
+                        </tr>
+                        <tr>
+                        	<td>호ㄱ... 다이아몬드~</td>
+                            <td>40 ~</td>
+                        </tr>
+                        </tbody>
+
+                    </table>
                 </div>
             </div>
         </div>

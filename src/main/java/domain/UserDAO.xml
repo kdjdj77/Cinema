@@ -16,7 +16,7 @@
             parameterType="domain.UserDTO"
             resultType="domain.UserDTO"
     >
-        SELECT id, username, password, name, regdate, authorities, viewcnt
+        SELECT id, username, password, name, regdate, authorities
         FROM ci_user
         WHERE id = #{id}
     </select>
@@ -38,4 +38,11 @@
         SET username = #{username}, name = #{name}, password = #{password}
         WHERE id = #{id}
     </update>
+    
+    <!-- 회원 조회수 체크 -->
+    <select id="myViewcnt" resultType="int" parameterType="int">
+    select count(re.id)
+	from ci_reserv re
+    where user_id = #{param1};
+    </select>
 </mapper>

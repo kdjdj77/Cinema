@@ -24,11 +24,10 @@ public interface ReservDAO {
 	
 	public abstract int selectByMovieId(int movie_id) throws SQLException;
 	
-	// 조회 증/감
-	public abstract int incViewCnt(int user_id) throws SQLException;
-	public abstract int decViewCnt(int user_id) throws SQLException;
 	
 	public abstract int selectByUserId(int user_id) throws SQLException;
+	
+	
 	
 	/*
 	 * // 페이징 // 몇번째(from) 부터 몇개(rows) 를 SELECT public List<ReservDTO>

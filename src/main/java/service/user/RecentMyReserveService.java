@@ -12,11 +12,13 @@ import org.apache.ibatis.session.SqlSession;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 
+import common.C;
 import domain.MovieDAO;
 import domain.MovieDTO;
 import domain.QryMyReserveList;
 import domain.ReservDAO;
 import domain.ReservDTO;
+import domain.UserDTO;
 import service.Service;
 import sqlmapper.SqlSessionManager;
 
@@ -34,11 +36,11 @@ public class RecentMyReserveService implements Service{
 
 
         List<ReservDTO> mrlist = null;
-
+        
         try{
             sqlSession = SqlSessionManager.getInstance().openSession();
             rdao = sqlSession.getMapper(ReservDAO.class);
-
+            
             mrlist = rdao.recentMyReserve(id);
             obj.setList(mrlist);
             obj.setCount(mrlist.size());

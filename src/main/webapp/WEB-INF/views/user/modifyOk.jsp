@@ -12,7 +12,7 @@
     <c:otherwise>
         <script>
             alert("수정 성공");
-            location.href = "main?id=" + ${dto.id};
+            location.href = "main";
         </script>
     </c:otherwise>
 </c:choose>

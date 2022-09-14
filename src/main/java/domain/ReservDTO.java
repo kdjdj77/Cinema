@@ -23,7 +23,6 @@ public class ReservDTO {
     private UserDTO user;
 	private MovieDTO movie;
     private String seat;
-    
 	/*
 	 * private LocalDateTime regDate;
 	 * 

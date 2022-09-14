@@ -3,14 +3,13 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <c:choose>
-    <c:when test="${empty list || fn:length(list) == 0}">
+    <c:when test="${empty sessionScope.PRINCIPAL}">
         <script>
             alert("해당 회원정보를 조회할 수없습니다");
             history.back();
         </script>
     </c:when>
     <c:otherwise>
-        <c:set var="dto" value="${list[0]}"/>
         <!DOCTYPE html>
         <html>
         <head>
@@ -29,18 +28,18 @@
         <body class="form-v5">
         <div class="page-content">
             <div class="form-v5-content">
-                <h2>User modify - ${dto.name} 님</h2>
+                <h2>User modify - ${sessionScope.PRINCIPAL.name} 님</h2>
                 <form id="updateForm" class="form-detail" action="modify" method="POST">
-                	<input type="hidden" name="id" value="${dto.id}"/>
+                	<input type="hidden" name="id" value="${sessionScope.PRINCIPAL.id}"/>
                     <div class="form-row">
                         <label for="username">Your ID</label>
                         <input type="text" name="username" id="username" class="input-text"
-                               value="${dto.username }" readonly>
+                               value="${sessionScope.PRINCIPAL.username }" readonly>
                     </div>
                     <div class="form-row">
                         <label for="name">Your Name</label>
                         <input type="text" name="name" id="name" class="input-text"
-                               value="${dto.name }" required>
+                               value="${sessionScope.PRINCIPAL.name }" required>
                         <div class="illegible-message hide msg">한글만 입력해주세요</div>
                         <div class="readable-message hide msg success">한글만 입력되었습니다!</div>
                     </div>
