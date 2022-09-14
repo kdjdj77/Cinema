@@ -82,7 +82,7 @@
                         님 안녕하세요!
 
                     </div>
-                    <c:set var="dto" value="${list[0]}"/>
+                    <c:set var="dto" value="${list}"/>
                     <p class="lead mb-5">고객님의 등급은
                         <c:if test="${dto.viewCnt eq 0}">
                             <a class="bronze">응애</a>
