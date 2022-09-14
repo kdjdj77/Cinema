@@ -19,7 +19,6 @@ public class UserInfoService implements Service{
 	
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws IOException {
-		int id = Integer.parseInt(request.getParameter("id"));
 		
 		SqlSession sqlSession = null;
 		UserDAO dao = null;
@@ -31,20 +30,12 @@ public class UserInfoService implements Service{
 			sqlSession = SqlSessionManager.getInstance().openSession();
 			dao = sqlSession.getMapper(UserDAO.class);
 			
-			list = dao.selectById(id);
-			for(UserDTO u : list) {
-				u.setViewCnt(dao.myViewcnt(u.getId()));
-			}
+			UserDTO user = (UserDTO)request.getSession().getAttribute(C.PRINCIPAL);
+			int id = user.getId();
 			
+			user.setViewCnt(dao.myViewcnt(user.getId()));
 			
-			int loggedUser = ((UserDTO) request.getSession().getAttribute(C.PRINCIPAL)).getId();
-		
-			if(loggedUser != id) {
-				response.sendRedirect(request.getContextPath() + "/user/rejectAuth");
-				return;
-			}	
-			
-			request.setAttribute("list", list);
+			request.setAttribute("list", user);
 
 			sqlSession.commit();
 		} catch (SQLException e) {

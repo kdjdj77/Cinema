@@ -55,7 +55,7 @@
                         <span class="d-flex">
 			                <span class="text-light p-2"><span
                                     TODO="">${sessionScope.PRINCIPAL.name }</span>
-                                     님 환영합니다&nbsp;<a href="${pageContext.request.contextPath}/userinfo/main?id=${PRINCIPAL.id}" style="color:white"><i class="fa-solid fa-gears"></i></a></span>
+                                     님 환영합니다&nbsp;<a href="${pageContext.request.contextPath}/userinfo/main" style="color:white"><i class="fa-solid fa-gears"></i></a></span>
 			                <span><button style="background-color: #D3D3D3" type="submit">Logout</button></span>
 			            </span>
                     </form>
