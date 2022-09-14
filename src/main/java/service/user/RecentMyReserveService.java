@@ -26,8 +26,8 @@ public class RecentMyReserveService implements Service{
 
     @Override
     public void execute(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        int id = Integer.parseInt(request.getParameter("id"));
-
+    	UserDTO user = (UserDTO)request.getSession().getAttribute(C.PRINCIPAL);
+		int id = user.getId();
         QryMyReserveList obj = new QryMyReserveList();
         ObjectMapper mapper = new ObjectMapper();
 

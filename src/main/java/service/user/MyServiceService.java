@@ -41,14 +41,14 @@ public class MyServiceService implements Service {
 			
 			
 			mslist = sdao.myService(id);
+			for (ServiceDTO s : mslist){
+				s.setCmtCheck(sdao.checkCmt(s.getId()).length);
+			}
+			
 			obj.setList(mslist);
 			obj.setCount(mslist.size());
 			obj.setStatus("OK");
 
-
-			for (ServiceDTO s : mslist){
-				s.setCmtCheck(sdao.checkCmt(s.getId()).length);
-			}
 
 
 			sqlSession.commit();

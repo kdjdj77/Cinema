@@ -20,8 +20,9 @@ public class ModifyService implements Service {
 
     @Override
     public void execute(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        int id = Integer.parseInt(request.getParameter("id"));
-        // 입력한 값 (parameter) 받아오기
+    	UserDTO user = (UserDTO)request.getSession().getAttribute(C.PRINCIPAL);
+		int id = user.getId();
+    	// 입력한 값 (parameter) 받아오기
         String password = request.getParameter("password");
         String re_password = request.getParameter("re_password");
         String username = request.getParameter("username");
@@ -54,6 +55,7 @@ public class ModifyService implements Service {
                 .username(username)
                 .name(name)
                 .password(password)
+                .authorities("ROLE_MEMBER")
                 .build();
 
         try {
@@ -62,6 +64,11 @@ public class ModifyService implements Service {
 
             // update
             cnt = dao.modify(dto);
+            
+            if (cnt != 0) {
+            	HttpSession session = request.getSession();
+    			session.setAttribute(C.PRINCIPAL, dto);
+            }
 
             sqlSession.commit();
         } catch (SQLException e) {

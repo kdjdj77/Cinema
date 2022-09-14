@@ -33,7 +33,7 @@
 
 <body>
 
-<nav class="navbar navbar-expand-sm navbar-dark bg-dark" style="position: fixed; left: 0; top:0; width:100%; z-index:999;">
+<nav class="navbar navbar-expand-sm navbar-dark bg-dark" style="position: fixed; left: 0; top:0; height:50px; width:100%; z-index:999;">
     <div class="container-fluid">
         <a class="navbar-brand" href="${pageContext.request.contextPath}/movie/home">LogO(test)</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mynavbar">

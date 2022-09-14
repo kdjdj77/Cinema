@@ -52,9 +52,7 @@
 	<jsp:include page="/WEB-INF/views/common/header.jsp" />
 
 	<div class="container mt-3">
-		<br>
-		<br>
-		<br>
+		<br><br><br>
 		<h2>상세 - ${dto.title }</h2>
 		<hr>
 		<div class="mb-3 mt-3 clearfix">
@@ -78,7 +76,7 @@
             </div>
 			
 			<div class="mb-3 mt-3">
-				<textarea style="width: 100%" rows="5" id="content" placeholder="내용을 입력하세요" name="content">${dto.content }</textarea>
+				<textarea style="width: 100%" rows="5" id="content" placeholder="내용을 입력하세요" name="content" readonly>${dto.content }</textarea>
 			</div>
 
 			<!-- 하단 링크 -->
