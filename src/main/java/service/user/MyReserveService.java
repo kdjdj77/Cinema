@@ -28,8 +28,8 @@ public class MyReserveService implements Service{
 
     @Override
     public void execute(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        int id = Integer.parseInt(request.getParameter("id"));
-        
+    	UserDTO user = (UserDTO)request.getSession().getAttribute(C.PRINCIPAL);
+		int id = user.getId();
         SqlSession sqlSession = null;
 		ReservDAO dao = null;
 		List<ReservDTO> list = null;

@@ -34,8 +34,7 @@
             <link href="https://fonts.googleapis.com/css?family=Muli:400,400i,800,800i" rel="stylesheet"
                   type="text/css"/>
             <!-- Core theme CSS (includes Bootstrap)-->
-            <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/styles.css">
-            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+            <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/styles.css">            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
             <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
 
 
@@ -102,7 +101,7 @@
                         (${dto.viewCnt })입니다.
 
                     </p>
-                    <button type='button' id="modal_btn">모달창아 나와랏
+                    <button type='button' id="modal_btn">등급정보
                     </button>
                 </div>
             </section>
@@ -112,7 +111,7 @@
         <!-- 예매목록 -->
         <section class="resume-section" id="experience">
             <div class="resume-section-content">
-                <a href="reserve?id=${sessionScope.PRINCIPAL.id}">웅야</a>
+                <a href="reserve?id=${sessionScope.PRINCIPAL.id}">전체보기</a>
                 <h2 class="mb-5">예매목록</h2>
 
                 <jsp:include page="recentMyReserve.jsp"/>
@@ -172,7 +171,7 @@
 
         </body>
         <div>
-            <div class="black_bg"></div>
+            <div class="black_bg" style="margin-top:50px;"></div>
             <div class="modal_wrap">
                 <div class="modal_close">
                     <a href="#">close</a>
@@ -187,7 +186,7 @@
                         </thead>
                         <tbody>
                         <tr>
-                        	<td>응애</td>
+                        	<td>브론즈</td>
                             <td>0</td>
                         </tr>
                         <tr>
@@ -203,7 +202,7 @@
                             <td>25 ~ 39</td>
                         </tr>
                         <tr>
-                        	<td>호ㄱ... 다이아몬드~</td>
+                        	<td>다이아몬드</td>
                             <td>40 ~</td>
                         </tr>
                         </tbody>

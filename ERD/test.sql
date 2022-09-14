@@ -207,27 +207,4 @@ select * from ci_scomment;
 select * from ci_servlist;
 select * from ci_file;
 select * from ci_reserv;
-
-SELECT 
-re.user_id "u.id", re.id      "re_id",
-               re.seat    "re_seat",
-               re.regdate "re_regdate",
-               m.id       "m_id",
-               m.title    "m_title",
-               m.genre    "m_genre",
-               m.runtime  "m_runtime",
-               m.director "m_director",
-               m.synopsis "m_synopsis",
-               m.regdate  "m_regdate",
-               f.file "f_file"
-        FROM ci_reserv re
-                 inner join
-             ci_movies m on re.movie_id = m.id
-             inner join ci_file f on m.id = f.movie_id 
-        WHERE re.user_id = 1
-        ORDER BY re.id desc;
-       
-       SELECT f.file
-	    FROM ci_file f
-		WHERE movie_id = 3;
 	

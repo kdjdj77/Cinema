@@ -28,6 +28,7 @@ public interface ReservDAO {
 	public abstract int selectByUserId(int user_id) throws SQLException;
 	
 	
+	
 	/*
 	 * // 페이징 // 몇번째(from) 부터 몇개(rows) 를 SELECT public List<ReservDTO>
 	 * selectFromRow(int user_id ,int from, int rows) throws SQLException;
