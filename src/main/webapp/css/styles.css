@@ -232,12 +232,11 @@ sup {
 .modal_wrap {
     display: none;
     width: 500px;
-    height: 500px;
+    height: auto;
     position: absolute;
     top: 50%;
     left: 50%;
     margin: -250px 0 0 -250px;
-    background: #eee;
     z-index: 2;
 }
 
@@ -11779,6 +11778,5 @@ section.resume-section .resume-section-content {
         padding-bottom: 5rem;
     }
 }
-
 
 

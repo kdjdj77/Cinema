@@ -34,8 +34,6 @@ public class ReservService implements Service {
 			sqlSession = SqlSessionManager.getInstance().openSession();
 			dao = sqlSession.getMapper(ReservDAO.class);
 			mdao = sqlSession.getMapper(MovieDAO.class);
-			int uid = dao.selectByUserId(id);
-			dao.incViewCnt(uid);
 			
 			list = dao.seatCheck(id);
 			mov = mdao.selectById(id);

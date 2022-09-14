@@ -25,14 +25,13 @@ public class ReserveDeleteService implements Service {
 		
 		SqlSession sqlSession = null;
 		ReservDAO dao = null;
-		UserDAO udao = null;
 		
 		int cnt = 0;
 		
 		try {
 			sqlSession = SqlSessionManager.getInstance().openSession();
 			dao = sqlSession.getMapper(ReservDAO.class);
-			udao = sqlSession.getMapper(UserDAO.class);
+
 			
 			int uid = dao.selectByUserId(id);
 			
@@ -46,7 +45,6 @@ public class ReserveDeleteService implements Service {
 			
 			cnt = dao.delete(id);
 			
-			dao.decViewCnt(uid);
 
 			sqlSession.commit();
 		} catch (SQLException e) {  

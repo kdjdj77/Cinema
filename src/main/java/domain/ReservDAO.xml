@@ -138,25 +138,21 @@
                m.runtime  "m_runtime",
                m.director "m_director",
                m.synopsis "m_synopsis",
-               m.regdate  "m_regdate"
+               m.regdate  "m_regdate",
+               m.actor "m_actor",
+               u.id          "u_id",
+               u.username    "u_username",
+               u.name        "u_name",
+               u.authorities "u_authorities",
+               u.regdate     "u_regdate"
         FROM ci_reserv re
                  inner join
-             ci_movies m on re.movie_id = m.id
+             ci_movies m on re.movie_id = m.id, ci_user u
         WHERE re.user_id = #{pram1}
         ORDER BY re.id DESC
     </select>
     
-    <update id="incViewCnt" flushCache="true">
-    	UPDATE ci_user u
-    	SET u.viewcnt = u.viewcnt + 1
-    	WHERE u.id = #{param1}
-    </update>
     
-    <update id="decViewCnt" flushCache="true">
-    	UPDATE ci_user u
-    	SET u.viewcnt = u.viewcnt - 1
-    	WHERE u.id = #{param1}
-    </update>
     
     <!-- 내 예약 페이징용 -->
     <select id="selectFromRow" resultMap="mapReserve">
