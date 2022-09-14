@@ -1,4 +1,4 @@
-let pageNum = 1;
+/*let pageNum = 1;
 let pageSize = 50;
 
 document.addEventListener("DOMContentLoaded", function(event){
@@ -22,7 +22,7 @@ const DataFunc = {
         pageNum = pNum;
         DataFunc.getPagingData(pageNum);
     }
-}
+}*/
 
 
 $(function(){
@@ -124,10 +124,13 @@ function buildComment(result){
             `;
             
         const row = `
-	        <tr>
+	        <tr style="word-break: keep-all">
 	        <td><span><strong>${username}</strong><br><small class="text-secondary">(${name})</small></span></td>
-	        <td><span>${content}</span>${delBtn}</td>
+	        <td>
+	            <span><pre style="font-family:sans-serif; word-wrap: break-word;white-space: pre-wrap;white-space: -moz-pre-wrap;white-space: -pre-wrap;white-space: -o-pre-wrap;word-break:break-all;">${content}</pre></span>             
+	        </td>
 	        <td><span><small class="text-secondary">${regdate}</small></span></td>
+	        <td><span><small class="text-secondary">${delBtn}</small></span></td>
 	        </tr>      
 	        `;
 		out.push(row);
