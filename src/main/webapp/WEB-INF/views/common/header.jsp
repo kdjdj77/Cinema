@@ -12,13 +12,8 @@
 
 <style>
 
-	#nav li {
-	margin-left:40px
-	}
-	
-	#nav li a:hover{
-    background-color: #483D8B;
-}
+	#nav li {margin-left:40px}
+	#nav li a:hover{background-color: #483D8B;}	
 </style>
 
 
@@ -60,7 +55,7 @@
             <c:choose>
                 <c:when test="${empty sessionScope.PRINCIPAL }">
                     <!-- 로그인 안했을때는 로그인 form 보여주기 -->
-                    <button style="background-color: #D3D3D3"><a type="submit"
+                    <button style="background-color: #D3D3D3; text-decoration:none; color:black;"><a type="submit"
                        href="${pageContext.request.contextPath}/user/login">Login</a></button>
                 </c:when>
                 <c:otherwise>
@@ -71,7 +66,7 @@
 			                <span class="text-light p-2"><span
                                     TODO="">${sessionScope.PRINCIPAL.name }</span>
                                      님 환영합니다&nbsp;<a href="${pageContext.request.contextPath}/userinfo/main" style="color:white"><i class="fa-solid fa-gears"></i></a></span>
-			                <span><button style="background-color: #D3D3D3" type="submit">Logout</button></span>
+			                <span><button style="background-color: #D3D3D3; text-decoration:none; color:black;" type="submit">Logout</button></span>
 			            </span>
                     </form>
                 </c:otherwise>

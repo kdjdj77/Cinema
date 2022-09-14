@@ -38,7 +38,7 @@ public class ServiceDTO {
 	
 
 	
-  public String getRegDate() { 
+  public String getRegDateTime() { 
   
   if(this.regDate == null) return ""; return
   this.regDate.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")); 

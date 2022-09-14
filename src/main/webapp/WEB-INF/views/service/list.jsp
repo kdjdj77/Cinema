@@ -74,7 +74,7 @@
                     
                     <td><a style="text-decoration: none; color: black" href="detail?id=${dto.id }">${dto.title }</a></td>
                     <td>${dto.cmtCheck }개</td>
-                    <td>${dto.regDate}</td>
+                    <td>${dto.regDateTime}</td>
                 </tr>            
             </c:forEach>           
             </tbody>

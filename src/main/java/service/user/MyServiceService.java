@@ -11,7 +11,6 @@ import javax.servlet.http.HttpServletResponse;
 import org.apache.ibatis.session.SqlSession;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 
 import domain.QryMyServiceList;
 import domain.ServiceDAO;
@@ -57,7 +56,8 @@ public class MyServiceService implements Service {
         }
 		
 
-		String output = mapper.registerModule(new JavaTimeModule()).writeValueAsString(obj);
+		//String output = mapper.writeValueAsString(obj);
+		String output = mapper.writeValueAsString(obj);
 		response.setContentType("application/json; charset=utf-8"); // MIME 설정
 		response.getWriter().write(output); // reponse에 보내기
     }
