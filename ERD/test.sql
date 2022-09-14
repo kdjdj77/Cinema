@@ -208,26 +208,67 @@ select * from ci_servlist;
 select * from ci_file;
 select * from ci_reserv;
 
-SELECT 
-re.user_id "u.id", re.id      "re_id",
-               re.seat    "re_seat",
-               re.regdate "re_regdate",
-               m.id       "m_id",
-               m.title    "m_title",
-               m.genre    "m_genre",
-               m.runtime  "m_runtime",
-               m.director "m_director",
-               m.synopsis "m_synopsis",
-               m.regdate  "m_regdate",
-               f.file "f_file"
-        FROM ci_reserv re
-                 inner join
-             ci_movies m on re.movie_id = m.id
-             inner join ci_file f on m.id = f.movie_id 
-        WHERE re.user_id = 1
-        ORDER BY re.id desc;
-       
-       SELECT f.file
-	    FROM ci_file f
-		WHERE movie_id = 3;
+SELECT re.id         "re_id",
+               re.seat       "re_seat",
+               re.regdate    "re_regdate",
+               u.id          "u_id",
+               u.username    "u_username",
+               u.password    "u_password",
+               u.name        "u_name",
+               u.authorities "u_authorities",
+               u.regdate     "u_regdate",
+               m.id          "m_id",
+               m.title       "m_title",
+               m.genre       "m_genre",
+               m.runtime     "m_runtime",
+               m.director    "m_director",
+               m.synopsis    "m_synopsis",
+               m.regdate     "m_regdate"
+        FROM ci_reserv re,
+             ci_user u,
+             ci_movies m
+        WHERE re.user_id = u.id
+          AND re.movie_id = m.id
+          AND re.user_id = #{param1};
+         
+         
+      select 	
+               re.regdate    "re_regdate",
+               u.id          "u_id",
+               u.username    "u_username",
+               u.password    "u_password",
+               u.name        "u_name",
+               u.authorities "u_authorities",
+               u.regdate     "u_regdate",
+               m.id          "m_id",
+               m.title       "m_title",
+               m.genre       "m_genre",
+               m.runtime     "m_runtime",
+               m.director    "m_director",
+               m.synopsis    "m_synopsis",
+               m.regdate     "m_regdate",
+               group_concat(re.seat) as seat 
+        from ci_reserv re,
+             ci_user u,
+             ci_movies m
+        WHERE re.user_id = u.id
+          AND re.movie_id = m.id
+          AND re.user_id = 1
+         group by movie_id ;
+         
+         
+         select group_concat(re.seat) as cnt
+         from ci_reserv re, ci_user u
+         where re.user_id = u.id
+         and re.movie_id = 3
+         and user_id  = 1;
+         group by movie_id ;
+        
+        select group_concat(re.seat)
+         from ci_reserv re, ci_user u
+         where re.user_id = u.id
+         and user_id  = 1 
+         group by movie_id ;
+        
+;
 	
