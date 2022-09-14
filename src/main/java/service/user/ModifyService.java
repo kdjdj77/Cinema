@@ -71,8 +71,5 @@ public class ModifyService implements Service {
         request.setAttribute("result", cnt);
         request.setAttribute("dto", dto);
         // ↑ auto-generated key(id)도 담겨 있음
-
-
     }
-
 }
