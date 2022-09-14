@@ -13,7 +13,6 @@ import org.apache.ibatis.session.SqlSession;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 
-
 import domain.QryMyServiceList;
 import domain.ServiceDAO;
 import domain.ServiceDTO;
@@ -48,9 +47,7 @@ public class MyServiceService implements Service {
 			obj.setList(mslist);
 			obj.setCount(mslist.size());
 			obj.setStatus("OK");
-
-
-
+			
 			sqlSession.commit();
 		}catch (SQLException e) {
             e.printStackTrace();
@@ -58,6 +55,7 @@ public class MyServiceService implements Service {
         } finally {
             if (sqlSession != null) sqlSession.close();
         }
+		
 
 		String output = mapper.registerModule(new JavaTimeModule()).writeValueAsString(obj);
 		response.setContentType("application/json; charset=utf-8"); // MIME 설정
