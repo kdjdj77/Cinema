@@ -52,14 +52,12 @@
 	<jsp:include page="/WEB-INF/views/common/header.jsp" />
 
 	<div class="container mt-3">
-		<br>
-		<br>
-		<br>
+		<br><br><br>
 		<h2>상세 - ${dto.title }</h2>
 		<hr>
 		<div class="mb-3 mt-3 clearfix">
 			<span class="float-start me-2">id: ${dto.id}</span> 
-			<span class="float-end ms-4">작성일: ${dto.regDate }</span>
+			<span class="float-end ms-4">작성일: ${dto.regDateTime }</span>
 			<span class="float-end">조회수: ${dto.viewCnt }</span>
 		</div>
 
@@ -78,7 +76,7 @@
             </div>
 			
 			<div class="mb-3 mt-3">
-				<textarea style="width: 100%" rows="5" id="content" placeholder="내용을 입력하세요" name="content">${dto.content }</textarea>
+				<textarea style="width: 100%" rows="5" id="content" placeholder="내용을 입력하세요" name="content" readonly>${dto.content }</textarea>
 			</div>
 
 			<!-- 하단 링크 -->
