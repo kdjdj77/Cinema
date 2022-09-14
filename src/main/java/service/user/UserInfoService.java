@@ -19,11 +19,10 @@ public class UserInfoService implements Service{
 	
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws IOException {
-		
 		SqlSession sqlSession = null;
 		UserDAO dao = null;
 		
-		List<UserDTO> list = null;
+
 
 		
 		try {
@@ -36,6 +35,7 @@ public class UserInfoService implements Service{
 			user.setViewCnt(dao.myViewcnt(user.getId()));
 			
 			request.setAttribute("list", user);
+
 
 			sqlSession.commit();
 		} catch (SQLException e) {

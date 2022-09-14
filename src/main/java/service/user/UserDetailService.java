@@ -33,15 +33,10 @@ public class UserDetailService implements Service {
 
 			// 읽기
 			list = dao.selectById(id);
-
-			UserDTO loggedUser = (UserDTO)request.getSession().getAttribute(C.PRINCIPAL);
-			UserDTO realUser = list.get(0);
-			if(loggedUser.getId() != realUser.getId()) {
-				response.sendRedirect(request.getContextPath() + "/user/rejectAuth");
-				return;
-			}
+			UserDTO user = (UserDTO)request.getSession().getAttribute(C.PRINCIPAL);
 			
 			
+			request.setAttribute("list", user);
 
 			sqlSession.commit();
 		} catch (SQLException e) {
@@ -49,7 +44,7 @@ public class UserDetailService implements Service {
 		} finally {
 			if(sqlSession!= null) sqlSession.close();
 		}
-		request.setAttribute("list", list);
+		
 	}
 
 

@@ -115,7 +115,7 @@
         WHERE re.user_id = u.id
           AND re.movie_id = m.id
           AND re.user_id = #{param1}
-        ORDER BY re.id DESC LIMIT 5;
+          ORDER BY re.id DESC LIMIT 5
     </select>
 
     <select id="selectById" resultType="domain.ReservDTO">
@@ -126,7 +126,7 @@
         WHERE  
         	id = #{param1}
     </select>
-
+	
 
     <select id="mypageTicketList" resultMap="mapReserve">
         SELECT re.id      "re_id",
