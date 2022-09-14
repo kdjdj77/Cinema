@@ -1,16 +1,16 @@
 -- user 샘플데이터
 
-INSERT INTO ci_user (username, password, name, authorities, viewcnt) VALUES
-('USER1', '1234', '홍길동', 'ROLE_MEMBER', 17),
-('USER2', '1234', '강백호', 'ROLE_MEMBER', 2),
-('USER3', '1234', '서태웅', 'ROLE_MEMBER', 1),
-('USER4', '1234', '채치수', 'ROLE_MEMBER', 6),
-('USER5', '1234', '송태섭', 'ROLE_MEMBER', 1),
-('USER6', '1234', '정대만', 'ROLE_MEMBER', 1),
-('USER7', '1234', '권준호', 'ROLE_MEMBER', 1),
-('ADMIN1', '1234', '김대진', 'ROLE_ADMIN', 0),
-('ADMIN2', '1234', '정의형', 'ROLE_ADMIN', 0),
-('ADMIN3', '1234', '김종훈', 'ROLE_ADMIN', 0)
+INSERT INTO ci_user (username, password, name, authorities) VALUES
+('USER1', '1234', '홍길동', 'ROLE_MEMBER'),
+('USER2', '1234', '강백호', 'ROLE_MEMBER'),
+('USER3', '1234', '서태웅', 'ROLE_MEMBER'),
+('USER4', '1234', '채치수', 'ROLE_MEMBER'),
+('USER5', '1234', '송태섭', 'ROLE_MEMBER'),
+('USER6', '1234', '정대만', 'ROLE_MEMBER'),
+('USER7', '1234', '권준호', 'ROLE_MEMBER'),
+('ADMIN1', '1234', '김대진', 'ROLE_ADMIN'),
+('ADMIN2', '1234', '정의형', 'ROLE_ADMIN'),
+('ADMIN3', '1234', '김종훈', 'ROLE_ADMIN')
 ;
 -- movies 샘플데이터
 INSERT INTO ci_movies (title, genre, runtime, director, actor, synopsis) VALUES
@@ -207,3 +207,27 @@ select * from ci_scomment;
 select * from ci_servlist;
 select * from ci_file;
 select * from ci_reserv;
+
+SELECT 
+re.user_id "u.id", re.id      "re_id",
+               re.seat    "re_seat",
+               re.regdate "re_regdate",
+               m.id       "m_id",
+               m.title    "m_title",
+               m.genre    "m_genre",
+               m.runtime  "m_runtime",
+               m.director "m_director",
+               m.synopsis "m_synopsis",
+               m.regdate  "m_regdate",
+               f.file "f_file"
+        FROM ci_reserv re
+                 inner join
+             ci_movies m on re.movie_id = m.id
+             inner join ci_file f on m.id = f.movie_id 
+        WHERE re.user_id = 1
+        ORDER BY re.id desc;
+       
+       SELECT f.file
+	    FROM ci_file f
+		WHERE movie_id = 3;
+	

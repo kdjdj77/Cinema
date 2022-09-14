@@ -1,109 +1,111 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>    
+         pageEncoding="UTF-8" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
-<!DOCTYPE html>
-<html lang="ko">
- 
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
-     <script src="${pageContext.request.contextPath }/js/list.js"></script>
- 
-    <title>예매 목록</title>
-</head>
- 
-<body>
-    <%-- 인증 헤더 --%>
-    <jsp:include page="/WEB-INF/views/common/header.jsp"/>
-	<div class="content ticket-menu content-active">
-					<div class="content-list-text">예매 목록</div>
-					<c:choose>
-					<c:when test="${fn:length(list) == 0}">
-						<div class="content-no-item-text">예매목록이 없습니다.</div>
-					</c:when>
-					<c:otherwise>
-						<c:forEach items="${list}" var="list">
-						<%-- <div class="mb-3 mt-3 clearfix">
-            <span class="float-start me-2">총 ${cnt }개</span>
-            <span class="float-start">page ${page }/${totalPage }</span>
-            <span class="float-end">
-            </span>
-        </div> --%>
-							<div class="ticket-item-group">
-								<div class="ticket-item-header">
-									<%-- <div class="ticket-date">${list.regdate}</div> --%>
-								</div>
-								<div class="line"></div>
-								<div class="ticket-item">
-								<table>
-									<thead>
-									 	<tr>
-											<th>작성자</th>
-                    						<th>제목</th>
-                    						<th>답변개수</th>
-                    						<th>작성일</th>
-										</tr>
-									</thead>
-									
-									<tbody>
-                						<tr>
-                    						<td>${list.movie.title }</td>
-                    						<td><a href="resdetail?id=${list.id}">${list.seat }</a></td>
-                    						<td>개</td>
-                    						<td></td>
-                						</tr>                       
-            						</tbody>
-								</table>
-								</div>
-							</div>
-							<%--  <!-- pagination -->
-    <div class="container mt-1">
-        <ul class="pagination justify-content-center">
-            << 표시 여부   
-            <c:if test="${page > 1 }">
-            <li class="page-item"><a class="page-link" href="${url }" title="처음"><i class='fas fa-angle-double-left'></i></a></li>
-            </c:if>     
-        
-            < 표시 여부
-            <c:if test="${startPage > 1 }">
-            <li class="page-item"><a class="page-link" href="${url }?page=${startPage - 1 }"><i class='fas fa-angle-left'></i></a></li>
-            </c:if>
-            
-            페이징 안의 '숫자' 표시 
-            <c:if test="${totalPage > 1 }">
-                <c:forEach var="k" begin="${startPage }" end="${endPage }">
-                <c:choose>
-                    <c:when test="${k != page }">
-                        <li class="page-item"><a class="page-link" href="${url }?page=${k }">${k }</a></li>        			
-                    </c:when>
-                    <c:otherwise>
-                        <li class="page-item active"><a class="page-link" href="javascript:void(0);">${k }</a></li>
-                    </c:otherwise>
-                </c:choose>
-                </c:forEach>    
-            </c:if>
-                        
-            > 표시 여부
-            <c:if test="${totalPage > endPage }">
-            <li class="page-item"><a class="page-link" href="${url }?page=${endPage + 1 }"><i class='fas fa-angle-right'></i></a></li>
-            </c:if>
-            
-            >> 표시 여부
-            <c:if test="${page < totalPage }">
-            <li class="page-item"><a class="page-link" href="${url }?page=${totalPage }"><i class='fas fa-angle-double-right'></i></a></li>
-            </c:if>
-            
-        </ul>
-    </div> --%>
-						</c:forEach>
-					</c:otherwise>
-					</c:choose>
-				</div>
-    <h1>응!</h1>
-    <jsp:include page="/WEB-INF/views/common/footer.jsp"/>
-</body>
-</html>
+<c:choose>
+    <c:when test="${empty list || fn:length(list) == 0}">
+        <script>
+            alert("해당 영화가 삭제되거나 없습니다");
+            history.back();
+        </script>
+    </c:when>
+    <c:otherwise>
+        >
+        <!DOCTYPE html>
+        <html lang="ko">
+
+        <head>
+            <meta charset="utf-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1">
+            <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+            <link href='${pageContext.request.contextPath}/css/bootstrap.css' rel='stylesheet'/>
+
+            <link href='${pageContext.request.contextPath}/css/rotating-card.css' rel='stylesheet'/>
+
+            <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport'/>
+
+
+            <title>예매 목록</title>
+
+
+        </head>
+
+        <body>
+            <%-- 인증 헤더 --%>
+        <jsp:include page="/WEB-INF/views/common/header.jsp"/>
+        <section>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+            <div class="container">
+
+                <div class="row">
+                    
+                        <div class="col-sm-10 col-sm-offset-1" >
+                        <c:forEach var="list" items="${list}">
+                            <div class="col-md-4 col-sm-6" onclick="resdetail?id=${list.id}">                              
+                                <div class="card-container" >
+                                    <div class="card">
+                                        <div class="front">
+                                            <div class="content">
+                                                <div class="main">
+                                                    <h3 class="name">${list.movie.title }</h3>
+                                                    <p class="profession">${list.regDate }</p>
+                                                    <p class="text-center">KORIN MOVIES</p>
+                                                    <p class="text-center">좌석: ${list.seat }</p>
+                                                </div>
+                                                <div class="footer">
+                                                    <i class="fa fa-mail-forward"></i> 반대편이 보고싶다면?
+                                                </div>
+                                            </div>
+                                        </div> <!-- end front panel -->
+                                        <div class="back">
+                                            <div class="header">
+                                                <h5 class="motto">${list.movie.title }</h5>
+                                            </div>
+                                            <div class="content">
+                                                <div class="main">
+                                                    <h4 class="text-center">${list.movie.director }</h4>
+                                                    <p class="text-center">${list.movie.actor }</p>
+
+                                                    <div class="stats-container">
+                                                        
+                                                            <h4>
+                                                            <a href="resdetail?id=${list.id}">
+                                                            클릭시 상세정보를 볼 수 있어요!
+                                                            </a>
+                                                            </h4> 
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                            
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            </c:forEach>
+                        </div>
+
+
+                </div> <!-- end row -->
+                <div class="space-200">
+
+                </div>
+
+
+            </div>
+        </section>
+
+        <jsp:include page="/WEB-INF/views/common/footer.jsp"/>
+
+
+        </body>
+        </html>
+
+    </c:otherwise>
+</c:choose>
