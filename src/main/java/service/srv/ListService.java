@@ -20,6 +20,7 @@ public class ListService implements Service {
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) {
 		
+		
 		// 파라미터 받기 (현재 page)
 		int page = 1;   // 디폴트 페이지 1
 		String pageParam = request.getParameter("page");
@@ -51,7 +52,6 @@ public class ListService implements Service {
 		
 		int startPage = 1;
 		int endPage = 10;
-
 		try {
 			sqlSession = SqlSessionManager.getInstance().openSession();
 			dao = sqlSession.getMapper(ServiceDAO.class);
@@ -66,7 +66,6 @@ public class ListService implements Service {
 			// 페이지 글 목록 가져오기
 			int fromRow = (page - 1) * pageRows;
 			list = dao.selectFromRow(fromRow, pageRows);
-			
 			
 			// [페이징] 에 표시할 '시작페이지' 와 '마지막페이지' 계산
 	        startPage = ((int)((page - 1) / writePages) * writePages) + 1;

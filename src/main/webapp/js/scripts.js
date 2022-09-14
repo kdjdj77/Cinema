@@ -100,12 +100,12 @@ function buildMyService(result) {
 
         const row = `
 	        <tr>
-	        <td>${name}</td>
-	        <td>
-	            <a href=../service/detail?id=${id}>${title}</a>            
-	        </td>
-	        <td>${answer}</td>	/* 답변완료기능 xml 에서 */
-	        <td>${regdate}</td>
+		        <td>${name}</td>
+		        <td>
+		            <a href="${conPath}/service/detail?id=${id}">${title}</a>            
+		        </td>
+		        <td>${answer}</td>	/* 답변완료기능 xml 에서 */
+		        <td>${regdate}</td>
 	        <tr>
 	        `;
         out.push(row);

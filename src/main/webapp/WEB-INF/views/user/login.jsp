@@ -17,50 +17,6 @@
 </head>
 
 <body>
-
-	<script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
-	<script type="text/javascript">
-	// 58b7f7f1223b1914b77c46c8f98fc9ca
-	window.Kakao.init("58b7f7f1223b1914b77c46c8f98fc9ca");
-	
-	function kakaoLogin(){	// 로그인버튼을 누르면 얘가 실행된다
-		window.Kakao.Auth.login({
-			scope: 'profile_nickname, profile_image, account_email',
-			success: function(authObj){
-				console.log(authObj);
-				window.Kako.API.request({
-					url: '/v2/user/me',
-					success: res => {
-						const kakao_account = res.kakao_acccount;
-						console.log(kakao_account);
-					}
-				});
-			}
-		});
-	}
-	
-	//카카오로그아웃  
-	function kakaoLogout() {
-	    if (Kakao.Auth.getAccessToken()) {
-	      Kakao.API.request({
-	        url: '/v1/user/unlink',
-	        success: function (response) {
-	        	console.log(response)
-	        },
-	        fail: function (error) {
-	          console.log(error)
-	        },
-	      })
-	      Kakao.Auth.setAccessToken(undefined)
-	    }
-	  }
-
-	  
-	
-	
-</script>
-
-
 	<div class="container mt-3 text-center">
 		<form action="${pageContext.request.contextPath }/user/login"
 			method="POST">
@@ -93,8 +49,7 @@
 
 
 		</form>
+		<jsp:include page="/WEB-INF/views/common/apiLogin.jsp"/>
 	</div>
-
 </body>
-
 </html>

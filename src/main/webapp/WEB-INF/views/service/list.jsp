@@ -28,9 +28,17 @@
     	<br><br><br>
         <h2>문의 목록</h2>
         
+		<div style="float: right">
+			<input type="text" id="find" name="username" placeholder="작성자 입력">&nbsp;&nbsp;<button onclic="search()">검색</button>
+		</div>
+		
+		
+		<br>
+        
          <div class="mb-3 mt-3 clearfix">
            <span class="float-start me-2">총 ${cnt }개</span>
            <span class="float-start">page ${page }/${totalPage }</span>
+           <a class="btn btn-outline-dark mx-3 mb-3" href="write">작성</a>
            <span class="float-end">
                <form name="frmPageRows">
                    <input type="hidden" name="page" value="${page }">
@@ -40,6 +48,7 @@
                        <option value="20" ${pageRows==20 ? 'selected' : '' }>20</option>
                    </select>
                </form>
+               
            </span>
         </div>          
         
@@ -47,19 +56,25 @@
             <thead style="background-color: #483D8B">
                 <tr>
                     
-                    <th class="text-white">작성자</th>
-                    <th class="text-white">제목</th>
-                    <th class="text-white">답변개수</th>
-                    <th class="text-white">작성일</th>
+                    <th class="text-white" style="width: 10%">작성자</th>
+                    <th class="text-white" style="width: 50%">제목</th>
+                    <th class="text-white" style="width: 10%">답변개수</th>
+                    <th class="text-white" style="width: 30%">작성일</th>
                 </tr>
             </thead>
             <tbody>
             <c:forEach var="dto" items="${list }">
-                <tr>
-                    <td>${dto.user.name}</td>
-                    <td><a href="detail?id=${dto.id }">${dto.title }</a></td>
+            <c:set var="name"       value="${dto.user.name}" />
+			<c:set var="totalLength" value="${fn:length(dto.user.name) }" />
+			<c:set var="first"      value="${fn:substring(name, 0, 1) }" />
+			<c:set var="last"      value="${fn:substring(name, 2, totalLength) }" />
+              	<tr>
+                    <!-- <td>${dto.user.name}</td> -->
+					<td><c:if test="${!empty  name}"><c:out value="${first}*${last}"/></c:if></td>
+                    
+                    <td><a style="text-decoration: none; color: black" href="detail?id=${dto.id }">${dto.title }</a></td>
                     <td>${dto.cmtCheck }개</td>
-                    <td>${dto.regDate}</td>
+                    <td>${dto.regDateTime}</td>
                 </tr>            
             </c:forEach>           
             </tbody>
@@ -108,6 +123,9 @@
         
     </div>
     <jsp:include page="/WEB-INF/views/common/footer.jsp"/>
+
+    
+    
 </body>
 </html>
 
