@@ -15,6 +15,8 @@
 </head>
  
 <body>
+
+
 	<%-- 인증 헤더 --%>
     <jsp:include page="/WEB-INF/views/common/header.jsp"/>
     <div class="container mt-3">

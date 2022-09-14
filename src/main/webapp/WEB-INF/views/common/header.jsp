@@ -7,7 +7,21 @@
 <!DOCTYPE html>
 <html>
 
+
 <head>
+
+<style>
+
+	#nav li {
+	margin-left:40px
+	}
+	
+	#nav li a:hover{
+    background-color: #483D8B;
+}
+</style>
+
+
     <title>NavBar</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -18,16 +32,17 @@
 </head>
 
 <body>
+
 <nav class="navbar navbar-expand-sm navbar-dark bg-dark" style="position: fixed; top:0; width:100%; z-index:999;">
-    <div class="container-fluid">
+    <div class="container-fluid" style="height: 50px">
         <a class="navbar-brand" href="${pageContext.request.contextPath}/movie/home">LogO(test)</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mynavbar">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="mynavbar">
-            <ul class="navbar-nav me-auto">
+            <ul class="navbar-nav me-auto" style="" id="nav">
               
-                <li class="nav-item" TODO="">
+                <li class="nav-item" TODO="" >
                     <a class="nav-link" href="${pageContext.request.contextPath}/movie/home">영화</a>
                 </li>
 
@@ -50,7 +65,7 @@
                 </c:when>
                 <c:otherwise>
                     <!-- 로그인 했을때는 username 과 로그아웃 form 보여주기 -->
-                    <form action="${pageContext.request.contextPath}/user/logout" method="POST" TODO="">
+                    <form action="${pageContext.request.contextPath}/user/logout" method="POST" TODO="" onsubmit="return confirm('로그아웃 하시겠습니까?');">
                         <!--TODO : 로그아웃후 다시 돌아오기 -->
                         <span class="d-flex">
 			                <span class="text-light p-2"><span
@@ -66,5 +81,6 @@
 </nav>
 
 </body>
+
 
 </html>

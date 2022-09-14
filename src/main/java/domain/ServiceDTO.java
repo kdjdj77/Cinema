@@ -25,21 +25,24 @@ public class ServiceDTO {
 	private String title;
 	private String content;
 	private int viewCnt;
-	/* private LocalDateTime regDate; */
 	
 	private int cmtCheck;
 	
 	private int reply;
 
-
-	/*
-	 * public String getRegDateTime() { if(this.regDate == null) return ""; return
-	 * this.regDate.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")); }
-	 */
 	@JsonDeserialize(using = LocalDateTimeDeserializer.class)
 	@JsonSerialize(using = LocalDateTimeSerializer.class)
 	@JsonFormat(pattern="yyyy-MM-dd HH:mm:ss", timezone = "Asia/Seoul")
 	@JsonProperty("regdate")
 	private LocalDateTime regDate;
 	
+
+	
+  public String getRegDate() { 
+  
+  if(this.regDate == null) return ""; return
+  this.regDate.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")); 
+  
+  }
+	 
 }

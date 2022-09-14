@@ -14,17 +14,18 @@
           
           <c:if test="${fn:contains(sessionScope.PRINCIPAL.authorities, 'ROLE_ADMIN' )}">  
           <div class="input-group my-2">
-              <input type="text" class="form-control" id="input_comment">
+              <textarea class="form-control" id="input_comment"></textarea>
               <button type="button" class="btn btn-outline-primary" id="btn_comment">작성</button>
           </div>
           </c:if>
 
-          <table class="table table-hover mt-3" id="cmt_table">
+          <table class="table table-hover mt-3" style="border-radius: 0"  id="cmt_table">
               <thead>
                 <tr>
-                  <th style="width: 16.66%">작성자</th>
-                  <th>내용</th>
+                  <th style="width: 6%">작성자</th>
+                  <th style="width: 40%">내용</th>
                   <th style="width: 16.66%">작성일</th>
+                  <th style="width: 4%"></th>
                 </tr>
               </thead>
               <tbody id="cmt_list">
