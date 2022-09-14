@@ -72,12 +72,8 @@ public class ModifyService implements Service {
         request.setAttribute("result", cnt);
         request.setAttribute("dto", dto);
         // ↑ auto-generated key(id)도 담겨 있음
-        
         // 로그인 진행
      	HttpSession session = request.getSession();
      	session.setAttribute(C.PRINCIPAL, dto);
-
-
     }
-
 }
