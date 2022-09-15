@@ -34,7 +34,8 @@
             <link href="https://fonts.googleapis.com/css?family=Muli:400,400i,800,800i" rel="stylesheet"
                   type="text/css"/>
             <!-- Core theme CSS (includes Bootstrap)-->
-            <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/styles.css">            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+            <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/styles.css">
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
             <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
 
 
@@ -51,7 +52,7 @@
         </form>
         <!-- Navigation-->
         <nav class="navbar navbar-expand-lg navbar-dark bg-primary padding-top:70px;" id="sideNav">
-        
+
             <a class="navbar-brand js-scroll-trigger" href="#page-top">
                 <span class="d-block d-lg-none">${ sessionScope.PRINCIPAL.username  }(${ sessionScope.PRINCIPAL.name  })</span>
             </a>
@@ -186,7 +187,7 @@
                         </thead>
                         <tbody>
                         <tr>
-                        	<td>브론즈</td>
+                            <td>브론즈</td>
                             <td>0</td>
                         </tr>
                         <tr>
@@ -194,15 +195,15 @@
                             <td>1 ~ 4</td>
                         </tr>
                         <tr>
-                        	<td>골드</td>
+                            <td>골드</td>
                             <td>5 ~ 24</td>
                         </tr>
                         <tr>
-                        	<td>플래티넘</td>
+                            <td>플래티넘</td>
                             <td>25 ~ 39</td>
                         </tr>
                         <tr>
-                        	<td>다이아몬드</td>
+                            <td>다이아몬드</td>
                             <td>40 ~</td>
                         </tr>
                         </tbody>
