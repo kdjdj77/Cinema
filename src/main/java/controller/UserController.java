@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import common.C;
 import service.Service;
+import service.user.ApiLoginService;
 import service.user.LoginService;
 import service.user.RegisterService;
 
@@ -50,6 +51,7 @@ public class UserController extends HttpServlet {
 		// 2. 寃곌낵瑜� �궡蹂대궪 view瑜� 寃곗젙�븳�떎
 		Service service = null;	// �뼱�뼚�븳 Service 濡쒖쭅�쓣 �닔�뻾�븷吏�
 		String viewPage = null; // �뼱�뼚�븳 �럹�씠吏�(view)瑜� 蹂댁뿬以꾩�
+		String redirectUrl = null;
 		
 		switch(command) {
 			case "/user/register":
@@ -81,7 +83,7 @@ public class UserController extends HttpServlet {
 						// Redirect媛� �씪�뼱�굹吏� �븡怨� 濡쒓렇�씤 �꽦怨듯뻽�떎硫�
 						if (!response.isCommitted()) {
 							// 湲곕낯�쟻�쑝濡� home�쑝濡� redirect�븳�떎
-							String redirectUrl = request.getContextPath() + "/movie/home";
+							redirectUrl = request.getContextPath() + "/movie/home";
 							
 							// �샊�떆 url prior媛� 議댁옱�뻽�떎硫� �빐�떦 url濡� redirect
 							String urlPrior = C.retrieveUrlPrior(request);
@@ -100,6 +102,15 @@ public class UserController extends HttpServlet {
 				break;
 			case "/user/rejectAuth":
 				viewPage = "/common/rejectAuth.jsp";
+				break;
+			case "/user/apiLogin":
+				service = new ApiLoginService();
+				service.execute(request,  response);
+				redirectUrl = request.getContextPath() + "/movie/home";
+				response.sendRedirect(redirectUrl);
+				break;
+			case "/user/naverOK":
+				viewPage = "/common/naverOK.jsp";
 				break;
 		}
 		

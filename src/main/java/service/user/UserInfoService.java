@@ -2,7 +2,6 @@ package service.user;
 
 import java.io.IOException;
 import java.sql.SQLException;
-import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -21,16 +20,12 @@ public class UserInfoService implements Service{
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		SqlSession sqlSession = null;
 		UserDAO dao = null;
-		
 
-
-		
 		try {
 			sqlSession = SqlSessionManager.getInstance().openSession();
 			dao = sqlSession.getMapper(UserDAO.class);
 			
 			UserDTO user = (UserDTO)request.getSession().getAttribute(C.PRINCIPAL);
-			int id = user.getId();
 			
 			user.setViewCnt(dao.myViewcnt(user.getId()));
 			

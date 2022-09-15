@@ -41,8 +41,7 @@ public class DetailService implements Service {
 			
 			// 조회수 증가 + 글 읽기
 			dao.incViewCnt(id);
-			list = dao.selectById(id);
-			
+			list = dao.selectById(id);			
 			
 			sqlSession.commit();
 		} catch (SQLException e) {  

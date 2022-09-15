@@ -42,17 +42,19 @@
 		 
 		        <form action="update" method="POST">
 		            <input type="hidden" name="id" value="${dto.id}"/>
-		            <div class="mb-3">
-		                <label for="name">작성자:</label>
-		                <span class="form-control" readonly>${dto.user.username}(${dto.user.name})</span>
-		            </div>    
-		            <div class="mb-3 mt-3">
-		                <label for="title">제목:</label>
-		                <input type="text" class="form-control" id="title" placeholder="제목을 입력하세요" name="title" value="${dto.title}" required>
+		            <div style="display: flex; flex-wrap: wrap">
+		            <div class="mb-3" style="width: 60%; display: flex; flex-wrap: wrap">
+		                <span style="margin-top: 6px">제목 :&nbsp;</span>
+		                <input type="text" class="form-control" style="border-radius: 0; width: 60%" id="title" placeholder="제목을 입력하세요" name="title" value="${dto.title}" required>
+		            </div>
+		            <div class="mb-3" style="width: 30%; display: flex; flex-wrap: wrap; margin-left: auto">
+		                <span style="margin-top: 6px">작성자 :&nbsp;</span>
+		                <span class="form-control" style="border: 0; width: 20%" readonly>${dto.user.name}</span>
+		            </div>
 		            </div>
 		            <div class="mb-3 mt-3">
 		                <label for="content">내용:</label>
-		                <textarea class="form-control" rows="5" id="content" placeholder="내용을 입력하세요" name="content">${dto.content}</textarea>
+		                <textarea style="width: 100%" rows="5" id="content" placeholder="내용을 입력하세요" name="content">${dto.content }</textarea>
 		            </div>
 		 
 		            <!-- 하단 링크 -->
