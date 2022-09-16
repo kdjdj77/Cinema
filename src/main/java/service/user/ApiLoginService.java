@@ -51,8 +51,11 @@ public class ApiLoginService implements Service {
 				dto.setName(name);
 				dao.register(dto);
 				list = dao.selectByUsername(dto);
+				
+				dto.setProvider("api");
 			}
 			else dto = list.get(0);
+			
 			
 			HttpSession session = request.getSession();
 			session.setAttribute(C.PRINCIPAL, dto);

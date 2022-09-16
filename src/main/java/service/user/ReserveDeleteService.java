@@ -21,8 +21,7 @@ public class ReserveDeleteService implements Service {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws IOException {
-		UserDTO user = (UserDTO)request.getSession().getAttribute(C.PRINCIPAL);
-		int id = user.getId();
+		int id = Integer.parseInt(request.getParameter("id"));
 		SqlSession sqlSession = null;
 		ReservDAO dao = null;
 		
@@ -37,7 +36,7 @@ public class ReserveDeleteService implements Service {
 			
 			
 			UserDTO loggedUser = (UserDTO)request.getSession().getAttribute(C.PRINCIPAL); // 현재로그인한 사용자 정보가 담겨있따
-			int reservedUser = uid;		// 읽어온 글의 작성자
+			int reservedUser = uid;		// 읽어온 예매자
 			if(loggedUser.getId() != reservedUser) {
 				response.sendRedirect(request.getContextPath() + "/user/rejectAuth");
 				return;

@@ -115,7 +115,8 @@
         WHERE re.user_id = u.id
           AND re.movie_id = m.id
           AND re.user_id = #{param1}
-          ORDER BY re.id DESC LIMIT 5
+          ORDER BY re.id DESC 
+          LIMIT #{param2}, 5
     </select>
 
     <select id="selectById" resultType="domain.ReservDTO">
@@ -129,31 +130,67 @@
 	
 
     <select id="mypageTicketList" resultMap="mapReserve">
-        SELECT re.id      "re_id",
-               re.seat    "re_seat",
-               re.regdate "re_regdate",
-               m.id       "m_id",
-               m.title    "m_title",
-               m.genre    "m_genre",
-               m.runtime  "m_runtime",
-               m.director "m_director",
-               m.synopsis "m_synopsis",
-               m.regdate  "m_regdate",
-               m.actor "m_actor",
+         SELECT re.id         "re_id",
+               re.seat       "re_seat",
+               re.regdate    "re_regdate",
                u.id          "u_id",
                u.username    "u_username",
+               u.password    "u_password",
                u.name        "u_name",
                u.authorities "u_authorities",
-               u.regdate     "u_regdate"
-        FROM ci_reserv re
-                 inner join
-             ci_movies m on re.movie_id = m.id, ci_user u
-        WHERE re.user_id = #{pram1}
-        ORDER BY re.id DESC
+               u.regdate     "u_regdate",
+               m.id          "m_id",
+               m.title       "m_title",
+               m.genre       "m_genre",
+               m.runtime     "m_runtime",
+               m.director    "m_director",
+               m.synopsis    "m_synopsis",
+               m.regdate     "m_regdate"
+        FROM ci_reserv re,
+             ci_user u,
+             ci_movies m
+        WHERE re.user_id = u.id
+          AND re.movie_id = m.id
+          AND re.user_id = #{param1}
+          and m.id = #{param2}
+          ORDER BY re.id DESC 
+          LIMIT #{param3}, 5
     </select>
     
+    <select id="totalSeat" resultType="int" parameterType="int">
+    	select count(re.seat) as seatCount
+        from ci_reserv re,
+             ci_user u,
+             ci_movies m
+        WHERE re.user_id = u.id
+          AND re.movie_id = m.id
+          AND re.user_id = #{param1}
+          AND m.id = #{param2}
+    </select>
     
-    
+    <select id="checkDupli" resultMap="mapReserve">
+    	select u.id          "u_id",
+               u.username    "u_username",
+               u.password    "u_password",
+               u.name        "u_name",
+               u.authorities "u_authorities",
+               u.regdate     "u_regdate",
+               m.id          "m_id",
+               m.title       "m_title",
+               m.genre       "m_genre",
+               m.runtime     "m_runtime",
+               m.director    "m_director",
+               m.synopsis    "m_synopsis",
+               m.regdate     "m_regdate",
+               group_concat(re.seat) as totalSeat
+        from ci_reserv re,
+             ci_user u,
+             ci_movies m
+        WHERE re.user_id = u.id
+          AND re.movie_id = m.id
+          AND re.user_id = #{param1}
+          group by movie_id
+    </select>
     <!-- 내 예약 페이징용 -->
     <select id="selectFromRow" resultMap="mapReserve">
 		SELECT re.id         "re_id",

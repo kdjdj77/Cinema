@@ -1,6 +1,7 @@
 package domain;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -23,6 +24,8 @@ public class ReservDTO {
     private UserDTO user;
 	private MovieDTO movie;
     private String seat;
+    private String fileName;
+    private int seatTotal;
 	/*
 	 * private LocalDateTime regDate;
 	 * 
@@ -36,6 +39,7 @@ public class ReservDTO {
 	@JsonFormat(pattern="yyyy-MM-dd HH:mm:ss", timezone = "Asia/Seoul")
 	@JsonProperty("regdate")
 	private LocalDateTime regDate;
+
 
 
 

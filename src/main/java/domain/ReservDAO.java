@@ -14,10 +14,10 @@ public interface ReservDAO {
 	public abstract int delete(int id) throws SQLException;
 
 	// 최근 5개
-	List<ReservDTO> recentMyReserve(int user_id) throws SQLException;
+	List<ReservDTO> recentMyReserve(int user_id, int page) throws SQLException;
 	
 	// 전체
-	public abstract List<ReservDTO> mypageTicketList(int user_id) throws SQLException;
+	public abstract List<ReservDTO> mypageTicketList(int user_id, int movie_id, int page) throws SQLException;
 	
 	// 특정 예매 확인
 	List<ReservDTO> selectById(int id) throws SQLException;
@@ -27,6 +27,10 @@ public interface ReservDAO {
 	
 	public abstract int selectByUserId(int user_id) throws SQLException;
 	
+	// 영화별로 좌석 모아보기
+	public int totalSeat(int user_id, int movie_id) throws SQLException;
+	
+	public abstract List<ReservDTO> checkDupli(int user_id) throws SQLException;
 	
 	
 	/*

@@ -122,6 +122,7 @@
         WHERE sl.user_id = u.id
 			AND sl.user_id = #{param1}
         ORDER BY sl.id DESC
+        LIMIT #{param2}, 10
     </select>
     
 

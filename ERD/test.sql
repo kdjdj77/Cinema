@@ -208,5 +208,3 @@ select * from ci_servlist;
 select * from ci_file;
 select * from ci_reserv;
 
-
-	

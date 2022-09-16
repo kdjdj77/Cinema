@@ -35,7 +35,7 @@ public interface ServiceDAO {
     // scomment id check
     public int[] checkCmt(int id) throws SQLException;
 
-    List<ServiceDTO> myService(int user_id) throws SQLException;
+    List<ServiceDTO> myService(int user_id, int page) throws SQLException;
     
     
 

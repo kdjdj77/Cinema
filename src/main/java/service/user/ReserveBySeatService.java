@@ -13,39 +13,38 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 
 import common.C;
-import domain.MovieDAO;
-import domain.MovieDTO;
-import domain.QryMyReserveList;
+import domain.QryMyReserveDetailList;
 import domain.ReservDAO;
 import domain.ReservDTO;
 import domain.UserDTO;
 import service.Service;
 import sqlmapper.SqlSessionManager;
 
-public class RecentMyReserveService implements Service{
+public class ReserveBySeatService implements Service{
 
     @Override
     public void execute(HttpServletRequest request, HttpServletResponse response) throws IOException {
+    	int id = Integer.parseInt(request.getParameter("id"));
     	UserDTO user = (UserDTO)request.getSession().getAttribute(C.PRINCIPAL);
-		int id = user.getId();
+		int uid = user.getId();
 		int page = Integer.parseInt(request.getParameter("page"));
 		
-        QryMyReserveList obj = new QryMyReserveList();
+        QryMyReserveDetailList obj = new QryMyReserveDetailList();
         ObjectMapper mapper = new ObjectMapper();
 
         SqlSession sqlSession = null;
         ReservDAO rdao = null;
 
 
-        List<ReservDTO> mrlist = null;
+        List<ReservDTO> list = null;
         
         try{
             sqlSession = SqlSessionManager.getInstance().openSession();
             rdao = sqlSession.getMapper(ReservDAO.class);
             
-            mrlist = rdao.recentMyReserve(id, page *5);
-            obj.setList(mrlist);
-            obj.setCount(mrlist.size());
+            list = rdao.mypageTicketList(uid, id, page * 5);
+            obj.setList(list);
+            obj.setCount(list.size());
             obj.setStatus("OK");
 
             sqlSession.commit();
