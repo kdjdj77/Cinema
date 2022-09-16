@@ -1,6 +1,7 @@
 package service.srv;
 
 import java.sql.SQLException;
+import java.util.HashMap;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -20,6 +21,11 @@ public class ListService implements Service {
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) {
 		
+		String search = "";
+		
+		if(request.getParameter("search") != null) {
+		search = request.getParameter("search");
+		}
 		
 		// 파라미터 받기 (현재 page)
 		int page = 1;   // 디폴트 페이지 1
@@ -48,7 +54,10 @@ public class ListService implements Service {
 		SqlSession sqlSession = null;
 		ServiceDAO dao = null;
 
+		
 		List<ServiceDTO> list = null;
+		HashMap<String, Object> hmap = new HashMap<>();
+		
 		
 		int startPage = 1;
 		int endPage = 10;
@@ -65,7 +74,15 @@ public class ListService implements Service {
 			
 			// 페이지 글 목록 가져오기
 			int fromRow = (page - 1) * pageRows;
-			list = dao.selectFromRow(fromRow, pageRows);
+			
+			hmap.put("from", fromRow);
+			hmap.put("row", pageRows);
+			hmap.put("search", search);
+			System.out.println(hmap);
+			list = dao.selectFromRow(hmap);
+			
+			
+			
 			
 			// [페이징] 에 표시할 '시작페이지' 와 '마지막페이지' 계산
 	        startPage = ((int)((page - 1) / writePages) * writePages) + 1;

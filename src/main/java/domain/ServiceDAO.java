@@ -1,6 +1,7 @@
 package domain;
 
 import java.sql.SQLException;
+import java.util.HashMap;
 import java.util.List;
 
 public interface ServiceDAO {
@@ -26,7 +27,7 @@ public interface ServiceDAO {
 
     // 페이징
     // 몇번째(from) 부터 몇개(rows) 를 SELECT
-    public List<ServiceDTO> selectFromRow(int from, int rows) throws SQLException;
+    public List<ServiceDTO> selectFromRow(HashMap<String, Object> hmap) throws SQLException;
 
     // 전체 글의 개수
     public int countAll() throws SQLException;
