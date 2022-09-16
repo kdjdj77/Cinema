@@ -26,7 +26,8 @@ public class UserDTO {
     @JsonIgnore
     private LocalDateTime regDate;
     private int viewCnt;
-
+    
+    private String provider;
    
     @JsonIgnore
     // String 으로 리턴하는 getter

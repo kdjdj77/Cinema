@@ -28,9 +28,30 @@
     	<br><br><br>
         <h2>문의 목록</h2>
         
+        <form action="list">
 		<div style="float: right">
-			<input type="text" id="find" name="username" placeholder="작성자 입력">&nbsp;&nbsp;<button onclic="search()">검색</button>
+			<input type="text" id="find" name="search" placeholder="입력">&nbsp;&nbsp;<button onclick="submit();">검색</button>
 		</div>
+		</form>
+		
+		
+		<table id="A">
+		<tbody>
+            <c:forEach var="dto" items="${list }">
+            <c:set var="name"       value="${dto.user.name}" />
+              	<tr>
+                    <!-- <td>${dto.user.name}</td> -->
+					<c:if test="${name eq fname}"><td><c:out value="${first}*${last}"/></td>
+                    
+                    <td><a style="text-decoration: none; color: black" href="detail?id=${dto.id }">${dto.title }</a></td>
+                    <td>${dto.cmtCheck }개</td>
+                    <td>${dto.regDateTime}</td>
+                    </c:if>
+                </tr>            
+            </c:forEach>           
+            </tbody>
+		</table>
+		
 		
 		
 		<br>
@@ -38,7 +59,6 @@
          <div class="mb-3 mt-3 clearfix">
            <span class="float-start me-2">총 ${cnt }개</span>
            <span class="float-start">page ${page }/${totalPage }</span>
-           <a class="btn btn-outline-dark mx-3 mb-3" href="write">작성</a>
            <span class="float-end">
                <form name="frmPageRows">
                    <input type="hidden" name="page" value="${page }">
@@ -52,7 +72,7 @@
            </span>
         </div>          
         
-        <table class="table table-sm">
+        <table class="table table-sm" id="B">
             <thead style="background-color: #483D8B">
                 <tr>
                     
