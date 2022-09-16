@@ -16,7 +16,8 @@
                u.regdate     "u_regdate"
         FROM ci_servlist sl,
              ci_user u
-        WHERE sl.user_id = u.id
+        WHERE 1=1
+        	AND sl.user_id = u.id
     </sql>
 
     <resultMap type="domain.UserDTO" id="mapUser">
@@ -84,12 +85,14 @@
         WHERE id = #{id}
     </delete>
 
-    <!-- 페이징 용 쿼리 -->
-    <select id="selectFromRow" resultMap="mapService">
+   <!-- 페이징 용 쿼리 -->
+    <select id="selectFromRow" resultMap="mapService" parameterType="hashmap">
         <include refid="SELECTSERVICE"/>
+        AND sl.title LIKE CONCAT('%', #{search}, '%')
         ORDER BY sl.id DESC
-        LIMIT #{param1}, #{param2}
+        LIMIT #{from}, #{row}
     </select>
+     
 
     <select id="countAll" resultType="int">
         SELECT count(*)
