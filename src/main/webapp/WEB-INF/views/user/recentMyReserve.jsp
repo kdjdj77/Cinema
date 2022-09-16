@@ -15,8 +15,16 @@
 <section class="reservelist">
 <div id="page">
       
-</div>
-<button class="w-btn w-btn-gra1"  onClick="location.href='reserve'">예매 영화별보기</button>
+</div><article class="button">
+                	<button onClick="loadPreviousMyReserve(${sessionScope.PRINCIPAL.id})" class="ico_arrow1">
+                		이전보기
+                	</button>
+                	<button class="w-btn w-btn-gra1"  onClick="location.href='reserve'">예매 영화별보기</button>
+                	
+                	<button onClick="loadNextMyReserve(${sessionScope.PRINCIPAL.id})" class="ico_arrow">
+                		다음보기
+                	</button>
+                </article>
 </section>
 
 <!-- 내 예약내역 -->

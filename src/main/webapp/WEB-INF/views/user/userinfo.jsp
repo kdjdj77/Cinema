@@ -113,14 +113,7 @@
                 <h2 class="mb-5">예매목록<p>(클릭시 예매 상세로 이동합니다)</p></h2>
 		
                 <jsp:include page="recentMyReserve.jsp"/> 
-                <article class="button">
-                	<button onClick="loadPreviousMyReserve(${sessionScope.PRINCIPAL.id})" class="ico_arrow1">
-                		이전보기
-                	</button>
-                	<button onClick="loadNextMyReserve(${sessionScope.PRINCIPAL.id})" class="ico_arrow">
-                		다음보기
-                	</button>
-                </article>
+                
             </div>
         </section>
         <hr class="m-0"/>
