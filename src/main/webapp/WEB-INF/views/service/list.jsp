@@ -59,7 +59,6 @@
          <div class="mb-3 mt-3 clearfix">
            <span class="float-start me-2">총 ${cnt }개</span>
            <span class="float-start">page ${page }/${totalPage }</span>
-           <a class="btn btn-outline-dark mx-3 mb-3" href="write">작성</a>
            <span class="float-end">
                <form name="frmPageRows">
                    <input type="hidden" name="page" value="${page }">
