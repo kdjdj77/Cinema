@@ -63,7 +63,7 @@
                     <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#about">About</a></li>
                     <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#reserve">예매목록</a></li>
                     <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#service">My Q&A</a></li>
-                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#modify">회원정보</a></li>
+                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#modif">회원정보</a></li>
                 </ul>
             </div>
         </nav>
@@ -110,10 +110,10 @@
         <!-- 예매목록 -->
         <section class="resume-section" id="reserve">
             <div class="resume-section-content">
-                <a href="reserve">전체보기</a>
-                <h2 class="mb-5">예매목록</h2>
-
-                <jsp:include page="recentMyReserve.jsp"/>
+                
+                <h2 class="mb-5">예매목록<p>(클릭시 예매 상세로 이동합니다)</p></h2>
+		
+                <jsp:include page="recentMyReserve.jsp"/> 
                 <article class="button">
                 	<button onClick="loadPreviousMyReserve(${sessionScope.PRINCIPAL.id})" class="ico_arrow1">
                 		이전보기
@@ -145,7 +145,7 @@
         <hr class="m-0"/>
 
         <!-- 회원정보 -->
-        <section class="resume-section" id="modify">
+        <section class="resume-section" id="modif">
             <div class="resume-section-content">
                 <h2 class="mb-5">회원정보</h2>
                 <form>
@@ -154,17 +154,17 @@
                             <label for="username">ID</label>
                             <a type="text" id="username">${sessionScope.PRINCIPAL.username}</a>
                         </div>
-                        <div class="field half">
-                            <label for="password">Password</label>
-                            <a type="text" id="password">${sessionScope.PRINCIPAL.password}</a>
-                        </div>
+                        
                         <div class="field">
                             <label for="name">Name</label>
                             <a type="text" id="name">${sessionScope.PRINCIPAL.name}</a>
                         </div>
-                        <a href="modify" class="button">회원정보 수정하기</a>
+                        
+                        
                     </div>
                 </form>
+
+                        <button class="w-btn w-btn-gra2"  onClick="location.href='modify'">회원정보수정</button>
             </div>
         </section>
         <hr class="m-0"/>

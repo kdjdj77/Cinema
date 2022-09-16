@@ -118,7 +118,7 @@ function buildMyReserve(result1) {
         const row = ` 
             <div class="d-flex flex-column flex-md-row justify-content-between mb-5">
                 <div class="flex-grow-1">
-                    <h3 class="mb-0">${title}</h3>
+                    <h3 class="mb-0"><a href="resdetail?id=${id}">${title}</a></h3>
                         <div class="subheading mb-3">${director}</div>
                             <p>좌석: ${seat}</p>
                         </div>

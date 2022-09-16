@@ -12,9 +12,11 @@
     </div>
     
 </div>
+<section class="reservelist">
 <div id="page">
-        
-        </div>
-
+      
+</div>
+<button class="w-btn w-btn-gra1"  onClick="location.href='reserve'">예매 영화별보기</button>
+</section>
 
 <!-- 내 예약내역 -->

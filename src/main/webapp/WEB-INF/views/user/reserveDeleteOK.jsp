@@ -12,7 +12,7 @@
 	<c:otherwise>
 		<script>
 			alert("예매취소 성공");
-			location.href = "reserve?id=${sessionScope.PRINCIPAL.id}";
+			location.href = "reserve";
 		</script>
 	</c:otherwise>
 </c:choose>
