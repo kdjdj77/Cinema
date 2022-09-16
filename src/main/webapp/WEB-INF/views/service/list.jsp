@@ -72,7 +72,7 @@
            </span>
         </div>          
         
-        <table class="table table-sm" id="B">
+        <table class="table table" id="B">
             <thead style="background-color: #483D8B">
                 <tr>
                     

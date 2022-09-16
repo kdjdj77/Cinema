@@ -32,8 +32,8 @@
             
             <div class="mb-3 mt-3">
                 <label for="content">문의 내용:</label>
-                <textarea style="width: 100%" rows="5" id="content" placeholder="내용을 입력하세요" name="content"></textarea>
-            </div>
+                <textarea style="width: 100%; height:500px" rows="5" id="content" placeholder="내용을 입력하세요" name="content"></textarea>
+            </div> 
             
 			<div align="right">
             <button type="submit" class="btn btn-outline-dark">작성완료</button>
