@@ -18,16 +18,19 @@
 		</form>
 		<div onclick="kakaoLogin();">
 	      <a href="javascript:void(0)" style="background-color: #fef01b" class="border border-2 w-100 btn btn-lg my-1">
+	          <img style="height:30px; margin-top:-5px;" src="${pageContext.request.contextPath}/img/kakao.png"/>
 	          <span>카카오 로그인</span>
 	      </a>
 		</div>
 		<div>
           	<a id="naverIdLogin_loginButton" href="javascript:void(0)" style="background-color: #2db400" class="border border-2 w-100 btn btn-lg my-1">
-	            <span>네이버 로그인</span>
+	            <img style="height:30px; margin-top:-5px;" src="${pageContext.request.contextPath}/img/naver.png"/>
+	            <span style="color:white;">네이버 로그인</span>
 	        </a>
         </div>
 		<div id="GgCustomLogin">
 			<a href="javascript:void(0)" style="background-color: white" class="border border-2 w-100 btn btn-lg my-1">
+				<img style="height:25px; margin-top:-5px;" src="${pageContext.request.contextPath}/img/google.png"/>
 				<span>구글 로그인</span>
 			</a>
 		</div>

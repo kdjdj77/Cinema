@@ -13,19 +13,19 @@
   		<c:if test="${fn:contains(sessionScope.PRINCIPAL.authorities, 'ROLE_MEMBER')}">                    
 
 	        <div class="input-group my-2" style="height:100px;">
-	            <textarea class="form-control" id="input_comment" style="resize: none;"></textarea>
-	            <div class="border align-items-center row" style="height:100%; width:120px; margin:auto;">
+	            <textarea class="form-control" id="input_comment" style="resize: none; font-size:1.3rem;"></textarea>
+	            <div class="border align-items-center row" style="height:100%; width:200px; margin:auto;">
 	            	<div class="vertical-center-row">
-	            	평점 : 
-	            	<select name="star" id="selectStar">
+	            	<span style="font-size:1.5rem; font-weight:bold;">평점 :</span> 
+	            	<select name="star" id="selectStar" style="width:80px; height:40px;font-size:1.3rem;">
 	            		<c:forEach var="i" begin="0" end="9" step="1" varStatus="x">
- 							<option value='${i}'>${i}</option>
+ 							<option value='${i}' style="font-size:1.3rem">${i}</option>
 						</c:forEach>
 						<option value='10' selected>10</option>
 	            	</select>
 	            	</div>
 	            </div>
-	            <button type="button" class="btn btn-outline-primary" id="btn_comment">작성</button>
+	            <button type="button" class="btn btn-outline-primary" id="btn_comment" style="font-size:1.3rem">작성</button>
 	        </div>
 		</c:if>
         <table class="table table-hover mt-3" id="cmt_table">
