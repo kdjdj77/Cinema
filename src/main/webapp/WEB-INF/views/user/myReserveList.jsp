@@ -4,83 +4,116 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
 <c:choose>
-    <c:when test="${empty list || fn:length(list) == 0}">
-        <script>
-            alert("해당 영화가 삭제되거나 없습니다");
-            history.back();
-        </script>
-    </c:when>
-    <c:otherwise>
-        >
-        <!DOCTYPE html>
-        <html lang="ko">
+	<c:when test="${empty list || fn:length(list) == 0}">
+		<script>
+			alert("해당 영화가 삭제되거나 없습니다");
+			history.back();
+		</script>
+	</c:when>
+	<c:otherwise>
+		<c:set var="fileDto" value="${fileList[0]}"/>
+    	<c:set var="dto" value="${list[0]}"/>
+		<!DOCTYPE html>
+		<html lang="ko">
+		
+		<head>
+		    <meta charset="utf-8">
+		    <meta name="viewport" content="width=device-width, initial-scale=1">
+		    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+		    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+		
+		    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>    
+			<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/checkSeat.css">
+		    <title>영화 - ${dto.title}</title>
+		</head>
+				
+		<body>
+		    <%-- 인증 헤더 --%>
+		    <jsp:include page="/WEB-INF/views/common/header.jsp"/>
+		    <script>
+            const conPath = "${pageContext.request.contextPath}";
+        	</script>
+        
+            <input type="hidden" name="id" value="${dto.id}">
+        
+		    <div class="container mt-3">
+		    	<br><br><br>
+		        <h2>"${dto.title}"의 예매내역</h2> 
+		        <hr>
+		        <section>
+					<div class="container mt-3 mb-3 rounded float-start rounded" style="width:220px; height:300px; background-color:rgba(0,0,0,0);">
+					    <c:choose>
+			        	<%-- 이미지 보여주기 --%>
+			            <c:when test="${fileDto.image == true }">
+							<img src="${pageContext.request.contextPath}/upload/${fileDto.file }" style="width:220px; height:300px;" class="rounded">
+			            </c:when>
+			            <c:otherwise>
+			            	<div style="background-color:gray; width:220px; height:300px; text-align:center">
+			            		NO IMAGE
+			            	</div>
+			            </c:otherwise>
+						</c:choose>
+					</div>
+					
 
-        <head>
-            <meta charset="utf-8">
-            <meta name="viewport" content="width=device-width, initial-scale=1">
-            <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
-            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+		        		<input type="hidden" name="id" value="${dto.id}">
 
-            <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport'/>
-            
+		        	<br>
+		            <div class="mb-3">
+		            	&nbsp;&nbsp;&nbsp;&nbsp;
+		                제목 : ${dto.title}
+		            </div>    
+		            <div class="mb-3 mt-3">
+		            	&nbsp;&nbsp;&nbsp;&nbsp;
+		                장르 : ${dto.genre}
+		            </div>    
+		            <div class="mb-3 mt-3">
+		           		&nbsp;&nbsp;&nbsp;&nbsp;
+		                상영시간 : ${dto.runtime}분
+		            </div>   
+		            <div class="mb-3 mt-3">
+		            	&nbsp;&nbsp;&nbsp;&nbsp;
+		                감독 : ${dto.director}
+		            </div>  
+		            <div class="mb-3 mt-3">
+		            	&nbsp;&nbsp;&nbsp;&nbsp;
+		                출연 : ${dto.actor}
+		            </div>  
+		            
+		            <br>
+		            <br>
+		        </section>
+		        <section style="margin-top:100px;">
+		        	줄거리
+		        	<hr>
+		        	${dto.synopsis}
+		        	<br><br><br>
+		        	댓글
+		        	<hr>
+					<jsp:include page="reserveBySeat.jsp"/>
+					<article class="button">
+                	<button onClick="loadPreviousMyReserveList(${dto.id})" class="ico_arrow1">
+                		이전보기
+                	</button>
+                	<button onClick="loadNextMyReserveList(${dto.id})" class="ico_arrow">
+                		다음보기
+                	</button>
+                </article>
+					<br><br><br>
+		        </section>
+		    </div>
+		    <jsp:include page="/WEB-INF/views/common/footer.jsp"/>
+		</body>
+		<c:choose>
+		    <c:when test="${empty sessionScope.PRINCIPAL}">
+		        <script> const logged_id = 0;</script>
+		    </c:when>
+			<c:otherwise>
+				<script>logged_id = ${PRINCIPAL.id};</script>
+			</c:otherwise>
+		</c:choose>
 
-            <title>예매 목록</title>
-<style>
-
-.gallerylist {max-width:1200px;width:100%;margin:0 auto;}
-.gallerylist > ul {font-size:0;}
-.gallerylist > ul > li {display:inline-block;vertical-align:top;width:33.3%;height:20%; margin-bottom: 100px;}
-.gallerylist > ul > li > a {display:block;width:auto;text-decoration: none;margin:5px;}
-.gallerylist > ul > li > a .screen {position:relative;overflow:hidden; width:100%; height:100%; background-color: gray;}
-.gallerylist > ul > li > a .screen .top {position:absolute;bottom:150%;left:30px;z-index:2;color:#fff;font-size:26px;font-weight:900;transition:all .35s;}
-.gallerylist > ul > li > a .screen .bottom {position:absolute;top:150%;left:30px;z-index:2;color:#fff;font-size:12px;transition:all .35s;}
-.gallerylist > ul > li > a .screen div {width:100%;}
-.gallerylist > ul > li > a .screen .background {font-size: 20px;}
-.gallerylist > ul > li > a .screen .background > p{text-align:center; padding:20px; color: #fff;}
-.gallerylist > ul > li > a h3 {font-size:25px;text-align:center;padding:20px;color:#666;}
-.gallerylist > ul > li > a .screen::after {content:'';display:block;position:absolute;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,.5);z-index:1;opacity:0;transition:all .35s;}
-.gallerylist > ul > li > a:hover .top {bottom:52%;}
-.gallerylist > ul > li > a:hover .bottom {top:52%;}
-.gallerylist > ul > li > a:hover .screen::after {opacity:1;}
-
-</style>
-
-        </head>
-
-        <body>
-            <%-- 인증 헤더 --%>
-        <jsp:include page="/WEB-INF/views/common/header.jsp"/>
-<br>
-<br>
-<br>
-<br>
-        <div class="gallerylist">
-            <ul>
-                <c:forEach var="list" items="${list}">
-                    <li>
-						<a href="resdetail?id=${list.id}">
-							<div class="screen">
-								<div class="top">${list.movie.title }</div>
-								<div class="bottom">KORIN MOVIES</div>
-								<!-- <img src="./img/image01.jpg"> -->
-								<div class="background">
-									<p>예매 날짜: ${list.regDate }</p>
-									<p>좌석: ${list.seat }</p>
-								</div>
-							</div>
-							<div>
-								<h3>${list.movie.title }</h3>
-							</div>
-						</a>
-					</li>
-                </c:forEach>
-            </ul>
-        </div>
-        <jsp:include page="/WEB-INF/views/common/footer.jsp"/>
-
-
-        </body>
-        </html>
-
-    </c:otherwise>
-</c:choose>
+	    <script src="${pageContext.request.contextPath}/js/reserveBySeat.js"></script>
+		</html>
+	</c:otherwise>
+</c:choose>   

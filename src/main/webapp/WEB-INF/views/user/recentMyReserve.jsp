@@ -10,9 +10,11 @@
     <div class="flex-grow-1" id="myReserve_list">
 
     </div>
-    <div class="flex-shrink-0"><span class="text-primary">평점</span></div>
+    
 </div>
-
+<div id="page">
+        
+        </div>
 
 
 <!-- 내 예약내역 -->
