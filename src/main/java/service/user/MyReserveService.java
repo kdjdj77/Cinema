@@ -29,21 +29,48 @@ public class MyReserveService implements Service{
     @Override
     public void execute(HttpServletRequest request, HttpServletResponse response) throws IOException {
     	UserDTO user = (UserDTO)request.getSession().getAttribute(C.PRINCIPAL);
-		int id = user.getId();
+    	int id = Integer.parseInt(request.getParameter("id"));
+		int uid = user.getId();
+		 
         SqlSession sqlSession = null;
-		ReservDAO dao = null;
-		List<ReservDTO> list = null;
-
+		MovieDAO dao = null;
+		List<MovieDTO> list = null;
+		FileDAO fileDao = null;
 		
 		
 		try {
 			sqlSession = SqlSessionManager.getInstance().openSession();
-			dao = sqlSession.getMapper(ReservDAO.class);
-
+			dao = sqlSession.getMapper(MovieDAO.class);
+			fileDao = sqlSession.getMapper(FileDAO.class);
 		
-			list = dao.mypageTicketList(id);
+			list = dao.selectById(id);
+						
 			
-			
+			if(list != null && list.size() == 1) {
+				List<FileDTO> fileList = fileDao.selectByMovieId(id);
+				
+				//이미지 파일 여부 세팅
+				String realPath = request.getServletContext().getRealPath("upload");
+				
+				for(FileDTO fileDto : fileList) {
+					//첨부파일에 대한 File 객체
+					File f = new File(realPath, fileDto.getFile());
+					BufferedImage imgData = null;
+					
+					try {
+						imgData = ImageIO.read(f);
+                        // 파일이 존재 하지 않으면 IOExcepion
+                        // 이미지가 아닌 경우는 return null
+					} catch (IOException e) {
+						System.out.println("이미지 없음: " + f.getAbsolutePath() + " [" + e.getMessage() + "]");
+					}
+					
+					if (imgData != null) fileDto.setImage(true); //이미지 여부 true
+				}
+				
+				request.setAttribute("fileList", fileList);
+				
+			}
 
 			request.setAttribute("list", list);
 			sqlSession.commit();
@@ -52,7 +79,7 @@ public class MyReserveService implements Service{
 		} finally {
 			if(sqlSession!= null) sqlSession.close();
 		}
-		
-    }
+	
+	}
 
 }

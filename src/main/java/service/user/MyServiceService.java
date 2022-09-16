@@ -23,6 +23,7 @@ public class MyServiceService implements Service {
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		int id = Integer.parseInt(request.getParameter("id"));
+		int page = Integer.parseInt(request.getParameter("page"));
 		
 			    
 		QryMyServiceList obj = new QryMyServiceList(); // reponse 할 자바 객체
@@ -38,7 +39,7 @@ public class MyServiceService implements Service {
 			sdao = sqlSession.getMapper(ServiceDAO.class);
 			
 			
-			mslist = sdao.myService(id);
+			mslist = sdao.myService(id, page * 10);
 			for (ServiceDTO s : mslist){
 				s.setCmtCheck(sdao.checkCmt(s.getId()).length);
 			}

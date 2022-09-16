@@ -34,9 +34,9 @@
             <link href="https://fonts.googleapis.com/css?family=Muli:400,400i,800,800i" rel="stylesheet"
                   type="text/css"/>
             <!-- Core theme CSS (includes Bootstrap)-->
-            <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/styles.css">            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+            <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/styles.css">
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
             <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
-
 
         </head>
 
@@ -51,7 +51,7 @@
         </form>
         <!-- Navigation-->
         <nav class="navbar navbar-expand-lg navbar-dark bg-primary padding-top:70px;" id="sideNav">
-        
+
             <a class="navbar-brand js-scroll-trigger" href="#page-top">
                 <span class="d-block d-lg-none">${ sessionScope.PRINCIPAL.username  }(${ sessionScope.PRINCIPAL.name  })</span>
             </a>
@@ -61,10 +61,9 @@
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav">
                     <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#about">About</a></li>
-                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#experience">예매목록</a></li>
-                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#education">My Q&A</a></li>
-                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#skills">회원정보</a></li>
-                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#interests">예매하러가기</a></li>
+                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#reserve">예매목록</a></li>
+                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#service">My Q&A</a></li>
+                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#modif">회원정보</a></li>
                 </ul>
             </div>
         </nav>
@@ -84,7 +83,7 @@
                     <c:set var="dto" value="${list}"/>
                     <p class="lead mb-5">고객님의 등급은
                         <c:if test="${dto.viewCnt eq 0}">
-                            <a class="bronze">응애</a>
+                            <a class="bronze">브론즈</a>
                         </c:if>
                         <c:if test="${dto.viewCnt gt 0 && dto.viewCnt lt 5}">
                             <a class="silver">실버</a>
@@ -109,28 +108,44 @@
         <hr class="m-0"/>
 
         <!-- 예매목록 -->
-        <section class="resume-section" id="experience">
+        <section class="resume-section" id="reserve">
             <div class="resume-section-content">
-                <a href="reserve?id=${sessionScope.PRINCIPAL.id}">전체보기</a>
-                <h2 class="mb-5">예매목록</h2>
-
-                <jsp:include page="recentMyReserve.jsp"/>
+                
+                <h2 class="mb-5">예매목록<p>(클릭시 예매 상세로 이동합니다)</p></h2>
+		
+                <jsp:include page="recentMyReserve.jsp"/> 
+                <article class="button">
+                	<button onClick="loadPreviousMyReserve(${sessionScope.PRINCIPAL.id})" class="ico_arrow1">
+                		이전보기
+                	</button>
+                	<button onClick="loadNextMyReserve(${sessionScope.PRINCIPAL.id})" class="ico_arrow">
+                		다음보기
+                	</button>
+                </article>
             </div>
         </section>
         <hr class="m-0"/>
 
         <!-- Q&A -->
 
-        <section class="resume-section" id="education">
+        <section class="resume-section" id="service">
             <div class="resume-section-content">
                 <h2 class="mb-5">My Q&A</h2>
                 <jsp:include page="myService.jsp"/>
+                <article class="button">
+                	<button onClick="loadPreviousMyService(${sessionScope.PRINCIPAL.id})" class="ico_arrow1">
+                		이전보기
+                	</button>
+                	<button onClick="loadNextMyService(${sessionScope.PRINCIPAL.id})" class="ico_arrow">
+                		다음보기
+                	</button>
+                </article>
             </div>
         </section>
         <hr class="m-0"/>
 
         <!-- 회원정보 -->
-        <section class="resume-section" id="skills">
+        <section class="resume-section" id="modif">
             <div class="resume-section-content">
                 <h2 class="mb-5">회원정보</h2>
                 <form>
@@ -139,29 +154,21 @@
                             <label for="username">ID</label>
                             <a type="text" id="username">${sessionScope.PRINCIPAL.username}</a>
                         </div>
-                        <div class="field half">
-                            <label for="password">Password</label>
-                            <a type="text" id="password">${sessionScope.PRINCIPAL.password}</a>
-                        </div>
+                        
                         <div class="field">
                             <label for="name">Name</label>
                             <a type="text" id="name">${sessionScope.PRINCIPAL.name}</a>
                         </div>
-                        <a href="modify?id=${dto.id}" class="button">회원정보 수정하기</a>
+                        
+                        
                     </div>
                 </form>
+
+                        <button class="w-btn w-btn-gra2"  onClick="location.href='modify'">회원정보수정</button>
             </div>
         </section>
         <hr class="m-0"/>
 
-        <!-- 영화예매하러가기 -->
-        <section class="resume-section" id="interests">
-            <div class="resume-section-content">
-                <h2 class="mb-5">예매하러가기</h2>
-                <a href="${pageContext.request.contextPath}/movie/home" class="button">예매하러가기</a>
-            </div>
-        </section>
-        <hr class="m-0"/>
 
         <jsp:include page="/WEB-INF/views/common/footer.jsp"/>
 
@@ -186,7 +193,7 @@
                         </thead>
                         <tbody>
                         <tr>
-                        	<td>브론즈</td>
+                            <td>브론즈</td>
                             <td>0</td>
                         </tr>
                         <tr>
@@ -194,15 +201,15 @@
                             <td>1 ~ 4</td>
                         </tr>
                         <tr>
-                        	<td>골드</td>
+                            <td>골드</td>
                             <td>5 ~ 24</td>
                         </tr>
                         <tr>
-                        	<td>플래티넘</td>
+                            <td>플래티넘</td>
                             <td>25 ~ 39</td>
                         </tr>
                         <tr>
-                        	<td>다이아몬드</td>
+                            <td>다이아몬드</td>
                             <td>40 ~</td>
                         </tr>
                         </tbody>

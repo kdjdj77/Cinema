@@ -54,9 +54,11 @@ $(function() {
 // 특정 영화(movie_id)의 댓글 목록 읽어오기
 function loadComment(movie_id) {
 	if (st == 0) out = [];
+
 	const data = {
 		"start": st,
 	};
+
 	$.ajax({
 		url: conPath + "/mcomment/list?id=" + movie_id,
 		type: "POST",

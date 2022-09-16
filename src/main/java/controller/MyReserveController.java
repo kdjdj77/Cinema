@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import service.user.RecentMyReserveService;
+import service.user.ReserveBySeatService;
 
 @WebServlet("/myreserve/*")
 public class MyReserveController extends HttpServlet {
@@ -47,6 +48,11 @@ public class MyReserveController extends HttpServlet {
 		case "/myreserve/list":
 			new RecentMyReserveService().execute(request, response);
 			break;
-		}
+		
+		
+		case "/myreserve/detail":
+			new ReserveBySeatService().execute(request, response);
+			break;
 	}
+}
 }
