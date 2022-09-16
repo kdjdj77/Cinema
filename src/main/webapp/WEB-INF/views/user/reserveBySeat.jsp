@@ -16,14 +16,13 @@
         <table class="table table-hover mt-3" id="cmt_table">
             <thead>
             <tr>
-                <th>작성자</th>
-                <th>제목</th>
-                <th>답변여부</th>
-                <th>작성날짜</th>
+                <th style="width: 20%">예약번호</th>
+                <th style="width: 60%">좌석</th>
+                <th style="width: 20%">예약날짜</th>
             </tr>
             </thead>
             
-            <tbody id="myService_list">
+            <tbody id="myReserveBySeat">
             
             </tbody>
 

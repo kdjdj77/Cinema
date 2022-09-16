@@ -10,9 +10,13 @@
     <div class="flex-grow-1" id="myReserve_list">
 
     </div>
-    <div class="flex-shrink-0"><span class="text-primary">평점</span></div>
+    
 </div>
-
-
+<section class="reservelist">
+<div id="page">
+      
+</div>
+<button class="w-btn w-btn-gra1"  onClick="location.href='reserve'">예매 영화별보기</button>
+</section>
 
 <!-- 내 예약내역 -->
