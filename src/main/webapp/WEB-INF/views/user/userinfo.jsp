@@ -53,7 +53,7 @@
         <nav class="navbar navbar-expand-lg navbar-dark bg-primary padding-top:70px;" id="sideNav">
 
             <a class="navbar-brand js-scroll-trigger" href="#page-top">
-                <span class="d-block d-lg-none">${ sessionScope.PRINCIPAL.username  }(${ sessionScope.PRINCIPAL.name  })</span>
+                <span class="d-block d-lg-none">${ sessionScope.PRINCIPAL.name }</span>
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive"
                     aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span
@@ -73,8 +73,7 @@
             <section class="resume-section" id="about">
                 <div class="resume-section-content">
                     <h1 class="mb-0">
-                            ${sessionScope.PRINCIPAL.username }
-                        <span class="text-primary">(${sessionScope.PRINCIPAL.name })</span>
+                        <span class="text-primary">${sessionScope.PRINCIPAL.name }</span>
                     </h1>
                     <div class="subheading mb-5">
                         님 안녕하세요!
@@ -111,17 +110,10 @@
         <section class="resume-section" id="reserve">
             <div class="resume-section-content">
                 
-                <h2 class="mb-5">예매목록<p>(클릭시 예매 상세로 이동합니다)</p></h2>
+                <h2 class="mb-5">예매목록</h2>
 		
                 <jsp:include page="recentMyReserve.jsp"/> 
-                <article class="button">
-                	<button onClick="loadPreviousMyReserve(${sessionScope.PRINCIPAL.id})" class="ico_arrow1">
-                		이전보기
-                	</button>
-                	<button onClick="loadNextMyReserve(${sessionScope.PRINCIPAL.id})" class="ico_arrow">
-                		다음보기
-                	</button>
-                </article>
+                
             </div>
         </section>
         <hr class="m-0"/>
@@ -132,19 +124,14 @@
             <div class="resume-section-content">
                 <h2 class="mb-5">My Q&A</h2>
                 <jsp:include page="myService.jsp"/>
-                <article class="button">
-                	<button onClick="loadPreviousMyService(${sessionScope.PRINCIPAL.id})" class="ico_arrow1">
-                		이전보기
-                	</button>
-                	<button onClick="loadNextMyService(${sessionScope.PRINCIPAL.id})" class="ico_arrow">
-                		다음보기
-                	</button>
-                </article>
             </div>
         </section>
         <hr class="m-0"/>
 
         <!-- 회원정보 -->
+	<c:choose>
+        <c:when test="${empty PRINCIPAL.provider}">
+
         <section class="resume-section" id="modif">
             <div class="resume-section-content">
                 <h2 class="mb-5">회원정보</h2>
@@ -159,15 +146,38 @@
                             <label for="name">Name</label>
                             <a type="text" id="name">${sessionScope.PRINCIPAL.name}</a>
                         </div>
-                        
-                        
                     </div>
                 </form>
 
                         <button class="w-btn w-btn-gra2"  onClick="location.href='modify'">회원정보수정</button>
             </div>
         </section>
+        </c:when>
+        <c:otherwise>
+        	<section class="resume-section" id="modif">
+            <div class="resume-section-content">
+                <h2 class="mb-5">회원정보</h2>
+                <form>
+                    <div class="subheading mb-3">
+                        <div>
+                            <label for="username">ID</label>
+                            <a type="text" id="username">타사의 로그인(${sessionScope.PRINCIPAL.provider})서비스를 이용하여 로그인한 유저입니다.</a>
+                        </div>
+                        
+                        <div class="field">
+                            <label for="name">Name</label>
+                            <a type="text" id="name">${sessionScope.PRINCIPAL.name}</a>
+                        </div>
+                    </div>
+                </form>
+
+            </div>
+        </section>
+        </c:otherwise>
+        </c:choose>        
         <hr class="m-0"/>
+
+      
 
 
         <jsp:include page="/WEB-INF/views/common/footer.jsp"/>

@@ -52,10 +52,10 @@ public class ApiLoginService implements Service {
 				dao.register(dto);
 				list = dao.selectByUsername(dto);
 				
-				dto.setProvider("api");
+				
 			}
 			else dto = list.get(0);
-			
+			dto.setProvider("api");
 			
 			HttpSession session = request.getSession();
 			session.setAttribute(C.PRINCIPAL, dto);

@@ -72,7 +72,7 @@
                         <div class="d-flex">
                             <input class="form-control text-center me-3" id="inputQuantity" type="num"
                                    value="${list.seat }"
-                                   style="max-width: 3rem" readonly="readonly"/>
+                                   style="max-width: 5rem" readonly="readonly"/>
                             <c:if test="${fn:contains(PRINCIPAL.authorities, 'ROLE_MEMBER' ) && (PRINCIPAL.id == userDto.id)}">
                                 <button class="btn btn-outline-dark" type="button" onclick="chkDelete()">
                                     <i class="bi-cart-fill me-1"></i>

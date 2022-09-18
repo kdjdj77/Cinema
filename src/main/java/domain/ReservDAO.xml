@@ -116,7 +116,7 @@
           AND re.movie_id = m.id
           AND re.user_id = #{param1}
           ORDER BY re.id DESC 
-          LIMIT #{param2}, 5
+          LIMIT #{param2}, 3
     </select>
 
     <select id="selectById" resultType="domain.ReservDTO">

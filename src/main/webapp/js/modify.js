@@ -10,7 +10,7 @@ const elPWFailureContn = document.querySelector('.password-failure-contn');
 const elPWFailureUpper = document.querySelector('.password-failure-upper');
 const elPWSuccessMessage = document.querySelector('.password-success-message');
 
-const name = document.querySelector('#name');
+const name1 = document.querySelector('#name');
 
 const elIllegibleMessage = document.querySelector('.illegible-message');
 const elReadableMessage = document.querySelector('.readable-message');
@@ -86,8 +86,8 @@ re_password.onclick = re_passwordFn;
 re_password.onkeyup = re_passwordFn;
 
 // 이름 유효성 검사
-function nameFn() {
-    if (isNameChar(name.value)) {
+function name1Fn() {
+    if (isName1Char(name1.value)) {
         elIllegibleMessage.classList.add('hide');
         elReadableMessage.classList.remove('hide');
     } else {
@@ -98,8 +98,8 @@ function nameFn() {
     isSubmitButton();
 }
 
-name.addEventListener('click', nameFn);
-name.addEventListener('keyup', nameFn);
+name1.addEventListener('click', name1Fn);
+name1.addEventListener('keyup', name1Fn);
 
 
 //-------- 최종 유효성 검사에서 사용하는 함수 ---------//
@@ -115,7 +115,7 @@ function isAllCheck() {
         ((isPasswordUpper(password.value)))
     ) { // 비밀번호
         if (isMatch(password.value, re_password.value)) { // 비밀번호 확인
-            if (isNameChar(name.value)) {
+            if (isName1Char(name1.value)) {
                 console.log("validationend");
                 return true;
             }
@@ -242,13 +242,12 @@ function isMatch(password1, password2) {
     }
 }
 
-// 이름이 null과 숫자가 들어가지 않은경우
-function isNameChar(name) {
-    var letters = /[ㄱ-ㅎ|ㅏ-ㅣ|가-힣]/;
-
-    if (name.match(letters)) {
-        return true;
-    } else {
-        return false;
-    }
+// 이름이 숫자가 들어간경우
+function isName1Char(name1) {
+	var letters = /^[가-힣]+$/;
+	if (name1.match(letters)) {
+		return true;
+	} else {
+		return false;
+	}
 }
