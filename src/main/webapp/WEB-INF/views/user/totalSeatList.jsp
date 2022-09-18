@@ -7,7 +7,7 @@
 	<c:when test="${empty list || fn:length(list) == 0}">
 		<script>
 			alert("해당 영화가 삭제되거나 없습니다");
-			history.back();
+			location.href = 'main';
 		</script>
 	</c:when>
 	<c:otherwise>

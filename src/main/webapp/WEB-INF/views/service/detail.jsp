@@ -76,7 +76,7 @@
             </div>
 			
 			<div class="mb-3 mt-3">
-				<textarea style="width: 100%; height:500px" rows="5" id="content" placeholder="내용을 입력하세요" name="content" readonly>${dto.content }</textarea>
+				<textarea style="width: 100%; height:300px" rows="5" id="content" placeholder="내용을 입력하세요" name="content" readonly>${dto.content }</textarea>
 			</div>
 
 			<!-- 하단 링크 -->
