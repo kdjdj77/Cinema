@@ -92,23 +92,23 @@
 		            	&nbsp;&nbsp;&nbsp;&nbsp;
 		                출연 : ${dto.actor}
 		            </div>  
-		            <div class="mb-3 mt-3">
-		            	&nbsp;&nbsp;&nbsp;&nbsp;
-		                평점 : ★${dto.star}
+		            <div class="mb-3 mt-3" style="font-size:1.5rem;">
+		            	&nbsp;&nbsp;
+		                평점 : <span style="color:crimson; font-weight:bold;">★${dto.star}</span>
 		            </div>  
 		            <c:if test="${fn:contains(PRINCIPAL.authorities, 'ROLE_MEMBER')}">
 		            	<a class="btn btn-outline-dark mx-4 float-start mybtn" href="reserv?id=${dto.id }">예매하기</a>
 		            </c:if>
 		        </section>
 		        <section style="margin-top:100px;">
-		        	시놉시스
+		        	<span style="font-size:1.5rem; font-weight:bold;">시놉시스</span>
 		        	<hr>
 		        	${dto.synopsis}
 		        	<br><br><br>
-		        	댓글
+		        	<span style="font-size:1.5rem; font-weight:bold;">댓글</span>
 		        	<hr>
 					<jsp:include page="comment.jsp"/>
-					<button onClick="loadComment(${dto.id})" class="mt-0 btn btn-outline-dark w-100">
+					<button onClick="loadComment(${dto.id})" class="mt-0 btn btn-outline-dark w-100" style="font-size:1.3rem;">
 						더보기
 					</button>
 					<br><br><br>

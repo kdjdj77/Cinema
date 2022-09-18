@@ -33,11 +33,12 @@
     <div class="container mt-3"style="display:flex; justify-content:center;">
         <div class="seat-wrapper">
 			<div style="width:800px; height:50px; text-align:center; background-color:dimgray" class="mb-5 btn btn-outline-dark">
-				<span style="color:white;">SCREEN</span>
+				<span style="color:white; font-size:1.5rem;">SCREEN</span>
 			</div>
         </div>
         <p><button style="height:50px; width:70px;" class="btn btn-outline-dark mx-3" onClick="frmSubmit()">예매</button></p>
     </div>
+    <p><br><br></p>
     <jsp:include page="/WEB-INF/views/common/footer.jsp"/>
 </body>
 <script>

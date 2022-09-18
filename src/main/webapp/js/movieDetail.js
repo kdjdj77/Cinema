@@ -100,15 +100,15 @@ function buildComment(result) {
         
         // 삭제버튼 여부 : 작성자 본인의 댓글인 경우에만 보이기
         const delBtn = (logged_id !== user_id && role !== 'ROLE_ADMIN') ? '' : `
-        	<i class="btn fa fa-remove text-danger" data-bs-toggle="tooltip"
-            data-cmtdel-id="${id}" title="삭제"></i>`;
+        	<i class="btn fa-regular fa-square-minus text-danger" data-bs-toggle="tooltip"
+            data-cmtdel-id="${id}" title="삭제" style="font-size:1.5rem;"></i>`;
 		const row = `
 	        <tr>
-	        <td><span><strong>${name}</strong></span></td>
+	        <td><span><strong style="font-size:1.2rem;">${name}</strong></span></td>
 	        <td>
-	            <span><pre style="font-family:sans-serif; word-wrap: break-word;white-space: pre-wrap;white-space: -moz-pre-wrap;white-space: -pre-wrap;white-space: -o-pre-wrap;word-break:break-all;">${content}</pre></span>            
+	            <span><pre style="font-size:1.2rem; font-family:sans-serif; word-wrap: break-word;white-space: pre-wrap;white-space: -moz-pre-wrap;white-space: -pre-wrap;white-space: -o-pre-wrap;word-break:break-all;">${content}</pre></span>            
 	        </td>
-	        <td class="p-3"><span><small class="text-secondary">★${star}</small></span></td>
+	        <td class="p-3"><span><small style="font-size:1.2rem; color:crimson">★${star}</small></span></td>
 	        <td><span><small class="text-secondary">${regdate}</small></span></td>
 	        <td><span><small class="text-secondary">${delBtn}</small></span></td>
 	        </tr>`;
