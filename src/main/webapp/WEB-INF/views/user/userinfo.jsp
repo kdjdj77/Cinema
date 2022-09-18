@@ -110,7 +110,7 @@
         <section class="resume-section" id="reserve">
             <div class="resume-section-content">
                 
-                <h2 class="mb-5">예매목록<p>(클릭시 예매 상세로 이동합니다)</p></h2>
+                <h2 class="mb-5">예매목록</h2>
 		
                 <jsp:include page="recentMyReserve.jsp"/> 
                 
@@ -124,14 +124,6 @@
             <div class="resume-section-content">
                 <h2 class="mb-5">My Q&A</h2>
                 <jsp:include page="myService.jsp"/>
-                <article class="button">
-                	<button onClick="loadPreviousMyService(${sessionScope.PRINCIPAL.id})" class="ico_arrow1">
-                		이전보기
-                	</button>
-                	<button onClick="loadNextMyService(${sessionScope.PRINCIPAL.id})" class="ico_arrow">
-                		다음보기
-                	</button>
-                </article>
             </div>
         </section>
         <hr class="m-0"/>
@@ -147,7 +139,7 @@
                     <div class="subheading mb-3">
                         <div>
                             <label for="username">ID</label>
-                            <a type="text" id="username">${sessionScope.PRINCIPAL.id}</a>
+                            <a type="text" id="username">${sessionScope.PRINCIPAL.username}</a>
                         </div>
                         
                         <div class="field">
@@ -169,7 +161,7 @@
                     <div class="subheading mb-3">
                         <div>
                             <label for="username">ID</label>
-                            <a type="text" id="username">${sessionScope.PRINCIPAL.provider}</a>
+                            <a type="text" id="username">타사의 로그인(${sessionScope.PRINCIPAL.provider})서비스를 이용하여 로그인한 유저입니다.</a>
                         </div>
                         
                         <div class="field">

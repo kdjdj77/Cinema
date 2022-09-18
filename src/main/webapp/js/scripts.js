@@ -258,7 +258,7 @@ function buildMyService(result) {
 
     });
     $("#myService_list").html(out.join("\n"));
-    $("#page").text(page+1 + "page");
+    $("#page1").text(page+1 + "page");
 }
 
 window.onload = function () {
