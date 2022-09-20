@@ -11485,7 +11485,7 @@ body {
 @media (min-width: 992px) {
     body {
         padding-top: 0;
-        padding-left: 17rem;
+        padding-left: 30rem;
     }
 }
 
@@ -11544,7 +11544,7 @@ p.lead {
         left: 0;
         display: flex;
         flex-direction: column;
-        width: 17rem;
+        width: 30rem;
         height: 100vh;
     }
 

@@ -1,9 +1,11 @@
+.reservelist{
+	text-align: center;
+}
 article.button{
   display:inline-block;
   width:560px;
   position:relative;
   margin: 0 auto;
-  margin-left: 20%;
   padding:	5px;
   box-sizing:border-box;
   text-align:center;

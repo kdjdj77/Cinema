@@ -49,17 +49,18 @@ public class ApiLoginService implements Service {
 			if (list.size() == 0) {
 				dto.setPassword(password);
 				dto.setName(name);
+				dto.setAuthorities("ROLE_MEMBER");
 				dao.register(dto);
 				list = dao.selectByUsername(dto);
-				
-				dto.setProvider("api");
 			}
 			else dto = list.get(0);
-			
+			dto.setProvider("api");
 			
 			HttpSession session = request.getSession();
 			session.setAttribute(C.PRINCIPAL, dto);
+			
 			sqlSession.commit();
+			
 		} catch (SQLException e) {  
 			e.printStackTrace();
 		} finally {

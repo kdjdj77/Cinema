@@ -77,10 +77,10 @@ public class C {
     
     // securityCheck를 통과하면 true/false 리턴
     public static boolean securityCheck(
-		HttpServletRequest request,
-		HttpServletResponse response,
-		String [] authorities //접근에 필요한 권한
-		) throws IOException {
+	HttpServletRequest request,
+	HttpServletResponse response,
+	String [] authorities //접근에 필요한 권한
+	) throws IOException {
     	
     	String conPath = request.getContextPath();
     	

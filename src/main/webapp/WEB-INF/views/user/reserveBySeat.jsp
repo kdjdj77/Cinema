@@ -27,9 +27,6 @@
             </tbody>
 
         </table>
-        <div id="page">
-        
-        </div>
 
     </div>
 </div>

@@ -57,13 +57,13 @@
                 <!-- Grid column -->
 
                 <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
-                    <a href="" style="">
+                    
                         <!-- Content -->
                         <h6 class="text-uppercase fw-bold mb-4">
                             <i class="fas fa-gem me-3"></i>Korin
                         </h6>
-                        <img src="https://dummyimage.com/300/000000/ffffff.jpg"/>
-                    </a>
+                        <p>KORIN movies</p>
+                    
                 </div>
 
                 <!-- Grid column -->
@@ -100,12 +100,7 @@
     </section>
     <!-- Section: Links  -->
 
-    <!-- Copyright -->
-    <div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.05);">
-        © 2022 Copyright:
-        <a class="text-reset fw-bold" >코리니</a>
-    </div>
-    <!-- Copyright -->
+
 </footer>
 <!-- Footer -->
 </body>

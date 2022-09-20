@@ -72,5 +72,5 @@
     </form>
 </div>
 </body>
-<script src="../js/join.js"></script>
+<script src="${pageContext.request.contextPath}/js/join.js"></script>
 </html>
