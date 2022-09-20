@@ -35,7 +35,7 @@
 <!-- detail.js로 끌고간다 -->
 
 
-<title>조회 - ${dto.title}</title>
+<title>문의상세 - ${dto.title}</title>
 </head>
 
 <script>
@@ -53,7 +53,7 @@
 
 	<div class="container mt-3">
 		<br><br><br>
-		<h2>상세 - ${dto.title }</h2>
+		<h2>문의 상세</h2>
 		<hr>
 		<div class="mb-3 mt-3 clearfix">
 			<span class="float-start me-2">id: ${dto.id}</span> 
@@ -76,7 +76,7 @@
             </div>
 			
 			<div class="mb-3 mt-3">
-				<textarea style="width: 100%" rows="5" id="content" placeholder="내용을 입력하세요" name="content" readonly>${dto.content }</textarea>
+				<textarea style="width: 100%; height:300px" rows="5" id="content" placeholder="내용을 입력하세요" name="content" readonly>${dto.content }</textarea>
 			</div>
 
 			<!-- 하단 링크 -->

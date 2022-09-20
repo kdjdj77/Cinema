@@ -60,10 +60,10 @@
                     class="navbar-toggler-icon"></span></button>
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav">
-                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#about">About</a></li>
-                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#reserve">예매목록</a></li>
-                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#service">My Q&A</a></li>
-                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#modif">회원정보</a></li>
+                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#about" style="font-size:1.5rem;">About</a></li>
+                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#reserve" style="font-size:1.5rem;">예매목록</a></li>
+                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#service" style="font-size:1.5rem;">My Q&A</a></li>
+                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#modif" style="font-size:1.5rem;">회원정보</a></li>
                 </ul>
             </div>
         </nav>

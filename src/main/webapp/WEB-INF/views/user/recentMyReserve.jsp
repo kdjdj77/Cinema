@@ -11,7 +11,7 @@
 	<div class="flex-grow-1" id="myReserve_list"></div>
 </div>
 <section class="reservelist">
-	<div id="page"></div>
+	<div id="page" style="margin-top:-90px;"></div>
 	<article class="button">
 		<button onClick="loadPreviousMyReserve(${sessionScope.PRINCIPAL.id})"
 			class="ico_arrow1">이전보기</button>
