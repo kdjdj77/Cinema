@@ -43,7 +43,7 @@ public class RecentMyReserveService implements Service{
             sqlSession = SqlSessionManager.getInstance().openSession();
             rdao = sqlSession.getMapper(ReservDAO.class);
             
-            mrlist = rdao.recentMyReserve(id, page *5);
+            mrlist = rdao.recentMyReserve(id, page *3);
             obj.setList(mrlist);
             obj.setCount(mrlist.size());
             obj.setStatus("OK");

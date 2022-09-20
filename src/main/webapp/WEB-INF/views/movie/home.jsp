@@ -14,7 +14,6 @@
  
     <title>영화목록</title>
 </head>
- 
 <body>
 	<jsp:include page="/WEB-INF/views/common/header.jsp"/>
     <div class="container mt-3">
@@ -44,10 +43,10 @@
 					            </c:otherwise>
 								</c:choose>
 				        	</a>
-				        	<div><a href="detail?id=${dto.id}" class="text-decoration-none text-black">
+				        	<div><a href="detail?id=${dto.id}" class="text-decoration-none text-black" style="font-size:1.5rem;">
 				        		&nbsp;&nbsp;&nbsp;${dto.title}
 				        	</a></div>
-				        	<div>&nbsp;&nbsp;★${dto.star}</div>
+				        	<div style="font-size:1.5rem; color:crimson; font-weight:bold;">&nbsp;&nbsp;★${dto.star}</div>
 				        </div>
 			       	</c:forEach>
 		       	</div>

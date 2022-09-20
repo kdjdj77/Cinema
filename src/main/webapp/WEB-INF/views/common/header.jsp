@@ -13,7 +13,9 @@
 <style>
 
 	#nav li {margin-left:40px}
-	#nav li a:hover{background-color: #483D8B;}	
+	#nav li a {border-bottom:5px solid rgba(0,0,0,0); font-size:1.25rem; color:white;}
+	#nav li a:hover{border-bottom:5px solid red;}	
+	.log {margin-top:2px;background-color: crimson; text-decoration:none; color:white; height:35px; width:80px; border:0px; border-radius:10%;}
 </style>
 
 
@@ -28,14 +30,14 @@
 
 <body>
 
-<nav class="navbar navbar-expand-sm navbar-dark bg-dark" style="position: fixed; left: 0; top:0; height:50px; width:100%; z-index:999;border-radius:0;">
+<nav class="navbar navbar-expand-sm navbar-dark" style="position: fixed; left: 0; top:0; height:50px; width:100%; z-index:999;border-radius:0; background-color:darkslateblue;">
     <div class="container-fluid">
-        <a class="navbar-brand" href="${pageContext.request.contextPath}/movie/home">LogO(test)</a>
+        <a class="navbar-brand" href="${pageContext.request.contextPath}/movie/home"><em style="font-size:1.8rem;color:greenyellow; font-weight:bolder;">KORIN</em></a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mynavbar">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="mynavbar">
-            <ul class="navbar-nav me-auto" style="" id="nav">
+            <ul class="navbar-nav me-auto" style="top:0;" id="nav">
               
                 <li class="nav-item">
                     <a class="nav-link" href="${pageContext.request.contextPath}/movie/home">영화</a>
@@ -55,9 +57,9 @@
             <c:choose>
                 <c:when test="${empty sessionScope.PRINCIPAL }">
                     <!-- 로그인 안했을때는 로그인 form 보여주기 -->
-                    <button style="background-color: #D3D3D3;height:100%;">
-                    	<a type="submit" href="${pageContext.request.contextPath}/user/login" style="text-decoration:none; color:black;height:30px;">
-                    		Login
+                    <button class="log">
+                    	<a type="submit" href="${pageContext.request.contextPath}/user/login" style="text-decoration:none; color:white;">
+                    		<b>로그인</b>
                     	</a>
                     </button>
                 </c:when>
@@ -70,7 +72,7 @@
 			                	<span style="height:100%; vertical-align:center;">${sessionScope.PRINCIPAL.name }</span>
                                 님 환영합니다&nbsp;
                                 <a href="${pageContext.request.contextPath}/userinfo/main" style="color:white; height:100%"><i class="fa-solid fa-gears"></i></a></span>
-			                <span><button style="background-color: #D3D3D3; text-decoration:none; color:black; height:100%;" type="submit">Logout</button></span>
+			                <span><button class="log" type="submit"><b>로그아웃</b></button></span>
 			            </span>
                     </form>
                 </c:otherwise>

@@ -89,9 +89,7 @@ public class ListService implements Service {
 	        endPage = startPage + writePages - 1;
 	        if (endPage >= totalPage) endPage = totalPage;     
 			
-	        for(ServiceDTO s : list) {
-	        	s.setCmtCheck(dao.checkCmt(s.getId()).length);
-	        }
+	        for(ServiceDTO s : list) s.setCmtCheck(dao.checkCmt(s.getId()).length);
 	        
 			sqlSession.commit();
 			

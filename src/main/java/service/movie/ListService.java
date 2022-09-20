@@ -12,10 +12,12 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.apache.ibatis.session.SqlSession;
 
+import common.C;
 import domain.FileDAO;
 import domain.FileDTO;
 import domain.MovieDAO;
 import domain.MovieDTO;
+import domain.UserDTO;
 import service.Service;
 import sqlmapper.SqlSessionManager;
 

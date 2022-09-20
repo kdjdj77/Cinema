@@ -54,7 +54,7 @@
 		            </div>
 		            <div class="mb-3 mt-3">
 		                <label for="content">내용:</label>
-		                <textarea style="width: 100%; height:500px" rows="5" id="content" placeholder="내용을 입력하세요" name="content">${dto.content }</textarea>
+		                <textarea style="width: 100%; height:300px" rows="5" id="content" placeholder="내용을 입력하세요" name="content">${dto.content }</textarea>
 		            </div>
 		 
 		            <!-- 하단 링크 -->
