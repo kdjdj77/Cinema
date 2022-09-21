@@ -8,6 +8,7 @@
 		<script>
 			alert("해당 영화가 삭제되거나 없습니다");
 			location.href = 'main';
+
 		</script>
 	</c:when>
 	<c:otherwise>
