@@ -1,4 +1,4 @@
-# JSP_project01
+# JSP_project01 - Cinema
 
 팀명 : 코린이
 
