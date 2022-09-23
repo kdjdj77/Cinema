@@ -74,7 +74,7 @@ function loadPreviousMyReserveList(movie_id) {
     } else {
         $("#myReserveBySeat").html;
         $.ajax({
-			url: conPath + "/myreserve/detail?id=" + movie_id,
+            url: conPath + "/myreserve/detail?id=" + movie_id,
             type: "GET",
             data: data,
             cache: false,
